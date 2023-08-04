@@ -2,8 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: main
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: 01-intro
+- file: 02-hypothesis-testing
+- file: 03-intervals-and-limits
