@@ -459,12 +459,7 @@ The problem, thus, boils down to 1) choosing the most effective <span class="mat
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sbs</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)]</span>  <span class="c1"># sample (s, b) values</span>
 
@@ -478,14 +473,17 @@ The problem, thus, boils down to 1) choosing the most effective <span class="mat
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$m$&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Our probability model&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
-<img alt="_images/e36ed9d23d3803928f59315f3229cf783e0c20104b1fb4c15f2c39fb426ffc91.png" src="_images/e36ed9d23d3803928f59315f3229cf783e0c20104b1fb4c15f2c39fb426ffc91.png" />
+<figure class="align-default" id="model">
+<img alt="_images/2b5bd9cbda253b1f908e8f940a70231062acae4637f7337600651aff0530c9c2.png" src="_images/2b5bd9cbda253b1f908e8f940a70231062acae4637f7337600651aff0530c9c2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Our probability model.</span><a class="headerlink" href="#model" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>Standard 2D Poisson distributions.</p>
@@ -568,14 +566,18 @@ The problem, thus, boils down to 1) choosing the most effective <span class="mat
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">([</span><span class="sa">r</span><span class="s2">&quot;$\lambda(s)$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$t_s$&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Likelihood ratio $\lambda$ and test statistic $t_s$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/08d93a7094d12e63e77b78aa605438e0c8a15c62e6407cb1abdd52ff08aa8ed1.png" src="_images/08d93a7094d12e63e77b78aa605438e0c8a15c62e6407cb1abdd52ff08aa8ed1.png" />
+<figure class="align-default" id="lrts">
+<img alt="_images/5f792f6d50b57262def3a43e5a9c2edcb7a5d07eb2ba3c26ff70580ddc1e90a7.png" src="_images/5f792f6d50b57262def3a43e5a9c2edcb7a5d07eb2ba3c26ff70580ddc1e90a7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Likelihood ratio <span class="math notranslate nohighlight">\(\lambda\)</span> and test statistic <span class="math notranslate nohighlight">\(t_s\)</span>.</span><a class="headerlink" href="#lrts" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>The maximum (minimum) of the profile likelihood ratio (<span class="math notranslate nohighlight">\(t_s\)</span>) are at <span class="math notranslate nohighlight">\(s = 10\)</span>, as we expect.</p>
@@ -603,14 +605,18 @@ This can be demonstrated explicitly by re-making these plots with <span class="m
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># match previous plots</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Likelihood ratio and test statistic with fixed $b$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/910d01f5cd25f5b6aed78852dfdd9995b2e2d316c525ff48c5e1c9d43ddcbaba.png" src="_images/910d01f5cd25f5b6aed78852dfdd9995b2e2d316c525ff48c5e1c9d43ddcbaba.png" />
+<figure class="align-default" id="lrts-fixedb">
+<img alt="_images/9d91fbd4146fc2afc3cbf66c4059fea37682d2d243136e92dacf5413ab19f1fe.png" src="_images/9d91fbd4146fc2afc3cbf66c4059fea37682d2d243136e92dacf5413ab19f1fe.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Likelihood ratio and test statistic with fixed <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#lrts-fixedb" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>Indeed, the functions are narrower with perfect knowledge of <span class="math notranslate nohighlight">\(b\)</span>.
@@ -720,14 +726,18 @@ Rather than incorporating this contraint the model, it’s more convenient to im
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$s$&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Comparing the nominal vs alternative test statistic&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/49b5b671e3572873663985dfaccb916c25865e063df70a5d399bc3c8414f32e5.png" src="_images/49b5b671e3572873663985dfaccb916c25865e063df70a5d399bc3c8414f32e5.png" />
+<figure class="align-default" id="alt-ts">
+<img alt="_images/324bb11d1f66affbdf5d3a4b089a3cbfcb40c236f70689f8126e5d881f1fe588.png" src="_images/324bb11d1f66affbdf5d3a4b089a3cbfcb40c236f70689f8126e5d881f1fe588.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Comparing the nominal vs alternative test statistic.</span><a class="headerlink" href="#alt-ts" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>The <span class="math notranslate nohighlight">\(\tilde{\lambda}(s) = 1\)</span> and <span class="math notranslate nohighlight">\(\tilde{t}_s = 0\)</span> values are now at <span class="math notranslate nohighlight">\(s = 0\)</span>, since physically that is what fits best with our data (even though the math says otherwise.)</p>

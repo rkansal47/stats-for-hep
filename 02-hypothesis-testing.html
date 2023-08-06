@@ -401,14 +401,16 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <p>The goal of any experiment is to test whether our data support or exclude a particular hypothesis <span class="math notranslate nohighlight">\(H\)</span>, and quantify the (dis)agreement. For example, to what degree did our search for the Higgs boson agree or disagree with the standard model hypothesis?</p>
 <p>We have already discussed the process of mapping our data to a scalar test statistic <span class="math notranslate nohighlight">\(t\)</span> that we can use to test <span class="math notranslate nohighlight">\(H\)</span>. However, we need to know the probability distribution of <span class="math notranslate nohighlight">\(t\)</span> under <span class="math notranslate nohighlight">\(H\)</span> to quantify the (in)consistency of the observed data with <span class="math notranslate nohighlight">\(H\)</span> and decide whether or not to exclude <span class="math notranslate nohighlight">\(H\)</span>.</p>
 <p>We also recognize that there’s always a chance that we will exclude <span class="math notranslate nohighlight">\(H\)</span> even if it’s true (called a Type I error, or a false positive), or not exclude <span class="math notranslate nohighlight">\(H\)</span> when it’s false (Type II error, or false negative). The probability of each is referred to as <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>, respectively. See this handy table from <a class="reference external" href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors">Wikipedia</a>:</p>
-<p><img alt="error_types" src="_images/table_error_types.png" />{w=200px align=center}</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/table_error_types.png"><img alt="_images/table_error_types.png" src="_images/table_error_types.png" style="width: 400px;" /></a>
+</figure>
 <p>Before the test, we should decide on a probability of making a Type I error, <span class="math notranslate nohighlight">\(\alpha\)</span>, that we are comfortable with, called a “significance level”. Typical values are 5% and 1%, although if we’re claiming something crazy like a new particle, we better be very sure this isn’t a false positive; hence, we set a much lower significance level for these tests of <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span>. (The <em>significance</em> of this value will be explained below.)</p>
 <section id="deriving-p-t-s-s">
 <h3>Deriving <span class="math notranslate nohighlight">\(p(t_s|s)\)</span><a class="headerlink" href="#deriving-p-t-s-s" title="Permalink to this heading">#</a></h3>
 <p>We can approximate <span class="math notranslate nohighlight">\(p(t_s|s)\)</span> by generating several psuedo- or “toy” datasets assuming <span class="math notranslate nohighlight">\(s\)</span> expected signal events. In this case, this means sampling possible values for <span class="math notranslate nohighlight">\(n, m\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. <a class="reference internal" href="03-intervals-and-limits.html#equation-model">(17)</a>) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much we might expect.</p>
+<p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. <a class="reference internal" href="#equation-model">(13)</a>) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much we might expect.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -423,7 +425,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -516,13 +518,17 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\tilde</span><span class="si">{t}</span><span class="s2">_s$&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(\tilde</span><span class="si">{t}</span><span class="s2">_s|s)$&quot;</span><span class="p">)</span>
     
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Estimating $p(\tilde</span><span class="si">{t}</span><span class="s2">_s|s)$ through toys&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b8f6f5698aab5d9393ffc35984b0684e2cc6cda22d1ef235448ce1835ee08ebc.png" src="_images/b8f6f5698aab5d9393ffc35984b0684e2cc6cda22d1ef235448ce1835ee08ebc.png" />
+<figure class="align-default" id="p-tilde-t">
+<img alt="_images/a5abafe5a17eb3dae4de4d8d65017f330dc07444d1045615302c80044459f2c8.png" src="_images/a5abafe5a17eb3dae4de4d8d65017f330dc07444d1045615302c80044459f2c8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Estimating <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> through toys.</span><a class="headerlink" href="#p-tilde-t" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <div class="important admonition">
@@ -566,14 +572,18 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\tilde</span><span class="si">{t}</span><span class="s2">_s$&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(\tilde</span><span class="si">{t}</span><span class="s2">_s|s)$&quot;</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Asymptotic form of $p(\tilde</span><span class="si">{t}</span><span class="s2">_s|s)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/d05f7e26a4f7049fab6539b66d392bfb58463cef0c799107a0c2ddf9c9df9475.png" src="_images/d05f7e26a4f7049fab6539b66d392bfb58463cef0c799107a0c2ddf9c9df9475.png" />
+<figure class="align-default" id="p-tilde-t-asym">
+<img alt="_images/ee2f2dbc0deec1e8a8eba66e365fc836d567f846ca35d3c307f8c8d6f7cd6224.png" src="_images/ee2f2dbc0deec1e8a8eba66e365fc836d567f846ca35d3c307f8c8d6f7cd6224.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Asymptotic form of <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-t-asym" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>This asymptotic form looks accurate even for <span class="math notranslate nohighlight">\(s, b\)</span> as low as ~5.</p>
@@ -591,14 +601,13 @@ We can map this observation to our test statistic <span class="math notranslate 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
 <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t_obs = </span><span class="si">{</span><span class="n">t_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;$\tilde</span><span class="se">{{</span><span class="s2">t</span><span class="se">}}</span><span class="s2">^\mathrm</span><span class="se">{{</span><span class="s2">obs</span><span class="se">}}</span><span class="s2">_s = </span><span class="si">{</span><span class="n">t_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t_obs = 1.07
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\tilde{t}^\mathrm{obs}_s = 1.07\]</div>
 </div>
 </div>
 <p>And then see where this falls in our <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> distribution:</p>
@@ -717,13 +726,17 @@ We can map this observation to our test statistic <span class="math notranslate 
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plot_p_ts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Testing $H_s$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/64f6b0a46731ae86f3036f9d924790858db94c1cbe03078e5414a6d71c260ab2.png" src="_images/64f6b0a46731ae86f3036f9d924790858db94c1cbe03078e5414a6d71c260ab2.png" />
+<figure class="align-default" id="hs">
+<img alt="_images/d6ba546b103e679f4a7b7358caf7e55b0b724dd4b1665496e3161a636c7d9f02.png" src="_images/d6ba546b103e679f4a7b7358caf7e55b0b724dd4b1665496e3161a636c7d9f02.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Testing <span class="math notranslate nohighlight">\(H_s\)</span>.</span><a class="headerlink" href="#hs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>We care about, given <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, the probability of obtaining <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_s\)</span> <em>or a value more inconsistent</em> with <span class="math notranslate nohighlight">\(H_s\)</span>; i.e., the orange shaded region above.
@@ -740,20 +753,24 @@ Z = \Phi^{-1}(1-p),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the quantile of the standard Gaussian.
 This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>), where <span class="math notranslate nohighlight">\(\varphi\)</span> is the standard Gaussian distribution:</p>
-<p><img alt="significance" src="_images/significance.png" /></p>
+<figure class="align-center" id="sign">
+<img alt="_images/significance.png" src="_images/significance.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Significance from <span class="math notranslate nohighlight">\(p\)</span>-value.</span><a class="headerlink" href="#sign" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The significance for this example is, therefore:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;ppf&quot; = percent point function, which is what scipy calls the quantile function</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_value</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Z = </span><span class="si">{</span><span class="n">Z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;$Z = </span><span class="si">{</span><span class="n">Z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z = 0.53
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[Z = 0.54\]</div>
 </div>
 </div>
 <p>We sometimes say that our measurement is (in)consistent or (in)compatible with <span class="math notranslate nohighlight">\(H\)</span> at the <span class="math notranslate nohighlight">\(0.54\sigma\)</span> level, or within <span class="math notranslate nohighlight">\(1\sigma\)</span>, or … the list goes on.</p>
@@ -774,13 +791,17 @@ This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a 
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plot_p_ts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Testing the background-only hypothesis&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e445b4588aad4ea4c6a5b63eba5735db84e6b7b47159bc7ba777462a947340f7.png" src="_images/e445b4588aad4ea4c6a5b63eba5735db84e6b7b47159bc7ba777462a947340f7.png" />
+<figure class="align-default" id="h0">
+<img alt="_images/2bf64e00ca1c52fe0ab5e037a3532c53f7bda4b54c3266911e8a5888250bde00.png" src="_images/2bf64e00ca1c52fe0ab5e037a3532c53f7bda4b54c3266911e8a5888250bde00.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Testing the background-only hypothesis.</span><a class="headerlink" href="#h0" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
 </div>
 <p>We could say for this experiment, therefore, that we exclude the background-only hypothesis at the “3 sigma” level. However, if this were really a search for a new particle at the LHC, this would still not be enough to claim discovery, as the probability of a false positive at <span class="math notranslate nohighlight">\(3\sigma\)</span>, ~1/1000, is too high. The standard is instead set at <span class="math notranslate nohighlight">\(5\sigma\)</span> for discovering new signals, corresponding to the <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span> significance level quoted earlier (we really don’t want to be making a mistake if we’re claiming to have discovered a new particle)! <span class="math notranslate nohighlight">\(3\sigma\)</span>, <span class="math notranslate nohighlight">\(4\sigma\)</span>, and <span class="math notranslate nohighlight">\(5\sigma\)</span> are often referred to as evidence, observation, and discovery, respectively, of the signals we’re searching for. TODO: check</p>
