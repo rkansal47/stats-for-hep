@@ -406,7 +406,10 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <section id="deriving-p-t-s-s">
 <h3>Deriving <span class="math notranslate nohighlight">\(p(t_s|s)\)</span><a class="headerlink" href="#deriving-p-t-s-s" title="Permalink to this heading">#</a></h3>
 <p>We can approximate <span class="math notranslate nohighlight">\(p(t_s|s)\)</span> by generating several psuedo- or “toy” datasets assuming <span class="math notranslate nohighlight">\(s\)</span> expected signal events. In this case, this means sampling possible values for <span class="math notranslate nohighlight">\(n, m\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. <a class="reference internal" href="03-intervals-and-limits.html#equation-model">(17)</a>) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much we might expect.</p>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -519,7 +522,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/42ae5d098603543060715572c438dbb9861d858b4552ccf2ac38f537c80c8846.png" src="_images/42ae5d098603543060715572c438dbb9861d858b4552ccf2ac38f537c80c8846.png" />
+<img alt="_images/b8f6f5698aab5d9393ffc35984b0684e2cc6cda22d1ef235448ce1835ee08ebc.png" src="_images/b8f6f5698aab5d9393ffc35984b0684e2cc6cda22d1ef235448ce1835ee08ebc.png" />
 </div>
 </div>
 <div class="important admonition">
@@ -570,11 +573,14 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/0c40dedc4309a1553ee664e9cc02e93531742d979f065f48e738d628e7009162.png" src="_images/0c40dedc4309a1553ee664e9cc02e93531742d979f065f48e738d628e7009162.png" />
+<img alt="_images/d05f7e26a4f7049fab6539b66d392bfb58463cef0c799107a0c2ddf9c9df9475.png" src="_images/d05f7e26a4f7049fab6539b66d392bfb58463cef0c799107a0c2ddf9c9df9475.png" />
 </div>
 </div>
-<p>This asymptotic form looks accurate even for <span class="math notranslate nohighlight">\(s, b\)</span> as low as ~5.
-For cases where you can’t use the asymptotic form, Ref. <span id="id2">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> recommends using <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span> when generating toys, so that you (approximately) maximise the agreement with the hypothesis.</p>
+<p>This asymptotic form looks accurate even for <span class="math notranslate nohighlight">\(s, b\)</span> as low as ~5.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For cases where you can’t use the asymptotic form, Ref. <span id="id2">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> recommends using <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span> when generating toys, so that you (approximately) maximise the agreement with the hypothesis.</p>
+</div>
 </section>
 <section id="p-values-and-significance">
 <h3><span class="math notranslate nohighlight">\(p\)</span>-values and Significance<a class="headerlink" href="#p-values-and-significance" title="Permalink to this heading">#</a></h3>
@@ -585,12 +591,12 @@ We can map this observation to our test statistic <span class="math notranslate 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
 <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t_obs = </span><span class="si">{</span><span class="n">t_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t_obs = 1.07
 </pre></div>
 </div>
 </div>
@@ -717,7 +723,7 @@ We can map this observation to our test statistic <span class="math notranslate 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/672b55324e892ee393f0392613a50bdc054377ebd317c5a10e1dd833a5a3cd97.png" src="_images/672b55324e892ee393f0392613a50bdc054377ebd317c5a10e1dd833a5a3cd97.png" />
+<img alt="_images/64f6b0a46731ae86f3036f9d924790858db94c1cbe03078e5414a6d71c260ab2.png" src="_images/64f6b0a46731ae86f3036f9d924790858db94c1cbe03078e5414a6d71c260ab2.png" />
 </div>
 </div>
 <p>We care about, given <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, the probability of obtaining <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_s\)</span> <em>or a value more inconsistent</em> with <span class="math notranslate nohighlight">\(H_s\)</span>; i.e., the orange shaded region above.
@@ -740,12 +746,12 @@ This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;ppf&quot; = percent point function, which is what scipy calls the quantile function</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_value</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Z = </span><span class="si">{</span><span class="n">Z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.51
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z = 0.53
 </pre></div>
 </div>
 </div>
@@ -774,7 +780,7 @@ This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb27b6538976b61e60d3487a9294a4cea30e80b145203c0fb5f49a4eea56be12.png" src="_images/cb27b6538976b61e60d3487a9294a4cea30e80b145203c0fb5f49a4eea56be12.png" />
+<img alt="_images/e445b4588aad4ea4c6a5b63eba5735db84e6b7b47159bc7ba777462a947340f7.png" src="_images/e445b4588aad4ea4c6a5b63eba5735db84e6b7b47159bc7ba777462a947340f7.png" />
 </div>
 </div>
 <p>We could say for this experiment, therefore, that we exclude the background-only hypothesis at the “3 sigma” level. However, if this were really a search for a new particle at the LHC, this would still not be enough to claim discovery, as the probability of a false positive at <span class="math notranslate nohighlight">\(3\sigma\)</span>, ~1/1000, is too high. The standard is instead set at <span class="math notranslate nohighlight">\(5\sigma\)</span> for discovering new signals, corresponding to the <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span> significance level quoted earlier (we really don’t want to be making a mistake if we’re claiming to have discovered a new particle)! <span class="math notranslate nohighlight">\(3\sigma\)</span>, <span class="math notranslate nohighlight">\(4\sigma\)</span>, and <span class="math notranslate nohighlight">\(5\sigma\)</span> are often referred to as evidence, observation, and discovery, respectively, of the signals we’re searching for. TODO: check</p>

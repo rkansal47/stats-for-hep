@@ -562,7 +562,7 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}_s|s_\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s-: 5.9, s+: 25.7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s-: 6.0, s+: 25.6
 </pre></div>
 </div>
 </div>
@@ -648,7 +648,7 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}_s|s_\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4cb8af44685d3d23b1e95b483419bab638df6be45d98a94ae27b463f0cdbd06e.png" src="_images/4cb8af44685d3d23b1e95b483419bab638df6be45d98a94ae27b463f0cdbd06e.png" />
+<img alt="_images/3f70f21e22db9a9b66883e686b277c9bb687e3d478ddea06ec6414a6979cdfc7.png" src="_images/3f70f21e22db9a9b66883e686b277c9bb687e3d478ddea06ec6414a6979cdfc7.png" />
 </div>
 </div>
 <p>Left: <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> for different values of <span class="math notranslate nohighlight">\(s\)</span> <br />
@@ -753,7 +753,10 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 <img alt="_images/7e71cb07ccecac1aff6621bc01dd61e296b0a324f1a549497b96629b816587d7.png" src="_images/7e71cb07ccecac1aff6621bc01dd61e296b0a324f1a549497b96629b816587d7.png" />
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>As you may expect from the plot above, the distribution <span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> no longer behaves like a standard <span class="math notranslate nohighlight">\(\chi^2\)</span> but, instead, as a “half-<span class="math notranslate nohighlight">\(\chi^2\)</span>”: essentially a <span class="math notranslate nohighlight">\(\chi^2\)</span> + a delta function at 0 (since, under the signal hypothesis, on average there will be an over-fluctuation half the time, for which <span class="math notranslate nohighlight">\(\tilde{q}_s = 0\)</span>):</p>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -809,7 +812,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a9b63164d83918a643e64bd42c0373a7c5251435b3a1863f1c5f01a6b7d8527d.png" src="_images/a9b63164d83918a643e64bd42c0373a7c5251435b3a1863f1c5f01a6b7d8527d.png" />
+<img alt="_images/ebb9e7377c836622f5009f2d27d241d2041948298a939a354c3f8a51e55da01f.png" src="_images/ebb9e7377c836622f5009f2d27d241d2041948298a939a354c3f8a51e55da01f.png" />
 </div>
 </div>
 <p>And this is what our example above looks like:</p>
@@ -865,7 +868,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s+: 23.8
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s+: 24.0
 </pre></div>
 </div>
 </div>
@@ -883,7 +886,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8d9a700cf0d39172d1335a9147d92ee2a94091dcc0419c896647d8b300ac5c49.png" src="_images/8d9a700cf0d39172d1335a9147d92ee2a94091dcc0419c896647d8b300ac5c49.png" />
+<img alt="_images/13dbed2b06f37fbf607986e93820a81b160bed2438fe2f14677fcfd3b4e016ef.png" src="_images/13dbed2b06f37fbf607986e93820a81b160bed2438fe2f14677fcfd3b4e016ef.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> is shifted to the left with respect to <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>; hence, the upper limit of 23.8 is slightly lower than the upper bound of the 95% confidence interval we derived using <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>.</p>
@@ -891,9 +894,10 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 <section id="cl-s-method">
 <h3>CL<span class="math notranslate nohighlight">\(_s\)</span> method<a class="headerlink" href="#cl-s-method" title="Permalink to this heading">#</a></h3>
 <p>This is a good point to introduce a few conventions related hypothesis testing and searches in particle physics. First, we usually re-parametrize our parameter of interest <span class="math notranslate nohighlight">\(s\)</span> as:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight" id="equation-mus">
+<span class="eqno">(22)<a class="headerlink" href="#equation-mus" title="Permalink to this equation">#</a></span>\[
 s \rightarrow \mu \cdot s,
-\end{equation}</p>
+\]</div>
 <p>where now <span class="math notranslate nohighlight">\(\mu\)</span> is the parameter of interest, referred to as the “signal strength”, and <span class="math notranslate nohighlight">\(s\)</span> is a fixed value representing the number of signal events we expect to see for a signal strength <span class="math notranslate nohighlight">\(\mu\)</span> of 1. For the example above, if we expect <span class="math notranslate nohighlight">\(s = 10\)</span> signal events, then we could quote the upper limit as <span class="math notranslate nohighlight">\(23.8 / s = 2.38\)</span> on <span class="math notranslate nohighlight">\(\mu\)</span> at 95% CL.</p>
 <p>The other convention is that we use a slightly different method for our confidence intervals, called “CL<span class="math notranslate nohighlight">\(_s\)</span>”. This is motivated by cases where we have little sensitivity to the signal we’re searching for.
 For example, let’s say we expect <span class="math notranslate nohighlight">\(s = 10\)</span> and observe <span class="math notranslate nohighlight">\(n = 50, m = 100\)</span>. This indicates that our search is not sensitive since our search region is completely dominated by background events and, hence, we should not draw strong conclusions about our signal strength from this test. However let’s see what limit we set for this experiment:</p>
@@ -907,7 +911,7 @@ For example, let’s say we expect <span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 0.001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 0.004
 </pre></div>
 </div>
 </div>
@@ -915,18 +919,21 @@ For example, let’s say we expect <span class="math notranslate nohighlight">\(
 <p>We end up excluding the <span class="math notranslate nohighlight">\(\mu = 1\)</span> value (at 95% CL), which is undesirable.</p>
 <p>The idea behind CL<span class="math notranslate nohighlight">\(_s\)</span> is to avoid this by considering both the <span class="math notranslate nohighlight">\(p\)</span>-value of the signal + background hypothesis <span class="math notranslate nohighlight">\(H_s\)</span>, referred to as <span class="math notranslate nohighlight">\(p_{s+b}\)</span> or just <span class="math notranslate nohighlight">\(p_\mu\)</span> for short, <em>and</em> the <span class="math notranslate nohighlight">\(p\)</span>-value of the background-only hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (<span class="math notranslate nohighlight">\(p_b\)</span>) to define a new criterion:</p>
 <div class="math notranslate nohighlight" id="equation-pmu-prime">
-<span class="eqno">(22)<a class="headerlink" href="#equation-pmu-prime" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(23)<a class="headerlink" href="#equation-pmu-prime" title="Permalink to this equation">#</a></span>\[
 p_\mu' = \cfrac{p_\mu}{1 - p_b}
 \]</div>
 <p>For cases where the signal region is completely background dominated, the compatibility with the background-only hypothesis should be high so <span class="math notranslate nohighlight">\(p_b \sim 1\)</span> and, hence, <span class="math notranslate nohighlight">\(p_\mu'\)</span> will be increased (as we want). On the other hand, for more sensitive regions, that compatibility should be lower and <span class="math notranslate nohighlight">\(p_b \sim 0\)</span> and <span class="math notranslate nohighlight">\(p_\mu' \sim p_\mu\)</span>.</p>
 <p>To be explicit,</p>
 <div class="math notranslate nohighlight" id="equation-pb">
-<span class="eqno">(23)<a class="headerlink" href="#equation-pb" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(24)<a class="headerlink" href="#equation-pb" title="Permalink to this equation">#</a></span>\[
 p_b = \int^{\tilde{t}_\mathrm{obs}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}_s.
 \]</div>
 <div class="important admonition">
-<p class="admonition-title">Observations</p>
-<p>Note that 1) we’re looking at the distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>, not <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span>, under the background-only hypothesis; and 2) we’re integrating <em>up to</em> <span class="math notranslate nohighlight">\(\tilde{t}_\mathrm{obs}\)</span>, unlike for <span class="math notranslate nohighlight">\(p_s\)</span>, because lower <span class="math notranslate nohighlight">\(\tilde{t}\)</span> means greater compatibility with the background-only hypothesis.</p>
+<p class="admonition-title">Note that:</p>
+<ol class="arabic simple">
+<li><p>We’re looking at the distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>, not <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span>, under the background-only hypothesis; and</p></li>
+<li><p>We’re integrating <em>up to</em> <span class="math notranslate nohighlight">\(\tilde{t}_\mathrm{obs}\)</span>, unlike for <span class="math notranslate nohighlight">\(p_s\)</span>, because lower <span class="math notranslate nohighlight">\(\tilde{t}\)</span> means greater compatibility with the background-only hypothesis.</p></li>
+</ol>
 </div>
 <p>Let’s see what this looks like:</p>
 <div class="cell tag_hide-input docutils container">
@@ -1037,7 +1044,7 @@ p_b = \int^{\tilde{t}_\mathrm{obs}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cf3a9e4b3bc4c4536844ea0529b182f3bd08c586b1b21d98a2ec31f7e6a9279f.png" src="_images/cf3a9e4b3bc4c4536844ea0529b182f3bd08c586b1b21d98a2ec31f7e6a9279f.png" />
+<img alt="_images/d62acf019fe6f2d18b7aa8501cbd5cc97c38a6f56678430ee1d797f239dfd011.png" src="_images/d62acf019fe6f2d18b7aa8501cbd5cc97c38a6f56678430ee1d797f239dfd011.png" />
 </div>
 </div>
 <p>We see that for our first example (left), the background-only distribution is shifted to the right of the <span class="math notranslate nohighlight">\(s+b\)</span> distribution, indicating higher sensitivity, and thus <span class="math notranslate nohighlight">\(p_\mu' \sim p_\mu\)</span>. In the second example, however, the search is not very sensitive and, hence, the background-only and <span class="math notranslate nohighlight">\(s+b\)</span> distributions almost completely overlap <span class="math notranslate nohighlight">\(\Rightarrow p_b \sim 1\)</span> and <span class="math notranslate nohighlight">\(p_\mu' &gt;&gt; p_\mu\)</span>. Note also that, unlike <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, <span class="math notranslate nohighlight">\(p(\tilde{t}_s|0)\)</span> <em>doesn’t</em> follow a simple <span class="math notranslate nohighlight">\(\chi^2\)</span>; asymptotically, it is closer to a <em>noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span></em>, as discussed in Ref. <span id="id2">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span>, and which we’ll get to in Part 5.</p>
@@ -1090,7 +1097,7 @@ p_b = \int^{\tilde{t}_\mathrm{obs}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 1.4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 1.3
 </pre></div>
 </div>
 </div>
