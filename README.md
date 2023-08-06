@@ -1,6 +1,11 @@
 # Stats for HEP
 
-Walkthrough of statistics concepts for HEP in Python
+Walkthrough of statistics concepts for HEP in Python.
+
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://rkansal47.github.io/stats-for-hep/main.html)
+[![Codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rkansal47/stats-for-hep/main.svg)](https://results.pre-commit.ci/latest/github/rkansal47/stats-for-hep/main)
+
 
 ## Usage
 
@@ -15,16 +20,6 @@ If you'd like to develop and/or build the Stats for HEP book, you should:
 5. Run `jupyter-book build stats-for-hep/`
 
 A fully-rendered HTML version of the book will be built in `stats-for-hep/_build/html/`.
-
-### Hosting the book
-
-Please see the [Jupyter Book documentation](https://jupyterbook.org/publish/web.html) to discover options for deploying a book online using services such as GitHub, GitLab, or Netlify.
-
-For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](https://github.com/executablebooks/cookiecutter-jupyter-book) includes templates for, and information about, optional continuous integration (CI) workflow files to help easily and automatically deploy books online with GitHub or GitLab. For example, if you chose `github` for the `include_ci` cookiecutter option, your book template was created with a GitHub actions workflow file that, once pushed to GitHub, automatically renders and pushes your book to the `gh-pages` branch of your repo and hosts it on GitHub Pages when a push or pull request is made to the main branch.
-
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/rkansal47/stats-for-hep/graphs/contributors).
 
 ## Credits
 
