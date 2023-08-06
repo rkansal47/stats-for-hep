@@ -19,3 +19,10 @@ Part 4: expected significance and limits.
 Part 5: asymptotic formulae.
 
 Part 6: binned fits using zfit...
+
+
+## Bibliography
+
+```{bibliography}
+:style: unsrt
+```
