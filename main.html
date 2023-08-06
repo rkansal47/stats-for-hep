@@ -331,7 +331,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -347,6 +349,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -359,7 +369,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="stats-for-hep">
 <h1>Stats for HEP<a class="headerlink" href="#stats-for-hep" title="Permalink to this heading">#</a></h1>
 <p>This is a series of walk-throughs of some concepts in statistics relevant for high energy physics (HEP).
-It is primarily based on (me trying to understand) Refs. <span id="id1">[]</span> and <span id="id2">[]</span>, and whatever the CMS combine tool is doing.
+It is primarily based on (me trying to understand) Refs. <span id="id1">[<a class="reference internal" href="#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> and <span id="id2">[<a class="reference internal" href="#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>, and whatever the CMS combine tool is doing.
 Both references are useful and highly recommended for reading; the emphasis here is heavily on <strong>implementing and visualizing what they discuss in Python</strong>, as that is what ultimately helped me build any intuition about these concepts.</p>
 <p>The plan is as follows:</p>
 <p>Part 1: introduces the ideas of likelihoods and test statistics, using a simple toy example.</p>
@@ -369,6 +379,20 @@ Both references are useful and highly recommended for reading; the emphasis here
 <p>Part 4: expected significance and limits.</p>
 <p>Part 5: asymptotic formulae.</p>
 <p>Part 6: binned fits using zfit…</p>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id3">
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. <em>Eur. Phys. J. C</em>, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. <a class="reference external" href="https://arxiv.org/abs/1007.1727">arXiv:1007.1727</a>, <a class="reference external" href="https://doi.org/10.1140/epjc/s10052-011-1554-0">doi:10.1140/epjc/s10052-011-1554-0</a>.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Kyle Cranmer. Practical Statistics for the LHC. In <em>2011 European School of High-Energy Physics</em>, 267–308. 2014. <a class="reference external" href="https://arxiv.org/abs/1503.07622">arXiv:1503.07622</a>, <a class="reference external" href="https://doi.org/10.5170/CERN-2014-003.267">doi:10.5170/CERN-2014-003.267</a>.</p>
+</div>
+</div>
+</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -422,6 +446,20 @@ Both references are useful and highly recommended for reading; the emphasis here
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

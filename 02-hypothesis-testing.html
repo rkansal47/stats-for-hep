@@ -363,7 +363,6 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-discovery">Signal discovery</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -380,19 +379,20 @@ document.write(`
 <section id="recap">
 <h2>Recap<a class="headerlink" href="#recap" title="Permalink to this heading">#</a></h2>
 <p>We defined our probability model and likelihood function for a simple one bin counting experiment with <span class="math notranslate nohighlight">\(n\)</span> events, <span class="math notranslate nohighlight">\(s\)</span> signal and <span class="math notranslate nohighlight">\(b\)</span> background, in our signal region and <span class="math notranslate nohighlight">\(m\)</span> events, <span class="math notranslate nohighlight">\(b\)</span> background, in our control region:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight" id="equation-model">
+<span class="eqno">(13)<a class="headerlink" href="#equation-model" title="Permalink to this equation">#</a></span>\[
 P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s, b),
-\label{eq:model}
-\end{equation}</p>
+\]</div>
 <p>and our test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>:</p>
-<p>\begin{equation}
-\tilde{\lambda}(s) = \left{
-\begin{array}{ll}
-\frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s}\geq0\)</span>}.\
-\frac{L(s, \hat{\hat{b}}(s))}{L(0, \hat{\hat{b}}(0))}, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s}&lt;0\)</span>}.
-\end{array}
-\right., \quad \tilde{t}_s=-2\ln \tilde{\lambda}(s),
-\end{equation}</p>
+<div class="math notranslate nohighlight" id="equation-ts-tilde">
+<span class="eqno">(14)<a class="headerlink" href="#equation-ts-tilde" title="Permalink to this equation">#</a></span>\[\begin{split}
+\tilde{\lambda}(s) = \left\{
+    \begin{array}{ll}
+      \frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{$\hat{s}\geq0$}.\\
+      \frac{L(s, \hat{\hat{b}}(s))}{L(0, \hat{\hat{b}}(0))}, &amp; \mbox{$\hat{s}&lt;0$}.
+    \end{array}
+  \right., \quad \tilde{t}_s=-2\ln \tilde{\lambda}(s),
+\end{split}\]</div>
 <p>and solved for <span class="math notranslate nohighlight">\(\hat{s}, \hat{b}, \hat{\hat{b}}(s)\)</span> for given <span class="math notranslate nohighlight">\(n, m\)</span> to find an analytic form for <span class="math notranslate nohighlight">\(t_s\)</span>.</p>
 <p>Next, we want to translate this to a probability distribution of <span class="math notranslate nohighlight">\(t_s\)</span> under a particular signal hypothesis (<span class="math notranslate nohighlight">\(H_s\)</span>) (i.e., an assumed value of <span class="math notranslate nohighlight">\(s\)</span>): <span class="math notranslate nohighlight">\(p(t_s|H_s)\)</span>, or just <span class="math notranslate nohighlight">\(p(t_s|s)\)</span> for simplicity.</p>
 </section>
@@ -401,13 +401,18 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <p>The goal of any experiment is to test whether our data support or exclude a particular hypothesis <span class="math notranslate nohighlight">\(H\)</span>, and quantify the (dis)agreement. For example, to what degree did our search for the Higgs boson agree or disagree with the standard model hypothesis?</p>
 <p>We have already discussed the process of mapping our data to a scalar test statistic <span class="math notranslate nohighlight">\(t\)</span> that we can use to test <span class="math notranslate nohighlight">\(H\)</span>. However, we need to know the probability distribution of <span class="math notranslate nohighlight">\(t\)</span> under <span class="math notranslate nohighlight">\(H\)</span> to quantify the (in)consistency of the observed data with <span class="math notranslate nohighlight">\(H\)</span> and decide whether or not to exclude <span class="math notranslate nohighlight">\(H\)</span>.</p>
 <p>We also recognize that there’s always a chance that we will exclude <span class="math notranslate nohighlight">\(H\)</span> even if it’s true (called a Type I error, or a false positive), or not exclude <span class="math notranslate nohighlight">\(H\)</span> when it’s false (Type II error, or false negative). The probability of each is referred to as <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>, respectively. See this handy table from <a class="reference external" href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors">Wikipedia</a>:</p>
-<img src="figures/table_error_types.png" width="400"/>
+<p><img alt="error_types" src="_images/table_error_types.png" />{w=200px align=center}</p>
 <p>Before the test, we should decide on a probability of making a Type I error, <span class="math notranslate nohighlight">\(\alpha\)</span>, that we are comfortable with, called a “significance level”. Typical values are 5% and 1%, although if we’re claiming something crazy like a new particle, we better be very sure this isn’t a false positive; hence, we set a much lower significance level for these tests of <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span>. (The <em>significance</em> of this value will be explained below.)</p>
 <section id="deriving-p-t-s-s">
 <h3>Deriving <span class="math notranslate nohighlight">\(p(t_s|s)\)</span><a class="headerlink" href="#deriving-p-t-s-s" title="Permalink to this heading">#</a></h3>
-<p>We can approximate <span class="math notranslate nohighlight">\(p(t_s|s)\)</span> by generating several “toy” datasets — in this case, this means sampling possible values for <span class="math notranslate nohighlight">\(n, m\)</span> — assuming <span class="math notranslate nohighlight">\(s\)</span> expected signal events.</p>
-<p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. \ref{eq:model}) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much we might expect.</p>
-<div class="cell docutils container">
+<p>We can approximate <span class="math notranslate nohighlight">\(p(t_s|s)\)</span> by generating several psuedo- or “toy” datasets assuming <span class="math notranslate nohighlight">\(s\)</span> expected signal events. In this case, this means sampling possible values for <span class="math notranslate nohighlight">\(n, m\)</span>.</p>
+<p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. <a class="reference internal" href="03-intervals-and-limits.html#equation-model">(17)</a>) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much we might expect.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
@@ -422,22 +427,14 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
+</details>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">mu</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
@@ -488,6 +485,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -521,16 +519,23 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bce35ce3d8ce22283f12bc7b1c4c928ca7360c064eabc858075fe4e5585b6961.png" src="_images/bce35ce3d8ce22283f12bc7b1c4c928ca7360c064eabc858075fe4e5585b6961.png" />
+<img alt="_images/42ae5d098603543060715572c438dbb9861d858b4552ccf2ac38f537c80c8846.png" src="_images/42ae5d098603543060715572c438dbb9861d858b4552ccf2ac38f537c80c8846.png" />
 </div>
 </div>
-<p>Some important observations:</p>
+<div class="important admonition">
+<p class="admonition-title">Observations</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> does not depend on nuisance parameters (<span class="math notranslate nohighlight">\(b\)</span>) as long as <span class="math notranslate nohighlight">\(b\)</span> is sufficiently large (this is a key reason for basing our test statistic on the profile likelihood)</p></li>
-<li><p>In fact, <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> doesn’t even depend on <span class="math notranslate nohighlight">\(s\)</span>! (Again, as long as <span class="math notranslate nohighlight">\(s\)</span> is large)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> does not depend on nuisance parameters (<span class="math notranslate nohighlight">\(b\)</span>) as long as <span class="math notranslate nohighlight">\(b\)</span> is sufficiently large (this is a key reason for basing our test statistic on the profile likelihood).</p></li>
+<li><p>In fact, <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> doesn’t even depend on <span class="math notranslate nohighlight">\(s\)</span>! (Again, as long as <span class="math notranslate nohighlight">\(s\)</span> is large.)</p></li>
 </ul>
-<p>Ref. <span class="xref myst">1</span> shows that, asymptotically, this distribution follows a <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution with degrees of freedom = # of parameters of interest. You can see the derivation in the reference therein but, essentially, like with most things in physics, this follows from Taylor expanding around the minimum…</p>
-<div class="cell docutils container">
+</div>
+<p>Ref. <span id="id1">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> shows that, asymptotically, this distribution follows a <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution with degrees of freedom = # of parameters of interest. You can see the derivation in the reference therein but, essentially, like with most things in physics, this follows from Taylor expanding around the minimum…</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_toys</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">sbs</span> <span class="o">=</span> <span class="p">[</span>
@@ -563,12 +568,13 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/9728c8405c5f5e0a3f2c08e7a40913dcf08294e9a0970af66ca9ee7d7aafc2f3.png" src="_images/9728c8405c5f5e0a3f2c08e7a40913dcf08294e9a0970af66ca9ee7d7aafc2f3.png" />
+<img alt="_images/0c40dedc4309a1553ee664e9cc02e93531742d979f065f48e738d628e7009162.png" src="_images/0c40dedc4309a1553ee664e9cc02e93531742d979f065f48e738d628e7009162.png" />
 </div>
 </div>
 <p>This asymptotic form looks accurate even for <span class="math notranslate nohighlight">\(s, b\)</span> as low as ~5.
-For cases where you can’t use the asymptotic form, Ref. <span class="xref myst">2</span> recommends using <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span> when generating toys, so that you (approximately) maximise the agreement with the hypothesis.</p>
+For cases where you can’t use the asymptotic form, Ref. <span id="id2">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> recommends using <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span> when generating toys, so that you (approximately) maximise the agreement with the hypothesis.</p>
 </section>
 <section id="p-values-and-significance">
 <h3><span class="math notranslate nohighlight">\(p\)</span>-values and Significance<a class="headerlink" href="#p-values-and-significance" title="Permalink to this heading">#</a></h3>
@@ -624,7 +630,12 @@ We can map this observation to our test statistic <span class="math notranslate 
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_p_ts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_s</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">toy_s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -691,6 +702,7 @@ We can map this observation to our test statistic <span class="math notranslate 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -705,22 +717,23 @@ We can map this observation to our test statistic <span class="math notranslate 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/98c73bf8dfe59d67c355000703352d9495a62fa05fc5259d815076580f3a75c3.png" src="_images/98c73bf8dfe59d67c355000703352d9495a62fa05fc5259d815076580f3a75c3.png" />
+<img alt="_images/672b55324e892ee393f0392613a50bdc054377ebd317c5a10e1dd833a5a3cd97.png" src="_images/672b55324e892ee393f0392613a50bdc054377ebd317c5a10e1dd833a5a3cd97.png" />
 </div>
 </div>
 <p>We care about, given <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, the probability of obtaining <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_s\)</span> <em>or a value more inconsistent</em> with <span class="math notranslate nohighlight">\(H_s\)</span>; i.e., the orange shaded region above.
 This is referred to as the <em><span class="math notranslate nohighlight">\(p\)</span>-value</em> of the observation:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight" id="equation-pvalue">
+<span class="eqno">(15)<a class="headerlink" href="#equation-pvalue" title="Permalink to this equation">#</a></span>\[
 p_s = \int_{\tilde{t}_\mathrm{obs}}^{\inf}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s,
-\label{eq:pvalue}
-\end{equation}</p>
-<p>which is 0.29 for this example. We reject the hypothesis if this <span class="math notranslate nohighlight">\(p\)</span>-value is less than our chosen significance level <span class="math notranslate nohighlight">\(\alpha\)</span>; the idea being that if <span class="math notranslate nohighlight">\(H_s\)</span> were true and we repeated this measurement many times, then the probability of a false-positive (<span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(\leq \alpha\)</span>) is exactly <span class="math notranslate nohighlight">\(\alpha\)</span>, as we intended.</p>
+\]</div>
+<p>which is 0.3 for this example. We reject the hypothesis if this <span class="math notranslate nohighlight">\(p\)</span>-value is less than our chosen significance level <span class="math notranslate nohighlight">\(\alpha\)</span>; the idea being that if <span class="math notranslate nohighlight">\(H_s\)</span> were true and we repeated this measurement many times, then the probability of a false-positive (<span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(\leq \alpha\)</span>) is exactly <span class="math notranslate nohighlight">\(\alpha\)</span>, as we intended.</p>
 <p>Often the <span class="math notranslate nohighlight">\(p\)</span>-value is also “converted” into a <em>significance</em> (<span class="math notranslate nohighlight">\(Z\)</span>), which is the corresponding number of standard deviations away from the mean in a Gaussian distribution</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight" id="equation-z">
+<span class="eqno">(16)<a class="headerlink" href="#equation-z" title="Permalink to this equation">#</a></span>\[
 Z = \Phi^{-1}(1-p),
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the quantile of the standard Gaussian.
-This is more easily illustrated in a figure (taken from Ref. <span class="xref myst">2</span>), where <span class="math notranslate nohighlight">\(\varphi\)</span> is the standard Gaussian distribution:</p>
+This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>), where <span class="math notranslate nohighlight">\(\varphi\)</span> is the standard Gaussian distribution:</p>
 <p><img alt="significance" src="_images/significance.png" /></p>
 <p>The significance for this example is, therefore:</p>
 <div class="cell docutils container">
@@ -732,7 +745,7 @@ This is more easily illustrated in a figure (taken from Ref. <span class="xref m
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.52
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.51
 </pre></div>
 </div>
 </div>
@@ -742,7 +755,11 @@ This is more easily illustrated in a figure (taken from Ref. <span class="xref m
 </section>
 <section id="signal-discovery">
 <h2>Signal discovery<a class="headerlink" href="#signal-discovery" title="Permalink to this heading">#</a></h2>
-<p>Here, we were testing the signal hypothesis, but usually when we’re searching for a particle, we actually test the “background-only” hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> and decide whether or not to reject it. This means we want <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_0\)</span> and <span class="math notranslate nohighlight">\(p(\tilde{t}_0|0)\)</span> (below). (Note: Ref. <span class="xref myst">1</span> refers to the special case of this test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> for <span class="math notranslate nohighlight">\(s = 0\)</span> as <span class="math notranslate nohighlight">\(q_0\)</span>.)</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Note: Ref. <span id="id4">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> refers to the special case of the test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> for <span class="math notranslate nohighlight">\(s = 0\)</span> as <span class="math notranslate nohighlight">\(q_0\)</span>.</p>
+</aside>
+<p>Here, we were testing the signal hypothesis, but usually when we’re searching for a particle, we actually test the “background-only” hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> and decide whether or not to reject it. This means we want <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_0\)</span> and <span class="math notranslate nohighlight">\(p(\tilde{t}_0|0)\)</span> (below).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
@@ -757,7 +774,7 @@ This is more easily illustrated in a figure (taken from Ref. <span class="xref m
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e49de622397725f0ffa54e302df6084dbab841cd9e7baf23b646aa3c03762dd4.png" src="_images/e49de622397725f0ffa54e302df6084dbab841cd9e7baf23b646aa3c03762dd4.png" />
+<img alt="_images/cb27b6538976b61e60d3487a9294a4cea30e80b145203c0fb5f49a4eea56be12.png" src="_images/cb27b6538976b61e60d3487a9294a4cea30e80b145203c0fb5f49a4eea56be12.png" />
 </div>
 </div>
 <p>We could say for this experiment, therefore, that we exclude the background-only hypothesis at the “3 sigma” level. However, if this were really a search for a new particle at the LHC, this would still not be enough to claim discovery, as the probability of a false positive at <span class="math notranslate nohighlight">\(3\sigma\)</span>, ~1/1000, is too high. The standard is instead set at <span class="math notranslate nohighlight">\(5\sigma\)</span> for discovering new signals, corresponding to the <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span> significance level quoted earlier (we really don’t want to be making a mistake if we’re claiming to have discovered a new particle)! <span class="math notranslate nohighlight">\(3\sigma\)</span>, <span class="math notranslate nohighlight">\(4\sigma\)</span>, and <span class="math notranslate nohighlight">\(5\sigma\)</span> are often referred to as evidence, observation, and discovery, respectively, of the signals we’re searching for. TODO: check</p>
@@ -772,11 +789,6 @@ This is more easily illustrated in a figure (taken from Ref. <span class="xref m
 </ol>
 <p>This <span class="math notranslate nohighlight">\(p\)</span>-value / significance is what we then use to decide whether or not to exclude <span class="math notranslate nohighlight">\(H\)</span>. A particularly important special case of this is testing the background-only hypothesis when trying to discover a signal.</p>
 <p>In Part 3, I’ll discuss going beyond testing to setting intervals and limits for parameters of interest.</p>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p>[1] Cowan, Cranmer, Gross, and Vitells, <em>Asymptotic formulae for likelihood-based tests of new physics</em> (2010) <a class="reference external" href="https://arxiv.org/abs/1007.1727v3">arxiv:1007.1727</a> <br />
-[2] Cranmer, <em>Practical Statistics for the LHC</em> (2015) <a class="reference external" href="https://arxiv.org/abs/1503.07622">arxiv:1503.07622</a></p>
 </section>
 </section>
 
@@ -855,7 +867,6 @@ This is more easily illustrated in a figure (taken from Ref. <span class="xref m
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-discovery">Signal discovery</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

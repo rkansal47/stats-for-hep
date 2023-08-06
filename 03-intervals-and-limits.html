@@ -362,7 +362,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -379,27 +378,54 @@ document.write(`
 <section id="recap">
 <h2>Recap<a class="headerlink" href="#recap" title="Permalink to this heading">#</a></h2>
 <p>We defined in Part 1 our probability model and likelihood function for a simple one bin counting experiment with <span class="math notranslate nohighlight">\(n\)</span> events, <span class="math notranslate nohighlight">\(s\)</span> signal and <span class="math notranslate nohighlight">\(b\)</span> background, in our signal region and <span class="math notranslate nohighlight">\(m\)</span> events, <span class="math notranslate nohighlight">\(b\)</span> background, in our control region:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight" id="equation-model">
+<span class="eqno">(17)<a class="headerlink" href="#equation-model" title="Permalink to this equation">#</a></span>\[
 P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s, b),
-\label{eq:model}
-\end{equation}</p>
+\]</div>
 <p>and our test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>:</p>
-<p>\begin{equation}
-\tilde{\lambda}(s) = \left{
-\begin{array}{ll}
-\frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s}\geq0\)</span>}.\
-\frac{L(s, \hat{\hat{b}}(s))}{L(0, \hat{\hat{b}}(0))}, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s}&lt;0\)</span>}.
-\end{array}
-\right., \quad \tilde{t}_s=-2\ln \tilde{\lambda}(s),
-\end{equation}</p>
+<div class="math notranslate nohighlight" id="equation-ts-tilde">
+<span class="eqno">(18)<a class="headerlink" href="#equation-ts-tilde" title="Permalink to this equation">#</a></span>\[\begin{split}
+\tilde{\lambda}(s) = \left\{
+    \begin{array}{ll}
+      \frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{$\hat{s}\geq0$}.\\
+      \frac{L(s, \hat{\hat{b}}(s))}{L(0, \hat{\hat{b}}(0))}, &amp; \mbox{$\hat{s}&lt;0$}.
+    \end{array}
+  \right., \quad \tilde{t}_s=-2\ln \tilde{\lambda}(s),
+\end{split}\]</div>
 <p>and solved for <span class="math notranslate nohighlight">\(\hat{s}, \hat{b}, \hat{\hat{b}}(s)\)</span> for given <span class="math notranslate nohighlight">\(n, m\)</span> to find an analytic form for <span class="math notranslate nohighlight">\(t_s\)</span>.</p>
 <p>In part 2, we translated this to a probability distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> under a particular signal hypothesis <span class="math notranslate nohighlight">\(H_s\)</span>, and quantified the compatibility of our observation based on the <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(p_s\)</span> of the observed test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s^\mathrm{obs}\)</span>:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight" id="equation-pvalue">
+<span class="eqno">(19)<a class="headerlink" href="#equation-pvalue" title="Permalink to this equation">#</a></span>\[
 p_s = \int_{\tilde{t}_\mathrm{obs}}^{\inf}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s,
-\label{eq:pvalue}
-\end{equation}</p>
+\]</div>
 <p>and it’s associated significance.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">mu</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
@@ -450,6 +476,7 @@ p_s = \int_{\tilde{t}_\mathrm{obs}}^{\inf}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,43 +518,13 @@ p_s = \int_{\tilde{t}_\mathrm{obs}}^{\inf}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s,
 <section id="confidence-intervals">
 <h3>Confidence intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this heading">#</a></h3>
 <p>The machinery from Part 2 can be extended straightforwardly to extracting “confidence intervals” for our parameters of interest (POIs): a range of values of the POIs that are allowed based on the experiment, for a certain “confidence level”, e.g. 68% or 95%. Very similar to the idea of the significance level, the confidence level is defined such that if we were to repeat the experiment many times, a 95%-confidence-interval must contain, or <em>cover</em>, the true value of the parameter 95% of the time.</p>
-<p>We can ensure this for any given confidence level (CL) by solving Eq. \ref{eq:pvalue} for a <span class="math notranslate nohighlight">\(p\)</span>-value of <span class="math notranslate nohighlight">\(1 - \mathrm{CL}\)</span>:</p>
-<p>\begin{equation}
-p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}<em>s|s</em>\pm)\mathrm d \tilde{t}_s,
-\label{eq:cl}
-\end{equation}</p>
+<p>We can ensure this for any given confidence level (CL) by solving Eq. <a class="reference internal" href="#equation-pvalue">(19)</a> for a <span class="math notranslate nohighlight">\(p\)</span>-value of <span class="math notranslate nohighlight">\(1 - \mathrm{CL}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-cl">
+<span class="eqno">(20)<a class="headerlink" href="#equation-cl" title="Permalink to this equation">#</a></span>\[
+p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}_s|s_\pm)\mathrm d \tilde{t}_s,
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(s_-\)</span> and <span class="math notranslate nohighlight">\(s_+\)</span> are the lower and upper limits on <span class="math notranslate nohighlight">\(s\)</span>, respectively.</p>
 <p>We can solve this by scanning <span class="math notranslate nohighlight">\(s\)</span> and finding the values of <span class="math notranslate nohighlight">\(s\)</span> for which the RHS <span class="math notranslate nohighlight">\(= 1 - \mathrm{CL}\)</span>. Continuing with our above example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_limits</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
@@ -565,12 +562,17 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}<em>s|s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s-: 6.0, s+: 25.4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s-: 5.9, s+: 25.7
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_2d_p_ts_s</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">t_tilde_s</span><span class="p">,</span> <span class="n">s_scan</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">):</span>
     <span class="n">t_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
@@ -631,6 +633,7 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}<em>s|s
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -645,37 +648,42 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}<em>s|s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8152f161aa0bbb6d9521809cd9d386bfb0fc0a985b0f2b7193a66a67d11306dd.png" src="_images/8152f161aa0bbb6d9521809cd9d386bfb0fc0a985b0f2b7193a66a67d11306dd.png" />
+<img alt="_images/4cb8af44685d3d23b1e95b483419bab638df6be45d98a94ae27b463f0cdbd06e.png" src="_images/4cb8af44685d3d23b1e95b483419bab638df6be45d98a94ae27b463f0cdbd06e.png" />
 </div>
 </div>
 <p>Left: <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> for different values of <span class="math notranslate nohighlight">\(s\)</span> <br />
 Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for different <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>’s plus <span class="math notranslate nohighlight">\(t^\mathrm{obs}_s\)</span> in red. The points at which <span class="math notranslate nohighlight">\(t^\mathrm{obs}_s\)</span> intersects with the <span class="math notranslate nohighlight">\(p\)</span>-value<span class="math notranslate nohighlight">\(=0.05\)</span> contour signify the limits of the 95% confidence interval for <span class="math notranslate nohighlight">\(s: [6.0, 25.7]\)</span>.</p>
-<p>This procedure of inverting the hypothesis test by scanning along the values of the POIs is called the “Neyman construction”. One subtlety to remember is that, in principle, we should also be scanning over the nuisance parameters (<span class="math notranslate nohighlight">\(b\)</span>) when estimating the <span class="math notranslate nohighlight">\(p\)</span>-values. However, this would be very computationally expensive so in practice we continue to use <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span>, to always (approximately) maximise the agreement with the hypothesis. Ref. <span class="xref myst">2</span> calls this trick “profile construction”.</p>
+<p>This procedure of inverting the hypothesis test by scanning along the values of the POIs is called the “Neyman construction”.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>One subtlety to remember is that, in principle, we should also be scanning over the nuisance parameters (<span class="math notranslate nohighlight">\(b\)</span>) when estimating the <span class="math notranslate nohighlight">\(p\)</span>-values. However, this would be very computationally expensive so in practice we continue to use <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span>, to always (approximately) maximise the agreement with the hypothesis. Ref. <span id="id1">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> calls this trick “profile construction”.</p>
+</div>
 </section>
 <section id="upper-limits">
 <h3>Upper Limits<a class="headerlink" href="#upper-limits" title="Permalink to this heading">#</a></h3>
-<p>Typically if a search does not have enough sensitivity to directly observe a new signal, we instead quote an upper limit on the signal strength. This is similar in practice to the Neyman construction for confidence intervals, solving Eq. \ref{eq:cl} only for the upper boundary. However, when we’re setting upper limits, we need to modify our test statistic, as so:</p>
-<p>\begin{equation}
-\tilde{q}(s) = \left{
-\begin{array}{ll}
-\tilde{t}(s), &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s} &lt; s\)</span>}.\
-0, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s} \geq s\)</span>}.
-\end{array}
-\right.
-= \left{
-\begin{array}{ll}
--2\ln\tilde{\lambda}(s), &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s} &lt; s\)</span>}.\
-0, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s} \geq s\)</span>}.
-\end{array}
-\right.
-= \left{
-\begin{array}{ll}
--2\ln\frac{L(s, \hat{\hat{b}}(s))}{L(0, \hat{\hat{b}}(0))}, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s}&lt;0\)</span>}.\
--2\ln\frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{0 <span class="math notranslate nohighlight">\(\leq \hat{s} &lt; s\)</span>}.\
-0, &amp; \mbox{<span class="math notranslate nohighlight">\(\hat{s} \geq s\)</span>}.
-\end{array}
-\right.
-\end{equation}</p>
+<p>Typically if a search does not have enough sensitivity to directly observe a new signal, we instead quote an upper limit on the signal strength. This is similar in practice to the Neyman construction for confidence intervals, solving Eq. <a class="reference internal" href="#equation-cl">(20)</a> only for the upper boundary. However, when we’re setting upper limits, we need to modify our test statistic, as so:</p>
+<div class="math notranslate nohighlight" id="equation-qs-tilde">
+<span class="eqno">(21)<a class="headerlink" href="#equation-qs-tilde" title="Permalink to this equation">#</a></span>\[\begin{split}
+    \tilde{q}(s) = \left\{
+        \begin{array}{ll}
+          \tilde{t}(s), &amp; \mbox{$\hat{s} &lt; s$}.\\
+          0, &amp; \mbox{$\hat{s} \geq s$}.
+        \end{array}
+      \right.
+      = \left\{
+        \begin{array}{ll}
+          -2\ln\tilde{\lambda}(s), &amp; \mbox{$\hat{s} &lt; s$}.\\
+          0, &amp; \mbox{$\hat{s} \geq s$}.
+        \end{array}
+      \right.
+      = \left\{
+      \begin{array}{ll}
+          -2\ln\frac{L(s, \hat{\hat{b}}(s))}{L(0, \hat{\hat{b}}(0))}, &amp; \mbox{$\hat{s}&lt;0$}.\\
+          -2\ln\frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{0 $\leq \hat{s} &lt; s$}.\\
+          0, &amp; \mbox{$\hat{s} \geq s$}.
+        \end{array}
+      \right.
+\end{split}\]</div>
 <p>because we don’t want <span class="math notranslate nohighlight">\(\hat{s} &gt; s\)</span> to indicate lower compatibility for a signal hypothesis of <span class="math notranslate nohighlight">\(s\)</span>. This is what this looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -695,7 +703,12 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_ts_qs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">nms</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
@@ -723,6 +736,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,11 +750,16 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6d5c3d5b138065840ea5cba4beb22322e0ad2677bd9bc357764f19b631a8763c.png" src="_images/6d5c3d5b138065840ea5cba4beb22322e0ad2677bd9bc357764f19b631a8763c.png" />
+<img alt="_images/7e71cb07ccecac1aff6621bc01dd61e296b0a324f1a549497b96629b816587d7.png" src="_images/7e71cb07ccecac1aff6621bc01dd61e296b0a324f1a549497b96629b816587d7.png" />
 </div>
 </div>
 <p>As you may expect from the plot above, the distribution <span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> no longer behaves like a standard <span class="math notranslate nohighlight">\(\chi^2\)</span> but, instead, as a “half-<span class="math notranslate nohighlight">\(\chi^2\)</span>”: essentially a <span class="math notranslate nohighlight">\(\chi^2\)</span> + a delta function at 0 (since, under the signal hypothesis, on average there will be an over-fluctuation half the time, for which <span class="math notranslate nohighlight">\(\tilde{q}_s = 0\)</span>):</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_p_ts_qs</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">sbs</span><span class="p">):</span>
     <span class="n">xlim</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">40</span>
@@ -777,6 +796,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,7 +809,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/59c9bea8836ca30d3dc0501e6a2c20c663ee852c0260f98812f0c43faa3903e6.png" src="_images/59c9bea8836ca30d3dc0501e6a2c20c663ee852c0260f98812f0c43faa3903e6.png" />
+<img alt="_images/a9b63164d83918a643e64bd42c0373a7c5251435b3a1863f1c5f01a6b7d8527d.png" src="_images/a9b63164d83918a643e64bd42c0373a7c5251435b3a1863f1c5f01a6b7d8527d.png" />
 </div>
 </div>
 <p>And this is what our example above looks like:</p>
@@ -845,7 +865,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s+: 24.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s+: 23.8
 </pre></div>
 </div>
 </div>
@@ -863,7 +883,7 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9bf6c5081900e8e4941c57e65aec96ae940fdc605ebbc84e767ac473fcb79b5.png" src="_images/e9bf6c5081900e8e4941c57e65aec96ae940fdc605ebbc84e767ac473fcb79b5.png" />
+<img alt="_images/8d9a700cf0d39172d1335a9147d92ee2a94091dcc0419c896647d8b300ac5c49.png" src="_images/8d9a700cf0d39172d1335a9147d92ee2a94091dcc0419c896647d8b300ac5c49.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> is shifted to the left with respect to <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>; hence, the upper limit of 23.8 is slightly lower than the upper bound of the 95% confidence interval we derived using <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>.</p>
@@ -875,36 +895,46 @@ Right: The <span class="math notranslate nohighlight">\(p\)</span>-values for di
 s \rightarrow \mu \cdot s,
 \end{equation}</p>
 <p>where now <span class="math notranslate nohighlight">\(\mu\)</span> is the parameter of interest, referred to as the “signal strength”, and <span class="math notranslate nohighlight">\(s\)</span> is a fixed value representing the number of signal events we expect to see for a signal strength <span class="math notranslate nohighlight">\(\mu\)</span> of 1. For the example above, if we expect <span class="math notranslate nohighlight">\(s = 10\)</span> signal events, then we could quote the upper limit as <span class="math notranslate nohighlight">\(23.8 / s = 2.38\)</span> on <span class="math notranslate nohighlight">\(\mu\)</span> at 95% CL.</p>
-<p>The other convention is that we use a slightly different criteria for our confidence intervals, called “CL<span class="math notranslate nohighlight">\(_s\)</span>”. This is motivated by cases where we have little sensitivity to the signal we’re searching for.
+<p>The other convention is that we use a slightly different method for our confidence intervals, called “CL<span class="math notranslate nohighlight">\(_s\)</span>”. This is motivated by cases where we have little sensitivity to the signal we’re searching for.
 For example, let’s say we expect <span class="math notranslate nohighlight">\(s = 10\)</span> and observe <span class="math notranslate nohighlight">\(n = 50, m = 100\)</span>. This indicates that our search is not sensitive since our search region is completely dominated by background events and, hence, we should not draw strong conclusions about our signal strength from this test. However let’s see what limit we set for this experiment:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">100</span>
 <span class="n">s_scan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>  <span class="c1"># scanning s over these values</span>
 <span class="n">s_upper</span><span class="p">,</span> <span class="n">q_tilde_scan</span><span class="p">,</span> <span class="n">q_obs_scan</span><span class="p">,</span> <span class="n">p_val_scan</span> <span class="o">=</span> <span class="n">get_upper_limit</span><span class="p">(</span><span class="n">s_scan</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mu+: </span><span class="si">{</span><span class="n">s_upper</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mu+: </span><span class="si">{</span><span class="n">s_upper</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 0.04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 0.001
 </pre></div>
 </div>
 </div>
 </div>
 <p>We end up excluding the <span class="math notranslate nohighlight">\(\mu = 1\)</span> value (at 95% CL), which is undesirable.</p>
 <p>The idea behind CL<span class="math notranslate nohighlight">\(_s\)</span> is to avoid this by considering both the <span class="math notranslate nohighlight">\(p\)</span>-value of the signal + background hypothesis <span class="math notranslate nohighlight">\(H_s\)</span>, referred to as <span class="math notranslate nohighlight">\(p_{s+b}\)</span> or just <span class="math notranslate nohighlight">\(p_\mu\)</span> for short, <em>and</em> the <span class="math notranslate nohighlight">\(p\)</span>-value of the background-only hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (<span class="math notranslate nohighlight">\(p_b\)</span>) to define a new criterion:</p>
-<p>\begin{equation}
-p_\mu’ = \cfrac{p_\mu}{1 - p_b}
-\end{equation}</p>
+<div class="math notranslate nohighlight" id="equation-pmu-prime">
+<span class="eqno">(22)<a class="headerlink" href="#equation-pmu-prime" title="Permalink to this equation">#</a></span>\[
+p_\mu' = \cfrac{p_\mu}{1 - p_b}
+\]</div>
 <p>For cases where the signal region is completely background dominated, the compatibility with the background-only hypothesis should be high so <span class="math notranslate nohighlight">\(p_b \sim 1\)</span> and, hence, <span class="math notranslate nohighlight">\(p_\mu'\)</span> will be increased (as we want). On the other hand, for more sensitive regions, that compatibility should be lower and <span class="math notranslate nohighlight">\(p_b \sim 0\)</span> and <span class="math notranslate nohighlight">\(p_\mu' \sim p_\mu\)</span>.</p>
 <p>To be explicit,</p>
-<p>\begin{equation}
-p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}_s.
-\end{equation}</p>
-<p>Note that: 1) we’re looking at the distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>, not <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span>, under the background-only hypothesis; and 2) we’re integrating <em>up to</em> <span class="math notranslate nohighlight">\(\tilde{t}_\mathrm{obs}\)</span>, unlike for <span class="math notranslate nohighlight">\(p_s\)</span>, because lower <span class="math notranslate nohighlight">\(\tilde{t}\)</span> means greater compatibility with the background-only hypothesis.</p>
+<div class="math notranslate nohighlight" id="equation-pb">
+<span class="eqno">(23)<a class="headerlink" href="#equation-pb" title="Permalink to this equation">#</a></span>\[
+p_b = \int^{\tilde{t}_\mathrm{obs}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}_s.
+\]</div>
+<div class="important admonition">
+<p class="admonition-title">Observations</p>
+<p>Note that 1) we’re looking at the distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>, not <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span>, under the background-only hypothesis; and 2) we’re integrating <em>up to</em> <span class="math notranslate nohighlight">\(\tilde{t}_\mathrm{obs}\)</span>, unlike for <span class="math notranslate nohighlight">\(p_s\)</span>, because lower <span class="math notranslate nohighlight">\(\tilde{t}\)</span> means greater compatibility with the background-only hypothesis.</p>
+</div>
 <p>Let’s see what this looks like:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_p_ts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p_s</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">toy_s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -968,13 +998,8 @@ p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \t
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">test_s</span><span class="p">)</span><span class="si">}</span><span class="s2">, n_\mathrm</span><span class="se">{{</span><span class="s2">obs</span><span class="se">}}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">n_obs</span><span class="p">)</span><span class="si">}</span><span class="s2">, m_\mathrm</span><span class="se">{{</span><span class="s2">obs</span><span class="se">}}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">m_obs</span><span class="p">)</span><span class="si">}</span><span class="s2">$&quot;</span>
     <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_pmu_pb</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_tilde_sb</span><span class="p">,</span> <span class="n">t_obs</span><span class="p">,</span> <span class="n">p_mu</span><span class="p">,</span> <span class="n">p_b</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+
+<span class="k">def</span> <span class="nf">plot_pmu_pb</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_tilde_sb</span><span class="p">,</span> <span class="n">t_obs</span><span class="p">,</span> <span class="n">p_mu</span><span class="p">,</span> <span class="n">p_b</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
     <span class="n">plot_p_ts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_sb</span><span class="p">,</span> <span class="n">t_obs</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">p_b</span><span class="p">,</span> <span class="n">p_s</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="n">hlim</span><span class="p">)</span>
     <span class="n">plot_p_ts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="n">p_mu</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="n">hlim</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$p_\mu&#39; = </span><span class="si">{</span><span class="n">p_mu</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p_b</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
@@ -987,6 +1012,7 @@ p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \t
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1011,10 +1037,10 @@ p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/438adf256c463c06a04578ffe788aca5de9891c242e534e5c4e2579bebad9de3.png" src="_images/438adf256c463c06a04578ffe788aca5de9891c242e534e5c4e2579bebad9de3.png" />
+<img alt="_images/cf3a9e4b3bc4c4536844ea0529b182f3bd08c586b1b21d98a2ec31f7e6a9279f.png" src="_images/cf3a9e4b3bc4c4536844ea0529b182f3bd08c586b1b21d98a2ec31f7e6a9279f.png" />
 </div>
 </div>
-<p>We see that for our first example (left), the background-only distribution is shifted to the right of the <span class="math notranslate nohighlight">\(s+b\)</span> distribution, indicating higher sensitivity, and thus <span class="math notranslate nohighlight">\(p_\mu' \sim p_\mu\)</span>. In the second example, however, the search is not very sensitive and, hence, the background-only and <span class="math notranslate nohighlight">\(s+b\)</span> distributions almost completely overlap <span class="math notranslate nohighlight">\(\Rightarrow p_b \sim 1\)</span> and <span class="math notranslate nohighlight">\(p_\mu' &gt;&gt; p_\mu\)</span>. Note also that, unlike <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, <span class="math notranslate nohighlight">\(p(\tilde{t}_s|0)\)</span> <em>doesn’t</em> follow a simple <span class="math notranslate nohighlight">\(\chi^2\)</span>; asymptotically, it is closer to a <em>noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span></em>, as discussed in Ref. <span class="xref myst">1</span>, and which we’ll get to in Part 3.</p>
+<p>We see that for our first example (left), the background-only distribution is shifted to the right of the <span class="math notranslate nohighlight">\(s+b\)</span> distribution, indicating higher sensitivity, and thus <span class="math notranslate nohighlight">\(p_\mu' \sim p_\mu\)</span>. In the second example, however, the search is not very sensitive and, hence, the background-only and <span class="math notranslate nohighlight">\(s+b\)</span> distributions almost completely overlap <span class="math notranslate nohighlight">\(\Rightarrow p_b \sim 1\)</span> and <span class="math notranslate nohighlight">\(p_\mu' &gt;&gt; p_\mu\)</span>. Note also that, unlike <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, <span class="math notranslate nohighlight">\(p(\tilde{t}_s|0)\)</span> <em>doesn’t</em> follow a simple <span class="math notranslate nohighlight">\(\chi^2\)</span>; asymptotically, it is closer to a <em>noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span></em>, as discussed in Ref. <span id="id2">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span>, and which we’ll get to in Part 5.</p>
 <p>Finally, let’s see if our upper limit make more sense using CL<span class="math notranslate nohighlight">\(_s\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1064,7 +1090,7 @@ p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mu+: 1.4
 </pre></div>
 </div>
 </div>
@@ -1090,11 +1116,6 @@ p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \t
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>We extended the framework for hypothesis testing to derive frequentist confidence intervals for parameters of interest by solving for particular <span class="math notranslate nohighlight">\(p\)</span>-values, called the “Neyman construction”. For upper limits, we find that we need to use a further modified test statistic <span class="math notranslate nohighlight">\(\tilde{q}_\mu\)</span> and the “CL<span class="math notranslate nohighlight">\(_s\)</span>” method to avoid excluding signals for which we don’t have sensitivity. In Part 4, I’ll discuss the concepts of <em>expected</em> significances and limits, which are important to estimate our experiment’s sensitivity before collecting or looking at the data.</p>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p>[1] Cowan, Cranmer, Gross, and Vitells, <em>Asymptotic formulae for likelihood-based tests of new physics</em> (2010) <a class="reference external" href="https://arxiv.org/abs/1007.1727v3">arxiv:1007.1727</a> <br />
-[2] Cranmer, <em>Practical Statistics for the LHC</em> (2015) <a class="reference external" href="https://arxiv.org/abs/1503.07622">arxiv:1503.07622</a></p>
 </section>
 </section>
 
@@ -1164,7 +1185,6 @@ p_b = \int^{\tilde{t}<em>\mathrm{obs}}</em>{-\infty}p(\tilde{t}_s|0)\mathrm d \t
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
