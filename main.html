@@ -161,6 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="01-intro.html">1. Introduction to Likelihoods and Test Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-hypothesis-testing.html">2. Hypothesis Testing and Upper Limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-intervals-and-limits.html">3. Confidence Intervals and Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-expected-significance-and-limits.html">4. Expected Significances and Limits</a></li>
 </ul>
 
     </div>
@@ -371,12 +372,16 @@ document.write(`
 <p>This is a series of walk-throughs of some concepts in statistics relevant for high energy physics (HEP).
 It is primarily based on (me trying to understand) Refs. <span id="id1">[<a class="reference internal" href="#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> and <span id="id2">[<a class="reference internal" href="#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>, and whatever the CMS combine tool is doing.
 Both references are useful and highly recommended for reading; the emphasis here is heavily on <strong>implementing and visualizing what they discuss in Python</strong>, as that is what ultimately helped me build any intuition about these concepts.</p>
+<!-- ## Table of Contents
+
+```{tableofcontents}
+``` -->
 <p>The plan is as follows:</p>
 <p>Part 1: introduces the ideas of likelihoods and test statistics, using a simple toy example.</p>
 <p>Part 2: discusses the framework for hypothesis testing and <span class="math notranslate nohighlight">\(p\)</span>-values and significances, following the same toy example.</p>
 <p>Part 3: frequentist confidence intervals and upper limits.</p>
-<p>(Coming soon)</p>
 <p>Part 4: expected significance and limits.</p>
+<p>(Coming soon)</p>
 <p>Part 5: asymptotic formulae.</p>
 <p>Part 6: binned fits using zfit…</p>
 <section id="bibliography">
@@ -389,6 +394,14 @@ Both references are useful and highly recommended for reading; the emphasis here
 <div class="citation" id="id5" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Kyle Cranmer. Practical Statistics for the LHC. In <em>2011 European School of High-Energy Physics</em>, 267–308. 2014. <a class="reference external" href="https://arxiv.org/abs/1503.07622">arXiv:1503.07622</a>, <a class="reference external" href="https://doi.org/10.5170/CERN-2014-003.267">doi:10.5170/CERN-2014-003.267</a>.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Caroline Stiller. <em>Baseline assessment and effect of a supplementary community-based nutrition intervention study on the prevention/treatment of anemia among young Adivasi children in West Bengal, India</em>. PhD thesis, University of Hohenheim, 01 2021.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p>ATLAS Collaboration. Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC. <em>Phys. Lett. B</em>, 716:1–29, 2012. <a class="reference external" href="https://arxiv.org/abs/1207.7214">arXiv:1207.7214</a>, <a class="reference external" href="https://doi.org/10.1016/j.physletb.2012.08.020">doi:10.1016/j.physletb.2012.08.020</a>.</p>
 </div>
 </div>
 </div>
@@ -433,7 +446,7 @@ Both references are useful and highly recommended for reading; the emphasis here
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1. Introduction to Likelihoods and Test Statistics</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction to Likelihoods and Test Statistics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
