@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '04-expected-significance-and-limits';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Asymptotic Formulae" href="05-asymptotic-forms.html" />
     <link rel="prev" title="3. Confidence Intervals and Limits" href="03-intervals-and-limits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,6 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="02-hypothesis-testing.html">2. Hypothesis Testing and Upper Limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-intervals-and-limits.html">3. Confidence Intervals and Limits</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Expected Significances and Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-forms.html">5. Asymptotic Formulae</a></li>
 </ul>
 
     </div>
@@ -706,7 +708,7 @@ By then calculating the significance for each sampled <span class="math notransl
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="expz">
-<img alt="_images/9907b1169c84aeca339c879b281a63adcdd0f5c05226319a1bae1d2318f062d4.png" src="_images/9907b1169c84aeca339c879b281a63adcdd0f5c05226319a1bae1d2318f062d4.png" />
+<img alt="_images/3477412882ee15dc1c29bbfbb157d714dd37532599c7250c7e2dce15b89d5ace.png" src="_images/3477412882ee15dc1c29bbfbb157d714dd37532599c7250c7e2dce15b89d5ace.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Left: Distributions of <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span> under the background-only and signal hypotheses. Right: Distribution of the significances of each sampled <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span> under the signal hypothesis.</span><a class="headerlink" href="#expz" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -719,7 +721,7 @@ By then calculating the significance for each sampled <span class="math notransl
 <figure class="align-center" id="gaussian-quantiles">
 <img alt="_images/gaussian_quantiles.png" src="_images/gaussian_quantiles.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Quantiles for a standard Gaussian, from Ref. <span id="id1">[<a class="reference internal" href="main.html#id6" title="Caroline Stiller. Baseline assessment and effect of a supplementary community-based nutrition intervention study on the prevention/treatment of anemia among young Adivasi children in West Bengal, India. PhD thesis, University of Hohenheim, 01 2021.">3</a>]</span>.</span><a class="headerlink" href="#gaussian-quantiles" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">From Ref. <span id="id1">[<a class="reference internal" href="main.html#id6" title="Caroline Stiller. Baseline assessment and effect of a supplementary community-based nutrition intervention study on the prevention/treatment of anemia among young Adivasi children in West Bengal, India. PhD thesis, University of Hohenheim, 01 2021.">3</a>]</span>.</span><a class="headerlink" href="#gaussian-quantiles" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </aside>
@@ -728,14 +730,14 @@ By then calculating the significance for each sampled <span class="math notransl
 <p>We usually quote the <strong>median</strong> of this distribution as the expected significance, since the median is “invariant” to monotonic transformations (i.e., the median <span class="math notranslate nohighlight">\(p\)</span>-value will always correspond to the median <span class="math notranslate nohighlight">\(Z\)</span> as well, whereas the mean <span class="math notranslate nohighlight">\(p\)</span>-value will not correspond to the mean <span class="math notranslate nohighlight">\(Z\)</span>).
 Similarly, we quote the 16%/84% and 2%/98% quantiles as the <span class="math notranslate nohighlight">\(\pm 1\sigma\)</span> and <span class="math notranslate nohighlight">\(\pm 2\sigma\)</span>, respectively, expected significances.</p>
 </div>
-<p>In this case, we find the median expected significance to be <span class="output text_plain">1.84</span>.</p>
+<p>In this case, we find the median expected significance to be <span class="output text_plain">1.86</span>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>This is another benefit of considering the median.</p>
 </aside>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that instead of converting each sampled <span class="math notranslate nohighlight">\(\tilde{t}\)</span> under <span class="math notranslate nohighlight">\(H_{\mu=1}\)</span> into a significance and finding the median of that distribution, as in Fig. <a class="reference internal" href="#expz"><span class="std std-numref">Fig. 4.1</span></a> (right), we could have directly used the significance of the median <span class="math notranslate nohighlight">\(\tilde{t}\)</span> under <span class="math notranslate nohighlight">\(H_{\mu=1}\)</span> (Fig. <a class="reference internal" href="#expz"><span class="std std-numref">Fig. 4.1</span></a>, left). We will do this below for the expected limit.</p>
+<p>Note that instead of converting each sampled <span class="math notranslate nohighlight">\(\tilde{t}\)</span> under <span class="math notranslate nohighlight">\(H_{\mu=1}\)</span> into a significance and finding the median of that distribution, as in <a class="reference internal" href="#expz"><span class="std std-numref">Fig. 4.1</span></a> (right), we could have directly used the significance of the median <span class="math notranslate nohighlight">\(\tilde{t}\)</span> under <span class="math notranslate nohighlight">\(H_{\mu=1}\)</span> (<a class="reference internal" href="#expz"><span class="std std-numref">Fig. 4.1</span></a>, left). We will do this below for the expected limit.</p>
 </div>
 </section>
 <section id="expected-limit">
@@ -825,14 +827,14 @@ Furthermore, we need to scan over different signal strengths (<span class="math 
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="explim">
-<img alt="_images/3dcc70354a7d0b5a6777c03a50e1b6fb9e8646cf8a92d572b300028d43e877cb.png" src="_images/3dcc70354a7d0b5a6777c03a50e1b6fb9e8646cf8a92d572b300028d43e877cb.png" />
+<img alt="_images/dad8cac267579d9ca71d03282b0606d7f1434c1b39c527af53e8380b89021b45.png" src="_images/dad8cac267579d9ca71d03282b0606d7f1434c1b39c527af53e8380b89021b45.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Median expected <span class="math notranslate nohighlight">\(p_\mu'\)</span> for <span class="math notranslate nohighlight">\(\mu = 1\)</span>.</span><a class="headerlink" href="#explim" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 </div>
-<p>Now, we scan over <span class="math notranslate nohighlight">\(\mu\)</span> to find the value which gives a median (and <span class="math notranslate nohighlight">\(\pm1\sigma,\pm2\sigma\)</span> quantile) <span class="math notranslate nohighlight">\(p_\mu'\)</span> of 0.05:</p>
+<p>Now, we repeat this procedure for multiple <span class="math notranslate nohighlight">\(\mu\)</span>’s to find the value which gives a median (and <span class="math notranslate nohighlight">\(\pm1\sigma,\pm2\sigma\)</span> quantile) <span class="math notranslate nohighlight">\(p_\mu'\)</span> of 0.05:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_toys</span> <span class="o">=</span> <span class="mi">50000</span>
@@ -922,7 +924,7 @@ Furthermore, we need to scan over different signal strengths (<span class="math 
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="explim2">
-<img alt="_images/2b8e292a0d909482758c99af87b44ee79ca08cae68d8646cfc88e11ae17a4349.png" src="_images/2b8e292a0d909482758c99af87b44ee79ca08cae68d8646cfc88e11ae17a4349.png" />
+<img alt="_images/793b84d13a675ad907ab81d37e729fa12c704442bc56ddac27bb297b9b0bd712.png" src="_images/793b84d13a675ad907ab81d37e729fa12c704442bc56ddac27bb297b9b0bd712.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Left: Expected <span class="math notranslate nohighlight">\(p_\mu'\)</span> vs <span class="math notranslate nohighlight">\(\mu\)</span> at different quantiles. Right: The median and <span class="math notranslate nohighlight">\(\pm 1\sigma, \pm 2\sigma\)</span> expected limits at 95% CL<span class="math notranslate nohighlight">\(_s\)</span> on <span class="math notranslate nohighlight">\(\mu\)</span>.</span><a class="headerlink" href="#explim2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -949,9 +951,9 @@ For example, below is the corresponding plot by ATLAS for the Higgs discovery (s
 </section>
 <section id="summary">
 <h2><span class="section-number">4.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>We derived the “expected significance” of a particular signal model by calculating the significance with which we expect to include the background-only, hypothesis assuming the signal exists.
-We then derived the upper limits we expect to set for a signal model, were the signal <em>not</em> to exist.
-In both cases, we generated toys / pseudodatasets to estimate the probability distributions of our test statistics; however, next time we’ll go over <em>asymptotic forms</em> for these test statistics, which can often be simpler to use.</p>
+<p>We derived the “expected significance” of a particular signal model by calculating the significance with which we expect to exclude the background-only hypothesis, assuming the signal exists.
+We then derived CL<span class="math notranslate nohighlight">\(_s\)</span> upper limits we expect to set for a signal model, assuming the signal does <em>not</em> exist.
+In both cases, we generated toys to estimate the probability distributions of our test statistics; however, next time we’ll go over <em>asymptotic forms</em> for these test statistics, which can often be simpler to use.</p>
 </section>
 </section>
 
@@ -994,6 +996,15 @@ In both cases, we generated toys / pseudodatasets to estimate the probability di
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">3. </span>Confidence Intervals and Limits</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="05-asymptotic-forms.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Asymptotic Formulae</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
