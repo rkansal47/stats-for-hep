@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -77,6 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -318,10 +328,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -329,7 +339,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -633,7 +643,7 @@ This is not a coincidence: we will now mathematically derive …</p>
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle">
-<img alt="_images/41fec996870c7c617cb5b39d54cb3015c46ed30eb29ffa94b018fb9fca793307.png" src="_images/41fec996870c7c617cb5b39d54cb3015c46ed30eb29ffa94b018fb9fca793307.png" />
+<img alt="_images/ca09665f1fb998fc18e239e09f05c3885def1329f1513fdd13b459d69659f749.png" src="_images/ca09665f1fb998fc18e239e09f05c3885def1329f1513fdd13b459d69659f749.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Distribution of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. Note the x-axis range is becoming narrower from the left-most to the right-most plot.</span><a class="headerlink" href="#p-mle" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -693,7 +703,7 @@ This is not a coincidence: we will now mathematically derive …</p>
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle-fit">
-<img alt="_images/ce3bfce43a936ae0962ec9ee98e705667d39af6605529956e92c9999be16dd90.png" src="_images/ce3bfce43a936ae0962ec9ee98e705667d39af6605529956e92c9999be16dd90.png" />
+<img alt="_images/f65962ab2afe5ca240ecf48215e33a66c599210ef12c860af205cac3daa182c9.png" src="_images/f65962ab2afe5ca240ecf48215e33a66c599210ef12c860af205cac3daa182c9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Gausian fits to distributions of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. Note the x-axis range is becoming narrower from the left-most to the right-most plot.</span><a class="headerlink" href="#p-mle-fit" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -774,7 +784,7 @@ For the remainder of this section, we’ll only be evaluating <span class="math 
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="fisher">
-<img alt="_images/41c969bc74e8fe866aef38fd5a0852df8297b77d917f1cff42377c001cc4937b.png" src="_images/41c969bc74e8fe866aef38fd5a0852df8297b77d917f1cff42377c001cc4937b.png" />
+<img alt="_images/8fe0c5103b224eaaac747c63a289c8091e7d026d44daad44cff952d5c9a4872c.png" src="_images/8fe0c5103b224eaaac747c63a289c8091e7d026d44daad44cff952d5c9a4872c.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">The Fisher information <span class="math notranslate nohighlight">\(\mathcal I_{\mu\mu}(\mu, b)\)</span> for different <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(s\)</span>, as a function of the expected background <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#fisher" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -889,7 +899,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle-asym">
-<img alt="_images/c0b47e097a877abf7fa6996d618d71ad04fcb6e8b25b5ab77ddbfeb1dc4ffcab.png" src="_images/c0b47e097a877abf7fa6996d618d71ad04fcb6e8b25b5ab77ddbfeb1dc4ffcab.png" />
+<img alt="_images/723d9ea712b6edf2793ef235a790489b0fc75284cfd2e336d52506bfd7607b9d.png" src="_images/723d9ea712b6edf2793ef235a790489b0fc75284cfd2e336d52506bfd7607b9d.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Asymptotic and toy-based distributions of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#p-mle-asym" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -995,7 +1005,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="mle-errors">
-<img alt="_images/cfc2b43d588e619f0ac3026b752be6df46d45ff3fb4760ae21ca45d1cf35ad08.png" src="_images/cfc2b43d588e619f0ac3026b752be6df46d45ff3fb4760ae21ca45d1cf35ad08.png" />
+<img alt="_images/363b78eb20847b014fb3f3b916fab0e99c7991fd504505a797a64a17192cd33e.png" src="_images/363b78eb20847b014fb3f3b916fab0e99c7991fd504505a797a64a17192cd33e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Error between the sampled toy distributions and the asymptotic distributions of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> (blue) and <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span> fits (red).</span><a class="headerlink" href="#mle-errors" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1053,7 +1063,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/186c5aca0cfa1abca7673f3e0101a8bd91adcd4071e26952a4e04c5368066780.png" src="_images/186c5aca0cfa1abca7673f3e0101a8bd91adcd4071e26952a4e04c5368066780.png" />
+<img alt="_images/2ed20435bd7732b39aeec6818e77e019d0be87570692a0f705e8cb9985a9d567.png" src="_images/2ed20435bd7732b39aeec6818e77e019d0be87570692a0f705e8cb9985a9d567.png" />
 </div>
 </div>
 </section>
@@ -1105,11 +1115,10 @@ Such a dataset is called the <strong>Asimov</strong> dataset, and <span class="m
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="04-expected-significance-and-limits.html"
@@ -1120,10 +1129,7 @@ Such a dataset is called the <strong>Asimov</strong> dataset, and <span class="m
         <p class="prev-next-title"><span class="section-number">4. </span>Expected Significances and Limits</p>
       </div>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1198,8 +1204,8 @@ By Raghav Kansal
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>
