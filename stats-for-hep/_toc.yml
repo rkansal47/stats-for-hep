@@ -5,9 +5,16 @@ format: jb-book
 root: main
 options:
   numbered: true
-chapters:
-- file: 01-intro
-- file: 02-hypothesis-testing
-- file: 03-intervals-and-limits
-- file: 04-expected-significance-and-limits
-- file: 05-asymptotic-forms
+parts:
+  - caption: Statistics for HEP
+    numbered: true
+    chapters:
+    - file: 01-intro
+    - file: 02-hypothesis-testing
+    - file: 03-intervals-and-limits
+    - file: 04-expected-significance-and-limits
+  - caption: Asymptotical Formulae
+    numbered: true
+    chapters:
+    - file: 05-asymptotic-form-mle
+    - file: 06-asymptotic-formulae
