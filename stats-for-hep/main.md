@@ -5,14 +5,17 @@ It is primarily based on (me trying to understand) Refs. {cite}`Cowan:2010js` an
 Both references are useful and highly recommended for reading; the emphasis here is heavily on **implementing and visualizing what they discuss in Python** - as well as providing some heuristic derivations of some of their formulae - as that is what personally helped me build an intuition for these concepts.
 
 
-<!-- ## Table of Contents
+## Table of Contents
 
 ```{tableofcontents}
-``` -->
+```
 
-The plan is as follows:
+Coming soon:
 
-Part 1: introduces the ideas of likelihoods and test statistics, using a simple toy example.
+7. Asymptotic formulae for signal discovery and limit-setting
+
+
+<!-- Part 1: introduces the ideas of likelihoods and test statistics, using a simple toy example.
 
 Part 2: discusses the framework for hypothesis testing and $p$-values and significances, following the same toy example.
 
@@ -27,7 +30,7 @@ Coming soon...
 Part 6: asympotic form of profile-likelihood-ratio-based test statistics.
 
 Part 7: significances and limits using asymptotic formulae.
-
+ -->
 
 
 ## Bibliography
