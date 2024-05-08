@@ -1,0 +1,1203 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Asymptotic Form of the MLE &#8212; Stats for HEP</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05-asymptotic-form-mle';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Asymptotic formulae of profile-likelihood-ratio-based test statistics" href="06-asymptotic-formulae.html" />
+    <link rel="prev" title="4. Expected Significances and Limits" href="04-expected-significance-and-limits.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="main.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Stats for HEP - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Stats for HEP - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="main.html">
+                    Stats for HEP
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics for HEP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">1. Introduction to Likelihoods and Test Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-hypothesis-testing.html">2. Hypothesis Testing and Discovery Significance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-intervals-and-limits.html">3. Confidence Intervals and Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-expected-significance-and-limits.html">4. Expected Significances and Limits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Asymptotical Formulae</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Asymptotic Form of the MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic formulae of profile-likelihood-ratio-based test statistics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rkansal47/stats-for-HEP" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rkansal47/stats-for-HEP/issues/new?title=Issue%20on%20page%20%2F05-asymptotic-form-mle.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05-asymptotic-form-mle.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Asymptotic Form of the MLE</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">5.1. Recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.2. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-statistics">5.3. Background statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-information">5.3.1. Fisher Information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation">5.4. Derivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result">5.5. Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-estimation-and-the-asimov-dataset">5.6. Numerical estimation and the Asimov dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.7. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="asymptotic-form-of-the-mle">
+<h1><span class="section-number">5. </span>Asymptotic Form of the MLE<a class="headerlink" href="#asymptotic-form-of-the-mle" title="Link to this heading">#</a></h1>
+<section id="recap">
+<h2><span class="section-number">5.1. </span>Recap<a class="headerlink" href="#recap" title="Link to this heading">#</a></h2>
+<p>We have been working with a probability model and likelihood function for a simple one bin counting experiment with <span class="math notranslate nohighlight">\(n\)</span> observed, <span class="math notranslate nohighlight">\(s\)</span> expected signal, and <span class="math notranslate nohighlight">\(b\)</span> expected background events in our signal region and <span class="math notranslate nohighlight">\(m\)</span> observed and <span class="math notranslate nohighlight">\(b\)</span> expected background events, in our control region, with the signal strength parametrized by <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-5model">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-5model" title="Link to this equation">#</a></span>\[
+P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(
+\mu, b),
+\]</div>
+<p>The negative-log-likelihood (NLL) is:</p>
+<div class="math notranslate nohighlight" id="equation-5nll">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-5nll" title="Link to this equation">#</a></span>\[-\ln L = \ln n! + \ln m! + \mu s + 2b - n\ln(\mu s+b) - m \ln b\]</div>
+<p>Code from previous parts:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">mu</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span>
+
+
+<span class="k">def</span> <span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">m</span>
+
+
+<span class="k">def</span> <span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Using the quadratic formula and only the positive solution&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">s</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span>
+
+
+<span class="k">def</span> <span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;-2ln(lambda), b can optionally be fixed (for demo below)&quot;&quot;&quot;</span>
+    <span class="n">bhh</span><span class="p">,</span> <span class="n">bh</span> <span class="o">=</span> <span class="p">(</span><span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">bhh</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">bh</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Alternative test statistic when shat &lt; 0&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="o">-</span> <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bhathat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="c1">#     s, n, m = [np.array(x) for x in (s, n, m)]  # convert to numpy arrays</span>
+    <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+    <span class="n">t_zero</span> <span class="o">=</span> <span class="n">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="c1"># replace values where s^ &lt; 0 with lam_zero</span>
+    <span class="n">ts</span><span class="p">[</span><span class="n">neg_shat_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_zero</span><span class="p">[</span><span class="n">neg_shat_mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ts</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">q_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+
+    <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
+    <span class="n">t_zero</span> <span class="o">=</span> <span class="n">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="c1"># replace values where s^ &lt; 0 with lam_zero</span>
+    <span class="n">ts</span><span class="p">[</span><span class="n">neg_shat_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_zero</span><span class="p">[</span><span class="n">neg_shat_mask</span><span class="p">]</span>
+
+    <span class="n">upper_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">s</span>
+    <span class="n">ts</span><span class="p">[</span><span class="n">upper_shat_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">ts</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and b&quot;&quot;&quot;</span>
+    <span class="c1"># sample n, m according to our data model (Eq. 1)</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">),</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span>
+
+
+<span class="k">def</span> <span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and observed n and m&quot;&quot;&quot;</span>
+    <span class="c1">#  use b^^ for p(t_s|s) as recommended by Ref. 2</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the t_tilde_s test statistic distribution via toys.</span>
+<span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
+<span class="sd">    but this can be changed if necessary (as you will see later).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">toy_s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">toy_s</span> <span class="o">=</span> <span class="n">test_s</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys</span><span class="p">(</span><span class="n">toy_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
+    <span class="n">t_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
+    <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
+    <span class="n">p_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t_tilde_ss</span> <span class="o">&gt;</span> <span class="n">t_obs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p_val</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span>
+
+
+<span class="k">def</span> <span class="nf">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the q_tilde_s test statistic distribution via toys.</span>
+<span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
+<span class="sd">    but this can be changed if necessary (as you will see later).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">toy_s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">toy_s</span> <span class="o">=</span> <span class="n">test_s</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys</span><span class="p">(</span><span class="n">toy_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">q_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_pval_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
+    <span class="n">q_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
+    <span class="n">q_obs</span> <span class="o">=</span> <span class="n">q_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
+    <span class="n">p_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">q_tilde_ss</span> <span class="o">&gt;</span> <span class="n">q_obs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p_val</span><span class="p">,</span> <span class="n">q_tilde_ss</span><span class="p">,</span> <span class="n">q_obs</span>
+
+
+<span class="k">def</span> <span class="nf">get_limits_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+    <span class="n">p_cls_scan</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># saving p-value for each s</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_scan</span><span class="p">:</span>
+        <span class="n">p_mu</span><span class="p">,</span> <span class="n">t_tilde_sb</span><span class="p">,</span> <span class="n">t_obs</span> <span class="o">=</span> <span class="n">get_ps_val</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+        <span class="n">p_b</span><span class="p">,</span> <span class="n">t_tilde_sb</span><span class="p">,</span> <span class="n">t_obs</span> <span class="o">=</span> <span class="n">get_ps_val</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">p_b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_b</span>
+        <span class="n">p_cls_scan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_mu</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_b</span><span class="p">))</span>
+
+    <span class="c1"># find the values of s that give p_value ~= 1 - CL</span>
+    <span class="n">pv_cl_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_cls_scan</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">CL</span><span class="p">))</span>
+    <span class="n">half_num_s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_scan</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">s_low</span> <span class="o">=</span> <span class="n">s_scan</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pv_cl_diff</span><span class="p">[:</span><span class="n">half_num_s</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">s_high</span> <span class="o">=</span> <span class="n">s_scan</span><span class="p">[</span><span class="n">half_num_s</span><span class="p">:][</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pv_cl_diff</span><span class="p">[</span><span class="n">half_num_s</span><span class="p">:])[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">s_low</span><span class="p">,</span> <span class="n">s_high</span>
+
+
+<span class="k">def</span> <span class="nf">get_upper_limit_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+    <span class="n">p_cls_scan</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># saving p-value for each s</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_scan</span><span class="p">:</span>
+        <span class="n">p_mu</span><span class="p">,</span> <span class="n">q_tilde_sb</span><span class="p">,</span> <span class="n">q_obs</span> <span class="o">=</span> <span class="n">get_pval_qs</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+        <span class="n">p_b</span><span class="p">,</span> <span class="n">q_tilde_sb</span><span class="p">,</span> <span class="n">q_obs</span> <span class="o">=</span> <span class="n">get_pval_qs</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">p_b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_b</span>
+        <span class="n">p_cls_scan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_mu</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_b</span><span class="p">))</span>
+
+    <span class="c1"># find the values of s that give p_value ~= 1 - CL</span>
+    <span class="n">pv_cl_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_cls_scan</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">CL</span><span class="p">))</span>
+    <span class="n">s_upper</span> <span class="o">=</span> <span class="n">s_scan</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pv_cl_diff</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">s_upper</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="introduction">
+<h2><span class="section-number">5.2. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>So far, we have discussed how to extract meaningful statistical results from HEP experiments by making extensive use of pseudodata / toy experiments to estimate the sampling distributions of profile-likelihood-ratio-based test statistics.
+While this worked nicely for our simple counting experiment, generating a sufficiently large number of toys can quickly become computationally intractable for the more complex searches (and statistical combinations of searches) that are increasingly prevalent at the LHC, containing at times up to thousands of bins and nuisance parameters.
+This and the following section discuss a way to approximate these sampling distributions without the need for pseudodata.
+This was introduced in the famous “CCGV” paper <span id="id1">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> in 2011, and has since become the de-facto procedure at the LHC.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>See e.g. <a class="reference internal" href="02-hypothesis-testing.html#p-tilde-t-asym"><span class="std std-numref">Fig. 2.2</span></a> and <a class="reference internal" href="03-intervals-and-limits.html#p-tilde-q"><span class="std std-numref">Fig. 3.3</span></a>.</p>
+</aside>
+<p>As previously discussed, the distributions <span class="math notranslate nohighlight">\(p(\tilde{t}_\mu|\mu')\)</span> and <span class="math notranslate nohighlight">\(p(\tilde{q}_\mu|\mu')\)</span> (where, in general, <span class="math notranslate nohighlight">\(\mu' \neq \mu\)</span>) have similar forms regardless of the nuisance parameters (or sometimes even the POIs).
+This is not a coincidence: we will now derive their “asymptotic”, i.e. in the large sample limit, forms, starting first with asymptotic form of the maximum likelihood estimator (MLE).</p>
+<p>It is important to remember that the MLE <span class="math notranslate nohighlight">\(\hat \mu\)</span> of <span class="math notranslate nohighlight">\(\mu\)</span> is a random variable with its own probability distribution. We can estimate it as always by sampling toys:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_toys</span> <span class="o">=</span> <span class="mi">30000</span>
+<span class="n">sbs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)],</span>
+    <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)],</span>
+    <span class="p">[(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)],</span>
+<span class="p">]</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sbs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sb</span><span class="p">):</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+            <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="mi">40</span><span class="p">),</span>
+            <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
+            <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$b = </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\hat \mu$&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(\hat \mu)$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<figure class="align-default" id="p-mle">
+<img alt="_images/de72a74a29d0d2dfd44e56873a9758b9ac1b63dabb5230c3ca29ce0a2a5c05a3.png" src="_images/de72a74a29d0d2dfd44e56873a9758b9ac1b63dabb5230c3ca29ce0a2a5c05a3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Distribution of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> produced using 30,000 toy experiments each. (Note the x-axis range is becoming narrower from the left-most to the right-most plot.)</span><a class="headerlink" href="#p-mle" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>You may notice that <span class="math notranslate nohighlight">\(p(\hat \mu)\)</span> follows a Gaussian as the number of events <span class="math notranslate nohighlight">\(N\)</span> increases:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_toys</span> <span class="o">=</span> <span class="mi">30000</span>
+<span class="n">sbs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)],</span>
+    <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)],</span>
+    <span class="p">[(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)],</span>
+<span class="p">]</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sbs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sb</span><span class="p">):</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+        <span class="n">muh</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span>
+
+        <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+            <span class="n">muh</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+            <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
+            <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$b = </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">muh</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+            <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\sigma = </span><span class="si">{</span><span class="n">std</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\hat \mu$&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(\hat \mu)$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<figure class="align-default" id="p-mle-fit">
+<img alt="_images/381927c035e720b77058498acb5bc3d0db84e91c0b6fd434239e4532820a18ca.png" src="_images/381927c035e720b77058498acb5bc3d0db84e91c0b6fd434239e4532820a18ca.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Gaussian fits to distributions from Fig. 5.1 of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#p-mle-fit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>We will now show this to be true generally. You are welcome to skip ahead to the <a class="reference internal" href="#result"><span class="std std-ref">result</span></a> if you’re not interested in the derivation.</p>
+</section>
+<section id="background-statistics">
+<h2><span class="section-number">5.3. </span>Background statistics<a class="headerlink" href="#background-statistics" title="Link to this heading">#</a></h2>
+<p>First, we need some statistics concepts and results:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>See derivations in e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Informant_(statistics)#Properties">Wikipedia</a>.</p>
+</aside>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Note that expectation value means an average over observations which are distributed according to a particular <span class="math notranslate nohighlight">\(\mu\)</span>, which here we’re calling the “true” <span class="math notranslate nohighlight">\(\mu\)</span>: <span class="math notranslate nohighlight">\(\mu'\)</span>.</p>
+</aside>
+<div class="tip admonition">
+<p class="admonition-title">Lightning Statistics</p>
+<p>Let the log-likelihood <span class="math notranslate nohighlight">\(\ln L(\mu) \equiv l(\mu)\)</span>.</p>
+<p>The derivative of the NLL <span class="math notranslate nohighlight">\(-l'(\mu)\)</span> is called the <strong>score</strong> <span class="math notranslate nohighlight">\(s(\mu)\)</span>. It has a number of useful properties:</p>
+<ol class="arabic simple">
+<li><p>Its expectation value at <span class="math notranslate nohighlight">\(\mu'\)</span>: <span class="math notranslate nohighlight">\(\mathbb E_{\mu = \mu'}[s(\mu')] = 0\)</span>.</p></li>
+<li><p>Its variance <span class="math notranslate nohighlight">\(\mathrm {Var} [s(\mu)] = - \mathbb E [l''(\mu)]\)</span>.</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(- \mathbb E [l''(\mu)] \equiv \mathcal I(\mu)\)</span> is called the <strong>Fisher information</strong>.
+It quantifies the information our data contains about <span class="math notranslate nohighlight">\(\mu\)</span> and importantly, as we’ll see, it (approximately) represents the inverse of the variance of <span class="math notranslate nohighlight">\(\hat \mu\)</span>.
+More generally, for multiple parameters, <span class="math notranslate nohighlight">\(\mathcal I_{ij}(\mu) = - \mathbb E [\frac{\partial^2 l}{\partial \mu_i \partial \mu_j}]\)</span> is the Fisher information matrix.
+It is also commonly called the <strong>covariance matrix</strong>.</p>
+<p>Putting this together, by the <a class="reference external" href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a>, this means <span class="math notranslate nohighlight">\(p(s(\mu'))\)</span> follows a normal distribution with mean 0 and variance <span class="math notranslate nohighlight">\(\mathcal I(\mu')\)</span>, up to terms of order <span class="math notranslate nohighlight">\(\mathcal O(\frac{1}{\sqrt{N}})\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-5score">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-5score" title="Link to this equation">#</a></span>\[
+s(\mu') \xrightarrow{\sqrt{N} &gt;&gt; 1} \mathcal N(0, \sqrt{\mathcal I(\mu')}),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> represents the data sample size.</p>
+</div>
+<section id="fisher-information">
+<h3><span class="section-number">5.3.1. </span>Fisher Information<a class="headerlink" href="#fisher-information" title="Link to this heading">#</a></h3>
+<p>For our simple counting experiment, the Fisher information matrix <span class="math notranslate nohighlight">\(\mathcal I(\mu, b)\)</span> can be found by taking second derivatives of Eq. <a class="reference internal" href="#equation-5nll">(5.2)</a>. The <span class="math notranslate nohighlight">\(\mathcal I_{\mu\mu}\)</span> term, for example, is:</p>
+<div class="math notranslate nohighlight" id="equation-5fisher">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-5fisher" title="Link to this equation">#</a></span>\[
+    \mathcal I_{\mu\mu}(\mu, b) = - \mathbb E[\partial^\mu\partial^\mu l(\mu, b)] = \mathbb E \bigg[n \cdot \cfrac{s^2}{(\mu s + b)^2}\bigg] = \mathbb E[n] \cdot \cfrac{s^2}{(\mu s + b)^2} = \cfrac{(\mu' s + b') s^2}{(\mu s + b)^2}.
+\]</div>
+<p>In the last step we use the fact that <span class="math notranslate nohighlight">\(\mathbb E[n]\)</span> under true <span class="math notranslate nohighlight">\(\mu = \mu', b = b'\)</span>, is <span class="math notranslate nohighlight">\(\mu' s + b'\)</span>.
+For the remainder of this section, <span class="math notranslate nohighlight">\(\mathcal I(\mu, b)\)</span> will always be evaluated at the true values of the parameters (the reason for this is discussed below), so this can be simplified to <span class="math notranslate nohighlight">\(\mathcal I_{\mu\mu}(\mu', b') = \frac{s^2}{\mu' s + b'}\)</span>.</p>
+<p>This is what it looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_fisher_mu_mu</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="c1"># assuming here that mu and b equal their true values</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mus</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">mus</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">get_fisher_mu_mu</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\mu = </span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">, s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$I_{{\mu\mu}}(\mu, b)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$b$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<figure class="align-default" id="fisher">
+<img alt="_images/a5512fa2580a50a88f8aba6518c3521c18bcee3760916831a67b28a35949c961.png" src="_images/a5512fa2580a50a88f8aba6518c3521c18bcee3760916831a67b28a35949c961.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">The Fisher information <span class="math notranslate nohighlight">\(\mathcal I_{\mu\mu}(\mu, b)\)</span> for different <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(s\)</span>, as a function of the expected background <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#fisher" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>The Fisher information captures the fact that as <span class="math notranslate nohighlight">\(b\)</span> increases, we lose sensitivity to - or <em>information</em> about - <span class="math notranslate nohighlight">\(\mu\)</span>. Exercise 🙃: why are the orange and green values different?</p>
+<p>For completeness (and since we’ll need it below) the full Fisher information matrix for our problem, repeating the steps in Eq. <a class="reference internal" href="#equation-5fisher">(5.4)</a>, is:</p>
+<div class="math notranslate nohighlight" id="equation-5fishermatrix">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-5fishermatrix" title="Link to this equation">#</a></span>\[\begin{split}
+    \mathcal I(\mu', b')
+    = \begin{pmatrix}\mathcal I_{\mu\mu} &amp; \mathcal I_{\mu b} \\ \mathcal I_{b\mu} &amp; \mathcal I_{bb}\end{pmatrix}(\mu', b')
+    = \begin{pmatrix}
+    \frac{s^2}{\mu' s + b'} &amp; \frac{s}{\mu' s + b'} \\ \frac{s}{\mu' s + b'} &amp; \frac{1}{\mu' s + b'} + \frac{1}{b'}
+    \end{pmatrix}
+\end{split}\]</div>
+</section>
+</section>
+<section id="derivation">
+<h2><span class="section-number">5.4. </span>Derivation<a class="headerlink" href="#derivation" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>For a more rigorous derivation, see e.g. this <a class="reference external" href="https://gregorygundersen.com/blog/2019/11/28/asymptotic-normality-mle/">post</a>.</p>
+</aside>
+<p>We now have enough background to derive the asymptotic form of the MLE.
+We do this for the 1D case by Taylor-expanding the score of <span class="math notranslate nohighlight">\(\hat \mu\)</span>, <span class="math notranslate nohighlight">\(l'(\hat\mu)\)</span> - which we know to be <span class="math notranslate nohighlight">\( = 0\)</span> - around <span class="math notranslate nohighlight">\(\mu'\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-5taylorl">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-5taylorl" title="Link to this equation">#</a></span>\[\begin{split}
+    l'(\hat\mu) = l'(\mu') + l''(\mu')(\hat\mu - \mu') + \mathcal O((\hat\mu - \mu')^2) = 0 \\
+    \Rightarrow \hat\mu - \mu' \simeq - \cfrac{l'(\mu')}{l''(\mu')} \xrightarrow{\sqrt{N} &gt;&gt; 1} \cfrac{1}{\mathcal I(\mu')}N(0, \sqrt{\mathcal I(\mu')}) = N\bigg(0, \frac{1}{\sqrt{\mathcal I(\mu')}}\bigg),
+\end{split}\]</div>
+<p>where we plugged in the distribution of <span class="math notranslate nohighlight">\(l'(\mu')\)</span> from Eq. <a class="reference internal" href="#equation-5score">(5.3)</a>, claimed <span class="math notranslate nohighlight">\(l''(\mu')\)</span> asymptotically equals its expectation value <span class="math notranslate nohighlight">\(\mathbb E[l''(\mu')] = \mathcal I(\mu')\)</span> by the <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_large_numbers">law of large numbers</a>, and are ignoring the <span class="math notranslate nohighlight">\(\mathcal O((\hat\mu - \mu')^2)\)</span> term.</p>
+<p>For multiple parameters, <span class="math notranslate nohighlight">\(\mathcal I\)</span> is a matrix so the variance is its matrix inverse:</p>
+<div class="math notranslate nohighlight" id="equation-5asym-std-fisher">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-5asym-std-fisher" title="Link to this equation">#</a></span>\[
+    \hat\mu - \mu' \simeq N(0, \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')}),
+\]</div>
+</section>
+<section id="result">
+<span id="id2"></span><h2><span class="section-number">5.5. </span>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h2>
+<p>Thus, we see that <span class="math notranslate nohighlight">\(\hat \mu\)</span> asymptotically follows a normal distribution around the true <span class="math notranslate nohighlight">\(\mu\)</span> value, <span class="math notranslate nohighlight">\(\mu'\)</span>, with a variance <span class="math notranslate nohighlight">\(\sigma_{\hat\mu}^2 = \mathcal I^{-1}_{\mu\mu}(\mu', b')\)</span>, up to <span class="math notranslate nohighlight">\(\mathcal O (1/\sqrt{N})\)</span> terms.
+Intuitively, from the definition of the Fisher information <span class="math notranslate nohighlight">\(\mathcal I\)</span>, we can interpret this as saying that the more information we have about <span class="math notranslate nohighlight">\(\mu\)</span> from the data, the lower the variance should be on <span class="math notranslate nohighlight">\(\hat \mu\)</span>.</p>
+<p>For our counting experiment, inverting <span class="math notranslate nohighlight">\(\mathcal I\)</span> from Eq. <a class="reference internal" href="#equation-5fishermatrix">(5.5)</a> gives us</p>
+<div class="math notranslate nohighlight" id="equation-5asymstd">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-5asymstd" title="Link to this equation">#</a></span>\[
+    \sigma_{\hat\mu} = \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')} = \cfrac{\sqrt{\mu' s + 2b'}}{s}.
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that, as we might expect, this scales as <span class="math notranslate nohighlight">\(\sim \sqrt{b}\)</span>, which is the uncertainty of our Poisson nuisance parameter <span class="math notranslate nohighlight">\(b\)</span> - showing mathematically why we want to keep uncertainties on nuisance parameters as low as possible.</p>
+</div>
+<p>Let’s see how closely this matches the toy-based distributions from earlier, this time varying the true signal strength <span class="math notranslate nohighlight">\(\mu'\)</span> as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_asym_std</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inputs should be the &quot;true&quot; mu and b values&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_toys</span> <span class="o">=</span> <span class="mi">30000</span>
+<span class="n">sbs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">)],</span>
+    <span class="p">[(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)],</span>
+    <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)],</span>
+    <span class="c1"># [(10000, 100), (10000, 1000), (10000, 10000)],</span>
+<span class="p">]</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+<span class="n">muprimes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>  <span class="c1"># true mu</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axss</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">muprimes</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">muprimes</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">muprime</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">muprimes</span><span class="p">):</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">axss</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sbs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sb</span><span class="p">):</span>
+            <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">muprime</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+            <span class="n">muh</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span>
+
+            <span class="n">xrange</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="mi">5</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span> <span class="o">=</span> <span class="n">muprime</span> <span class="o">-</span> <span class="n">xrange</span><span class="p">,</span> <span class="n">muprime</span> <span class="o">+</span> <span class="n">xrange</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+                <span class="n">muh</span><span class="p">,</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+                <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
+                <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$b = </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+            <span class="p">)</span>
+
+            <span class="n">std</span> <span class="o">=</span> <span class="n">get_asym_std</span><span class="p">(</span><span class="n">muprime</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">muprime</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\sigma_</span><span class="se">{{</span><span class="s2">\hat\mu</span><span class="se">}}</span><span class="s2"> = </span><span class="si">{</span><span class="n">std</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">, \mu&#39; = </span><span class="si">{</span><span class="n">muprime</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\hat \mu$&quot;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(\hat \mu)$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<figure class="align-default" id="p-mle-asym">
+<img alt="_images/3649d60a586d509bf17bda43cf2ecdf3d01891d22fa85603ba269615b7d0f715.png" src="_images/3649d60a586d509bf17bda43cf2ecdf3d01891d22fa85603ba269615b7d0f715.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Asymptotic (dotted lines) and toy-based (solid lines) distributions, using 30,000 toys each, of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and true signal strength <span class="math notranslate nohighlight">\(\mu'\)</span>.</span><a class="headerlink" href="#p-mle-asym" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>We see that this matches well, generally, for large <span class="math notranslate nohighlight">\(s, b\)</span>, while for small values there are more significant differences. We can also check the total per-bin errors between the asymptotic form and the toy-based distributions directly (showing here only for <span class="math notranslate nohighlight">\(\mu' = 1\)</span>):</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_toys</span> <span class="o">=</span> <span class="mi">50000</span>
+
+<span class="c1"># sample ranges of s&#39;s and fixed b&#39;s</span>
+<span class="n">sbs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">]),</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="c1"># (np.array([1, 2, 3, 5, 8, 10, 20, 30]) * 10000, 10000),</span>
+<span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sbs</span><span class="p">):</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+        <span class="n">muh</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">st</span>
+        <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">st</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">midpoints</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="n">bin_width</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># toy distribution</span>
+        <span class="n">toy_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">muh</span><span class="p">,</span> <span class="n">edges</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># asymptotic values at the midpoints of the toy distribution histogram</span>
+        <span class="n">asym_vals</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">midpoints</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">get_asym_std</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+        <span class="c1"># sum the absolute difference at each point * bin width</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">toy_vals</span> <span class="o">-</span> <span class="n">asym_vals</span><span class="p">)</span> <span class="o">*</span> <span class="n">bin_width</span><span class="p">))</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;$b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$s$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;sci&quot;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+    <span class="c1"># 1 / sqrt(s) fit (practically it&#39;s easier to do a linear fit to 1 / error^2)</span>
+    <span class="n">fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">fit</span><span class="p">)(</span><span class="n">x</span><span class="p">)),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\frac</span><span class="se">{{</span><span class="s2">1</span><span class="se">}}{{</span><span class="s2">\sqrt</span><span class="se">{{</span><span class="si">{</span><span class="n">fit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> \cdot s + </span><span class="si">{</span><span class="n">fit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="se">}}}}</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># plot versus b</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">bs</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">])</span>
+
+<span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bs</span><span class="p">:</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
+    <span class="n">muh</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span>
+    <span class="n">xl</span><span class="p">,</span> <span class="n">xr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xl</span><span class="p">,</span> <span class="n">xr</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">midpoints</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">bin_width</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># toy distribution</span>
+    <span class="n">toy_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">muh</span><span class="p">,</span> <span class="n">edges</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># asymptotic values at the midpoints of the toy distribution histogram</span>
+    <span class="n">asym_vals</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">midpoints</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">get_asym_std</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="c1"># sum the absolute difference at each point * bin width</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">toy_vals</span> <span class="o">-</span> <span class="n">asym_vals</span><span class="p">)</span> <span class="o">*</span> <span class="n">bin_width</span><span class="p">))</span>
+    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$b$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;sci&quot;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 1 / sqrt(b) fit (practically it&#39;s easier to do a linear fit to 1 / error^2)</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span>
+    <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">fit</span><span class="p">)(</span><span class="n">x</span><span class="p">)),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\frac</span><span class="se">{{</span><span class="s2">1</span><span class="se">}}{{</span><span class="s2">\sqrt</span><span class="se">{{</span><span class="si">{</span><span class="n">fit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> \cdot b + </span><span class="si">{</span><span class="n">fit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="se">}}}}</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<figure class="align-default" id="mle-errors">
+<img alt="_images/928f223f561fccf11097f74214d8da6d75948434dd588f0d6ab472771f2691a4.png" src="_images/928f223f561fccf11097f74214d8da6d75948434dd588f0d6ab472771f2691a4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Error between the sampled toy distributions, using 50,000 toys each, and the asymptotic distributions of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> (blue), for the nominal signal strength <span class="math notranslate nohighlight">\(\mu' = 1\)</span>. and <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span> fits (red).</span><a class="headerlink" href="#mle-errors" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>The error scales as <span class="math notranslate nohighlight">\(\sim \frac{1}{\sqrt{s}}\)</span> and <span class="math notranslate nohighlight">\(\sim \frac{1}{\sqrt{b}}\)</span>, as we claimed above.</p>
+</section>
+<section id="numerical-estimation-and-the-asimov-dataset">
+<span id="numerical-estimation"></span><h2><span class="section-number">5.6. </span>Numerical estimation and the Asimov dataset<a class="headerlink" href="#numerical-estimation-and-the-asimov-dataset" title="Link to this heading">#</a></h2>
+<p>For our simple model, we were able to derive the Fisher information <span class="math notranslate nohighlight">\(\mathcal I\)</span> and, hence, the asymptotic form of <span class="math notranslate nohighlight">\(\hat \mu\)</span> analytically.
+In general, however, this is not possible and instead we have to minimize <span class="math notranslate nohighlight">\(l\)</span>, find its second derivatives, and solve Eq. <a class="reference internal" href="#equation-5fisher">(5.4)</a> etc. <em>numerically</em>. But how do we deal with the expectation value over the observed data (<span class="math notranslate nohighlight">\(n, m\)</span> in our case)? Naively, this would require averaging over a bunch of generated toy <span class="math notranslate nohighlight">\(n, m\)</span> values again, which defeats the purpose of using the asymptotic form of <span class="math notranslate nohighlight">\(\hat \mu\)</span>!</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>We are able to do this because, as we saw above, the score is linear in <span class="math notranslate nohighlight">\(n\)</span> for Poisson likelihoods.</p>
+</aside>
+<p>Instead, we can switch the order of operations in Eq. <a class="reference internal" href="#equation-5fisher">(5.4)</a> and rewrite it as:</p>
+<div class="math notranslate nohighlight" id="equation-5fisher-asimov">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-5fisher-asimov" title="Link to this equation">#</a></span>\[
+    \mathcal I_{ij}(\mu, b) = - \mathbb E[\partial^i\partial^j l(\mu, b; n, m)] = - \partial^i\partial^j \mathbb E[l(\mu, b; n, m)] = -\partial^i\partial^j l(\mu, b; \mathbb E[n], \mathbb E[m]).
+\]</div>
+<p>Importantly, this says we can find <span class="math notranslate nohighlight">\(\mathcal I\)</span> by simply evaluating the likelihood for a dataset of observations equal to their expectation values under <span class="math notranslate nohighlight">\(\mu'\)</span> instead of averaging over the distribution of observations and <em>then</em> getting its second derivatives.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <em>Asimov</em> dataset is named after Isaac Asimov, the popular science fiction author, whose book <em>Franchise</em> is about a supercomputer choosing a single person as the sole voter in the U.S. elections, because they can represent the entire population.</p>
+</aside>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Such a dataset is called the <strong>Asimov</strong> dataset, and <span class="math notranslate nohighlight">\(L(\mu; \mathbb E[n], \mathbb E[m]) \equiv L_A\)</span> is referred to as the “Asimov likelihood”.</p>
+</div>
+</section>
+<section id="summary">
+<h2><span class="section-number">5.7. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>We derived the asymptotic form of the probability distribution of the MLE <span class="math notranslate nohighlight">\(\hat\mu\)</span> of the POI <span class="math notranslate nohighlight">\(\mu\)</span>, <span class="math notranslate nohighlight">\(p(\hat\mu)\)</span>, which is a Gaussian centered at the true value <span class="math notranslate nohighlight">\(\mu'\)</span> with a variance equal to the inverse of the Fisher information matrix: <span class="math notranslate nohighlight">\(\hat\mu - \mu' \simeq N(0, \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')})\)</span>.
+We also discussed the important concept of the <strong>Asimov</strong> dataset, where all observations are equal to their expectation values under <span class="math notranslate nohighlight">\(\mu'\)</span>, for simplifying the numerical evaluation of <span class="math notranslate nohighlight">\(\mathcal I^{-1}_{\mu\mu}(\mu', b')\)</span>.
+Next, we use the above to derive the asymptotic form of the</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python310",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python310'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-expected-significance-and-limits.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Expected Significances and Limits</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06-asymptotic-formulae.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Asymptotic formulae of profile-likelihood-ratio-based test statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">5.1. Recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.2. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-statistics">5.3. Background statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-information">5.3.1. Fisher Information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation">5.4. Derivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result">5.5. Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-estimation-and-the-asimov-dataset">5.6. Numerical estimation and the Asimov dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.7. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Raghav Kansal
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
