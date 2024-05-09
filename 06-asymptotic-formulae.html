@@ -631,6 +631,7 @@ We have began this by deriving the asymptotic form of the MLE <span class="math 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Significance&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pval</span><span class="p">)</span>
 
+
 <span class="k">def</span> <span class="nf">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the q_tilde_s test statistic distribution via toys.</span>
@@ -683,6 +684,7 @@ We have began this by deriving the asymptotic form of the MLE <span class="math 
     <span class="n">s_upper</span> <span class="o">=</span> <span class="n">s_scan</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pv_cl_diff</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
 
     <span class="k">return</span> <span class="n">s_upper</span>
+
 
 <span class="k">def</span> <span class="nf">get_asym_std</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Inputs should be the &quot;true&quot; mu and b values&quot;&quot;&quot;</span>
@@ -790,7 +792,7 @@ This is distributed as the similar, but perhaps less well-known, <strong>non-cen
 <figure class="align-default" id="noncentralchi2">
 <img alt="_images/2d56540b1875a7f59ba5cc656c145b0c31ee6e75833d57af499fae1aab3f1b95.png" src="_images/2d56540b1875a7f59ba5cc656c145b0c31ee6e75833d57af499fae1aab3f1b95.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Central <span class="math notranslate nohighlight">\(\chi^2_k\)</span> and non-central <span class="math notranslate nohighlight">\(\chi'^2_k(\Lambda)\)</span> distributions for <span class="math notranslate nohighlight">\(\Lambda\)</span> between <span class="math notranslate nohighlight">\(1-30\)</span> (left) and (<span class="math notranslate nohighlight">\(30-300\)</span> (right).</span><a class="headerlink" href="#noncentralchi2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Central <span class="math notranslate nohighlight">\(\chi^2_k\)</span> and non-central <span class="math notranslate nohighlight">\({\chi'}^2_k(\Lambda)\)</span> distributions for <span class="math notranslate nohighlight">\(\Lambda\)</span> between <span class="math notranslate nohighlight">\(1-30\)</span> (left) and (<span class="math notranslate nohighlight">\(30-300\)</span> (right).</span><a class="headerlink" href="#noncentralchi2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -838,17 +840,17 @@ Let’s see what this looks like for our counting experiment, using the analytic
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_p_tmu</span><span class="p">(</span><span class="n">lambda_fn</span><span class="p">):</span>
     <span class="n">num_toys</span> <span class="o">=</span> <span class="mi">30000</span>
     <span class="n">s</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span>
-    <span class="n">mus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># , 1.0, 10.0]</span>
+    <span class="n">mus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># , 1.0, 10.0]</span>
     <span class="n">muprimes</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
         <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
     <span class="p">]</span>
-    
+
     <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">]</span>
-    
+
     <span class="n">xmaxs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
-    
+
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">muprimes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">muprimes</span><span class="p">)):</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Testing $\mu=</span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">$ ($s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">$)&quot;</span><span class="p">)</span>
         <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmaxs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -865,13 +867,21 @@ Let’s see what this looks like for our counting experiment, using the analytic
             <span class="p">)</span>
 
             <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmax</span> <span class="o">/</span> <span class="mi">160</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-            
+
             <span class="k">if</span> <span class="n">mu</span> <span class="o">==</span> <span class="n">muprime</span><span class="p">:</span>
-                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\chi^2_1$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">x</span><span class="p">,</span> <span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\chi^2_1$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span>
+                <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">l</span> <span class="o">=</span> <span class="n">lambda_fn</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">muprime</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ncx2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\chi&#39;^2_1(\Lambda = </span><span class="si">{</span><span class="n">l</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-        
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">x</span><span class="p">,</span>
+                    <span class="n">ncx2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span>
+                    <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\chi&#39;^2_1(\Lambda = </span><span class="si">{</span><span class="n">l</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t_\mu$&quot;</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(t_\mu|\mu&#39;)$&quot;</span><span class="p">)</span>
@@ -882,29 +892,35 @@ Let’s see what this looks like for our counting experiment, using the analytic
 
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">muprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sbmumups</span><span class="p">):</span>
         <span class="c1"># sample n, m according to our data model (Eq. 1)</span>
-            <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">muprime</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">),</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">)</span>
-            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-                <span class="n">t_s</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">41</span><span class="p">),</span>
-                <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
-                <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, \mu = </span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">, \mu&#39;=</span><span class="si">{</span><span class="n">muprime</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-            <span class="p">)</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">muprime</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">),</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+            <span class="n">t_s</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">41</span><span class="p">),</span>
+            <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
+            <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, \mu = </span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">, \mu&#39;=</span><span class="si">{</span><span class="n">muprime</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+        <span class="p">)</span>
 
-            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmax</span> <span class="o">/</span> <span class="mi">160</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-            
-            <span class="k">if</span> <span class="n">mu</span> <span class="o">==</span> <span class="n">muprime</span><span class="p">:</span>
-                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\chi^2_1$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">l</span> <span class="o">=</span> <span class="n">lambda_fn</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">muprime</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ncx2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\chi&#39;^2_1(\Lambda = </span><span class="si">{</span><span class="n">l</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmax</span> <span class="o">/</span> <span class="mi">160</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">mu</span> <span class="o">==</span> <span class="n">muprime</span><span class="p">:</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\chi^2_1$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">lambda_fn</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">muprime</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">ncx2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\chi&#39;^2_1(\Lambda = </span><span class="si">{</span><span class="n">l</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
 
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t_\mu$&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(t_\mu|\mu&#39;)$&quot;</span><span class="p">)</span>
-    
+
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -920,15 +936,16 @@ Let’s see what this looks like for our counting experiment, using the analytic
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="n">mu</span> <span class="o">-</span> <span class="n">muprime</span><span class="p">)</span> <span class="o">/</span> <span class="n">get_asym_std</span><span class="p">(</span><span class="n">muprime</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
+
 <span class="n">plot_p_tmu</span><span class="p">(</span><span class="n">LambdaFisher</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="ptmu-asym1">
-<img alt="_images/c33b2b48daaa1d9a6b4ad3a90ea41e44fec2620c5ca775bf9d6b8261cb5d17d7.png" src="_images/c33b2b48daaa1d9a6b4ad3a90ea41e44fec2620c5ca775bf9d6b8261cb5d17d7.png" />
+<img alt="_images/48c98fb3a00e236eb076e35fe9561aadb8bc437b3bbca60d822a86f4c771f4b1.png" src="_images/48c98fb3a00e236eb076e35fe9561aadb8bc437b3bbca60d822a86f4c771f4b1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Comparing the distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> (solid) with non-central <span class="math notranslate nohighlight">\(\chi'_1^2(\Lambda)\)</span> distributions (dotted) for a range of <span class="math notranslate nohighlight">\(s, b, \mu, \mu'\)</span> values, with <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span> estimated using the inverse of the Fisher information matrix.</span><a class="headerlink" href="#ptmu-asym1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Comparing the distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> (solid) with non-central <span class="math notranslate nohighlight">\({\chi'}_1^2(\Lambda)\)</span> distributions (dotted) for a range of <span class="math notranslate nohighlight">\(s, b, \mu, \mu'\)</span> values, with <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span> estimated using the inverse of the Fisher information matrix.</span><a class="headerlink" href="#ptmu-asym1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -980,15 +997,16 @@ m_A &amp;= \mathbb E[m] = b'.
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">t_s</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">muprime</span> <span class="o">+</span> <span class="n">bprime</span><span class="p">,</span> <span class="n">bprime</span><span class="p">)</span>
 
+
 <span class="n">plot_p_tmu</span><span class="p">(</span><span class="n">LambdaA</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="ptmu-asym2">
-<img alt="_images/e581d8a9e207cb008ec00e7d7a305bff2bdf858ad5ba47dc74714fb0d9e8675c.png" src="_images/e581d8a9e207cb008ec00e7d7a305bff2bdf858ad5ba47dc74714fb0d9e8675c.png" />
+<img alt="_images/96f5f55af39fb56f2e71112e14d03893056312e4e5ee6bee5d7a089012c9aaac.png" src="_images/96f5f55af39fb56f2e71112e14d03893056312e4e5ee6bee5d7a089012c9aaac.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Comparing the sampling distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> with non-central <span class="math notranslate nohighlight">\(\chi'_1^2(\Lambda)\)</span> distributions for a range of <span class="math notranslate nohighlight">\(s, b, \mu, \mu'\)</span> values, with the Asimov sigma estimation for <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span>.</span><a class="headerlink" href="#ptmu-asym2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Comparing the sampling distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> with non-central <span class="math notranslate nohighlight">\({\chi'}_1^2(\Lambda)\)</span> distributions for a range of <span class="math notranslate nohighlight">\(s, b, \mu, \mu'\)</span> values, with the Asimov sigma estimation for <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span>.</span><a class="headerlink" href="#ptmu-asym2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1016,12 +1034,12 @@ We can see how it breaks down for <span class="math notranslate nohighlight">\(s
     <span class="n">sbs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
     <span class="n">mus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">muprimes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    
+
     <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">]</span>
-    
+
     <span class="n">xmaxs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-    
+
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">muprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">muprimes</span><span class="p">)):</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Testing $\mu=</span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">$ under $\mu&#39; = </span><span class="si">{</span><span class="n">muprime</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
         <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmaxs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -1038,13 +1056,21 @@ We can see how it breaks down for <span class="math notranslate nohighlight">\(s
             <span class="p">)</span>
 
             <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmax</span> <span class="o">/</span> <span class="mi">160</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-            
+
             <span class="k">if</span> <span class="n">mu</span> <span class="o">==</span> <span class="n">muprime</span><span class="p">:</span>
-                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\chi^2_1$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">x</span><span class="p">,</span> <span class="n">chi2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\chi^2_1$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span>
+                <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">l</span> <span class="o">=</span> <span class="n">lambda_fn</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">muprime</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ncx2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\chi&#39;^2_1(\Lambda = </span><span class="si">{</span><span class="n">l</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-        
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">x</span><span class="p">,</span>
+                    <span class="n">ncx2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span>
+                    <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\chi&#39;^2_1(\Lambda = </span><span class="si">{</span><span class="n">l</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t_\mu$&quot;</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p(t_\mu|\mu&#39;)$&quot;</span><span class="p">)</span>
@@ -1061,9 +1087,9 @@ We can see how it breaks down for <span class="math notranslate nohighlight">\(s
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="ptmu-asym3">
-<img alt="_images/fd88ccea4668fe42af119d7ff9b9a225596a93b9178ad6156322a342e0134a7d.png" src="_images/fd88ccea4668fe42af119d7ff9b9a225596a93b9178ad6156322a342e0134a7d.png" />
+<img alt="_images/2cf4fc4b6c42904518f91c3454192c16a7414e40af777313e01db18f6f4fb57a.png" src="_images/2cf4fc4b6c42904518f91c3454192c16a7414e40af777313e01db18f6f4fb57a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Comparing the sampling distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> with non-central <span class="math notranslate nohighlight">\(\chi'_1^2(\Lambda)\)</span> distributions for different <span class="math notranslate nohighlight">\(s, b \leq 10\)</span>, showing the break-down of the <span class="math notranslate nohighlight">\(\sigma_A\)</span> approximation for <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span> at low statistics.</span><a class="headerlink" href="#ptmu-asym3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Comparing the sampling distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> with non-central <span class="math notranslate nohighlight">\({\chi'}_1^2(\Lambda)\)</span> distributions for different <span class="math notranslate nohighlight">\(s, b \leq 10\)</span>, showing the break-down of the <span class="math notranslate nohighlight">\(\sigma_A\)</span> approximation for <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span> at low statistics.</span><a class="headerlink" href="#ptmu-asym3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1122,6 +1148,7 @@ Asymptotic formulae for the <span class="math notranslate nohighlight">\(\tilde{
     <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_s</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t_obs</span><span class="p">)))</span>
 
+
 <span class="n">p_value_res</span> <span class="o">=</span> <span class="n">p_mu_asym</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_value_res</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Latex</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;$p_\mu = </span><span class="si">{</span><span class="n">p_value_res</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Z = </span><span class="si">{</span><span class="n">Z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">))</span>
@@ -1146,10 +1173,10 @@ Asymptotic formulae for the <span class="math notranslate nohighlight">\(\tilde{
     <span class="n">nms</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
     <span class="n">muranges</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)]</span>
     <span class="n">mus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
+
     <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nms</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nms</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
     <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">]</span>
-    
+
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nms</span><span class="p">):</span>
         <span class="n">murange</span> <span class="o">=</span> <span class="n">muranges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;$s = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">, n_\mathrm</span><span class="se">{{</span><span class="s2">obs</span><span class="se">}}</span><span class="s2">=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">, m_\mathrm</span><span class="se">{{</span><span class="s2">obs</span><span class="se">}}</span><span class="s2">=</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
@@ -1164,14 +1191,17 @@ Asymptotic formulae for the <span class="math notranslate nohighlight">\(\tilde{
                 <span class="n">signs_asym</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_Z</span><span class="p">(</span><span class="n">p_mu_asym</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)))</span>
 
             <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">signs_toys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Testing (toys)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">signs_asym</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Testing (asymptotic)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-        
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">signs_asym</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Testing (asymptotic)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span>
+            <span class="p">)</span>
+
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Significance&quot;</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\mu$&quot;</span><span class="p">)</span>
         <span class="c1"># axs[i].set_ylim(-2, 4)</span>
-    
+
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 
 <span class="n">plot_p_tmu_sb</span><span class="p">()</span>
 </pre></div>
@@ -1180,7 +1210,7 @@ Asymptotic formulae for the <span class="math notranslate nohighlight">\(\tilde{
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="asym-significances">
-<img alt="_images/3f4d40f5d5ca2c3f897d2cdbc9410bffbd8985ead13b81e6ccd108c80373ab41.png" src="_images/3f4d40f5d5ca2c3f897d2cdbc9410bffbd8985ead13b81e6ccd108c80373ab41.png" />
+<img alt="_images/2f149a63060ef683bfd61195aa1dcba62ebb5125618d606d206e5130144d889d.png" src="_images/2f149a63060ef683bfd61195aa1dcba62ebb5125618d606d206e5130144d889d.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">Comparing the significances, as a function of the signal strength <span class="math notranslate nohighlight">\(\mu\)</span> hypothesis being test, for simple counting experiments with different <span class="math notranslate nohighlight">\(s, n_\mathrm{obs}, m_\mathrm{obs}\)</span>’s, derived using toys (solid) to estimate the <span class="math notranslate nohighlight">\(p(t_\mu|\mu)\)</span> distribution vs. the asymptotic approximation (dashed).</span><a class="headerlink" href="#asym-significances" title="Link to this image">#</a></p>
 </figcaption>
