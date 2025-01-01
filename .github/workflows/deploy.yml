@@ -17,15 +17,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Build PDF
-    - name: Build PDF
-      uses: docker://ghcr.io/rkansal47/make4ht-action:latest
-      env: 
-        command: |
-          echo "Building PDF";
-          cd latex;
-          latexmk -interaction=nonstopmode -file-line-error -lualatex main.tex;
-          cd ..
+    # # Build PDF
+    # - name: Build PDF
+    #   uses: docker://ghcr.io/rkansal47/make4ht-action:latest
+    #   env: 
+    #     command: |
+    #       echo "Building PDF";
+    #       cd latex;
+    #       latexmk -interaction=nonstopmode -file-line-error -lualatex main.tex;
+    #       cd ..
 
     # Install dependencies
     - name: Set up Python ${{ matrix.python-version }}
