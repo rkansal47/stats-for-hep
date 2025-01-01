@@ -1,0 +1,88 @@
+
+
+:label: (.*)
+\\label{eq:02_$1}
+
+
+Pois
+\pois
+
+
+\$\$\n
+\begin{equation}\n
+
+
+\$\$ \([0-9](.*)\)
+\\label{eq:03_$1}\n\\end{equation}
+
+
+ {eq}`model`
+~\ref{eq:03_pois3}
+
+
+ \{eq\}`[0-9](.*?)`
+~\ref{eq:03_$1}
+
+
+ \{cite\}`(.*)`
+~\\cite{$1}
+
+
+\*\*(.*?)\*\*
+\\textbf{$1}
+
+
+\*(.*?)\*
+\\textit{$1}
+
+
+([0-9]+)%
+$1\\%
+
+
+"([\s,.])
+''$1
+
+\{numref\}`[0-9](.*?)`
+Figure~\\ref{fig:03_$1}
+
+
+\\\\([a-zA-Z])
+\\$1
+
+
+### (.*)
+\\subsubsection{$1}
+
+## (.*)
+\\subsection{$1}
+
+
+ \[(.*)\]\((.*?)\)
+ \\href{$2}{$1}
+
+
+\\href\{(.*?)\}\{(.*?)\}
+[$2]($1)
+
+
+primaryClass = ".*",\n
+
+
+
+
+check if label not followed by digit
+
+fig:((?![0-9]))
+
+or more generally
+
+\\label\{(.*?):(?!\d)
+\\label{$1:06_lgae_
+
+\\ref\{(.*?):(?!\d)
+\\ref{$1:04_mpgan_
+
+
+figures/(?!04)
+figures/04-ML4Sim/mpgan/

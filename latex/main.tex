@@ -1,0 +1,130 @@
+\documentclass[12pt]{report}
+
+\usepackage{setspace}
+
+\usepackage{amsthm}
+
+\ifdefined\HCode%
+    \usepackage{amssymb}
+\else
+    % palatino font (doesn't work with tex4ht, but it can be specified in the CSS):
+    \usepackage{newpxtext}
+    \usepackage{newpxmath}
+\fi
+
+\usepackage[sort&compress,numbers]{natbib}
+% \setcitestyle{maxcitenames=6}
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{pifont}
+\usepackage{nicefrac}
+\usepackage{adjustbox}
+\usepackage{xspace}
+% \usepackage{resizegather}
+
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate]{nosep}
+
+
+\usepackage{amsmath}
+% \usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{slashed}
+\usepackage{cancel}
+\usepackage{dsfont}
+\usepackage{braket}
+\usepackage{multirow}
+\usepackage{needspace}
+\usepackage[bottom]{footmisc}
+\usepackage{changepage}
+\usepackage{titlesec}
+\usepackage{rotating}
+% \usepackage{tocloft}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{simplewick}
+
+\definecolor{awesome-emerald}{HTML}{00A388}
+\definecolor{awesome-skyblue}{HTML}{0395DE}
+\definecolor{awesome-red}{HTML}{DC3522}
+\definecolor{awesome-pink}{HTML}{EF4089}
+\definecolor{awesome-orange}{HTML}{FF6138}
+\definecolor{awesome-nephritis}{HTML}{27AE60}
+\definecolor{awesome-concrete}{HTML}{95A5A6}
+\definecolor{awesome-darknight}{HTML}{131A28}
+\colorlet{awesomelinks}{awesome-skyblue}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[chapter]
+
+\numberwithin{equation}{chapter}
+% \numberwithin{figure}{section}
+% \numberwithin{table}{section}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+            linkcolor=awesomelinks,
+            urlcolor=awesomelinks,
+            citecolor=awesomelinks,}
+
+\usepackage{doi}
+
+\sloppy
+\bibliographystyle{apsrev4-2}
+
+% Required information
+\title{Notes on Statistics for HEP}
+\author{Raghav Kansal}
+
+% Start the document
+\begin{document}
+
+\input{notation.tex}
+\maketitle
+
+\begin{abstract}
+\begin{doublespace}
+% \hypersetup{urlcolor=awesome-nephritis}
+\setlength{\parskip}{\baselineskip}
+This is a series of walk-throughs of some concepts in statistics relevant for high energy physics (HEP). 
+It is primarily based on (me trying to understand) Refs.~\cite{Cowan:2010js} and~\cite{Cranmer:2014lly}, and the CMS combine tool~\cite{CMS:2024onh}.
+Both references are useful and highly recommended for reading; the emphasis here is heavily on \textbf{implementing and visualizing what they discuss in Python} --- as well as providing some heuristic derivations of some of their formulae --- as that is what personally helped me build an intuition for these concepts.
+
+These notes are primarily intended to be followed interactively \href{https://rkansal47.github.io/stats-for-hep}{online} as Jupyter notebooks, but are also available as a \href{https://github.com/rkansal47/stats-for-hep/blob/gh-pages/stats-for-hep.pdf?raw=true}{PDF}.
+Feedback and corrections are very welcome through e-mail or as \href{https://github.com/rkansal47/stats-for-hep/issues}{issues} on \href{https://github.com/rkansal47/stats-for-hep/}{Github}.
+Finally, for those interested, some more notes and tutorials I have written up, such as on the standard model and machine learning in HEP, are available \href{https://www.raghavkansal.com/teaching/}{here}.
+\end{doublespace}
+\end{abstract}
+
+
+{
+\hypersetup{linkcolor=black}
+\tableofcontents
+}
+
+\setlength{\parskip}{\baselineskip}
+
+\begin{doublespace}
+\input{Stats.tex}
+\end{doublespace}
+
+\nocite{apsrev42Control}
+\bibliography{bibliography}
+
+\end{document}

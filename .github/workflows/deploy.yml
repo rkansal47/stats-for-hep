@@ -17,11 +17,30 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Check if /latex directory changed
+      id: check_latex
+      run: |
+        # Compare HEAD with HEAD^ specifically in `latex` directory
+        if git diff --quiet HEAD^ HEAD -- latex; then
+          echo "No changes detected in /latex."
+          echo "::set-output name=changed::false"
+        else
+          echo "Changes detected in /latex."
+          echo "::set-output name=changed::true"
+        fi
+
+    - name: Build PDF if /latex changed
+      if: ${{ steps.check_latex.outputs.changed == 'true' }}
+      run: |
+        echo "Building PDF"
+        # TODO
+        # latexmk -interaction=nonstopmode -file-line-error -lualatex latex/main.tex
+
     # Install dependencies
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python-version }}\
     - name: Install dependencies
       run: |
         pip install -r requirements.txt

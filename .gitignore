@@ -2,3 +2,5 @@
 **/.DS_Store
 **/.ipynb_checkpoints
 stats-for-hep/_build
+latex/main*
+!latex/main.tex
