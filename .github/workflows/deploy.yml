@@ -17,21 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Check if /latex directory changed
-      id: check_latex
-      run: |
-        # Compare HEAD with HEAD^ specifically in `latex` directory
-        if git diff --quiet HEAD^ HEAD -- latex; then
-          echo "No changes detected in /latex."
-          echo "::set-output name=changed::false"
-        else
-          echo "Changes detected in /latex."
-          echo "::set-output name=changed::true"
-        fi
-
-    # Build PDF if /latex directory changed
+    # Build PDF
     - name: Build PDF
-      if: ${{ steps.check_latex.outputs.changed == 'true' }}
       uses: docker://ghcr.io/rkansal47/make4ht-action:latest
       env: 
         command: |
@@ -42,7 +29,7 @@ jobs:
 
     # Install dependencies
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}\
     - name: Install dependencies
