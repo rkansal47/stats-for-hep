@@ -1,5 +1,5 @@
-jupyter-book
-matplotlib
-numpy
+jupyter-book==1.0.0
+matplotlib==3.6.2
+numpy==1.23.5
 ghp-import
-scipy
+scipy==1.10.1
