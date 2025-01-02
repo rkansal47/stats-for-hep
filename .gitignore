@@ -4,3 +4,4 @@
 stats-for-hep/_build
 latex/main*
 !latex/main.tex
+.jupyter
