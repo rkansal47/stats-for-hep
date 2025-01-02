@@ -713,7 +713,7 @@ We’ll finally apply the asymptotic CDF of <span class="math notranslate nohigh
 </aside>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Note: this is not a rigorous derivation - it’s just a way to motivate the final result, which is taken from Ref. <span id="id2">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span>.
+<p>Note: this is not a rigorous derivation - it’s just a way to motivate the final result, which is taken from Ref. <span id="id2">[<a class="reference internal" href="main.html#id5" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span>.
 (If anyone knows of a better way, let me know!)</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-6plr-taylor">
@@ -743,7 +743,7 @@ recognizing that <span class="math notranslate nohighlight">\(\mu\)</span> and <
     t_\mu &amp;\simeq \frac{(\mu-\hat\mu)^2}{\sigma_{\hat\mu}^2} = \gamma^2, \\
     \gamma &amp;\sim \mathcal N \bigg(\frac{\mu - \mu'}{\sigma_{\hat\mu}}, 1 \bigg).
 \end{split}\]</div>
-<p>For the special case of <span class="math notranslate nohighlight">\(\mu = \mu'\)</span>, we can see that <span class="math notranslate nohighlight">\(t_\mu\)</span> is simply the square of a standard normal random variable, which is the definition of the well-known <span class="math notranslate nohighlight">\(\chi^2_k\)</span> distribution with <span class="math notranslate nohighlight">\(k=1\)</span> degrees of freedom (DoF) :</p>
+<p>For the special case of <span class="math notranslate nohighlight">\(\mu = \mu'\)</span>, we can see that <span class="math notranslate nohighlight">\(t_\mu\)</span> is simply the square of a standard normal random variable, which is the definition of the well-known <span class="math notranslate nohighlight">\(\chi^2_k\)</span> distribution with <span class="math notranslate nohighlight">\(k=1\)</span> degrees of freedom (DoF):</p>
 <div class="math notranslate nohighlight" id="equation-6chi2">
 <span class="eqno">(6.10)<a class="headerlink" href="#equation-6chi2" title="Link to this equation">#</a></span>\[
     p(t_\mu|\mu) \sim \chi^2_1.
@@ -792,7 +792,7 @@ This is distributed as the similar, but perhaps less well-known, <strong>non-cen
 <figure class="align-default" id="noncentralchi2">
 <img alt="_images/2d56540b1875a7f59ba5cc656c145b0c31ee6e75833d57af499fae1aab3f1b95.png" src="_images/2d56540b1875a7f59ba5cc656c145b0c31ee6e75833d57af499fae1aab3f1b95.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Central <span class="math notranslate nohighlight">\(\chi^2_k\)</span> and non-central <span class="math notranslate nohighlight">\({\chi'}^2_k(\Lambda)\)</span> distributions for <span class="math notranslate nohighlight">\(\Lambda\)</span> between <span class="math notranslate nohighlight">\(1-30\)</span> (left) and (<span class="math notranslate nohighlight">\(30-300\)</span> (right).</span><a class="headerlink" href="#noncentralchi2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Central <span class="math notranslate nohighlight">\(\chi^2_k\)</span> and non-central <span class="math notranslate nohighlight">\({\chi'}^2_k(\Lambda)\)</span> distributions for <span class="math notranslate nohighlight">\(\Lambda\)</span> between <span class="math notranslate nohighlight">\(1-30\)</span> (left) and <span class="math notranslate nohighlight">\(30-300\)</span> (right).</span><a class="headerlink" href="#noncentralchi2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -810,7 +810,7 @@ As <span class="math notranslate nohighlight">\(\Lambda \rightarrow \infty\)</sp
 <span class="eqno">(6.13)<a class="headerlink" href="#equation-6chi2multipois" title="Link to this equation">#</a></span>\[
 p(t_\mu|\mu') \sim \chi'^2_k(\Lambda),
 \]</div>
-<p>where the DoF <span class="math notranslate nohighlight">\(k\)</span> are equal the number of POIs <span class="math notranslate nohighlight">\(|\vec\mu|\)</span>, and</p>
+<p>where the DoF <span class="math notranslate nohighlight">\(k\)</span> are equal the number of POIs <span class="math notranslate nohighlight">\(\dim\vec\mu\)</span>, and</p>
 <div class="math notranslate nohighlight" id="equation-6lambdamultipois">
 <span class="eqno">(6.14)<a class="headerlink" href="#equation-6lambdamultipois" title="Link to this equation">#</a></span>\[
 \Lambda = (\vec\mu - \vec\mu')^T \cdot \tilde{\mathcal I}^{-1}(\vec\mu') \cdot (\vec\mu - \vec\mu'),
@@ -943,7 +943,7 @@ Let’s see what this looks like for our counting experiment, using the analytic
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="ptmu-asym1">
-<img alt="_images/48c98fb3a00e236eb076e35fe9561aadb8bc437b3bbca60d822a86f4c771f4b1.png" src="_images/48c98fb3a00e236eb076e35fe9561aadb8bc437b3bbca60d822a86f4c771f4b1.png" />
+<img alt="_images/d9c443ead3be7d477cdecd6a5e15b243461a37386f7bd0a84658dbdd83d5bf5b.png" src="_images/d9c443ead3be7d477cdecd6a5e15b243461a37386f7bd0a84658dbdd83d5bf5b.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Comparing the distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> (solid) with non-central <span class="math notranslate nohighlight">\({\chi'}_1^2(\Lambda)\)</span> distributions (dotted) for a range of <span class="math notranslate nohighlight">\(s, b, \mu, \mu'\)</span> values, with <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span> estimated using the inverse of the Fisher information matrix.</span><a class="headerlink" href="#ptmu-asym1" title="Link to this image">#</a></p>
 </figcaption>
@@ -1004,7 +1004,7 @@ m_A &amp;= \mathbb E[m] = b'.
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="ptmu-asym2">
-<img alt="_images/96f5f55af39fb56f2e71112e14d03893056312e4e5ee6bee5d7a089012c9aaac.png" src="_images/96f5f55af39fb56f2e71112e14d03893056312e4e5ee6bee5d7a089012c9aaac.png" />
+<img alt="_images/4501a580fd90c1a6344e6f84c27e180d64cf22bc300c9284de0bf758914167ba.png" src="_images/4501a580fd90c1a6344e6f84c27e180d64cf22bc300c9284de0bf758914167ba.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Comparing the sampling distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> with non-central <span class="math notranslate nohighlight">\({\chi'}_1^2(\Lambda)\)</span> distributions for a range of <span class="math notranslate nohighlight">\(s, b, \mu, \mu'\)</span> values, with the Asimov sigma estimation for <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span>.</span><a class="headerlink" href="#ptmu-asym2" title="Link to this image">#</a></p>
 </figcaption>
@@ -1013,7 +1013,7 @@ m_A &amp;= \mathbb E[m] = b'.
 </div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Reference <span id="id3">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> conjectures that this is because the Fisher-information-approach is restricted only to estimating the second-order term of Eq. <a class="reference internal" href="#equation-6plr-taylor">(6.8)</a>, while with <span class="math notranslate nohighlight">\(t_{\mu, A}\)</span> we’re matching the shape of the likelihood at the minimum which may be able capture some of the higher order terms as well.</p>
+<p>Reference <span id="id3">[<a class="reference internal" href="main.html#id5" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> conjectures that this is because the Fisher-information-approach is restricted only to estimating the second-order term of Eq. <a class="reference internal" href="#equation-6plr-taylor">(6.8)</a>, while with <span class="math notranslate nohighlight">\(t_{\mu, A}\)</span> we’re matching the shape of the likelihood at the minimum which may be able capture some of the higher order terms as well.</p>
 </aside>
 <p>We see that this estimate matches the sampling distributions very well, even for cases where the covariance-matrix-estimate failed!
 Indeed, this is why estimating <span class="math notranslate nohighlight">\(\sigma_{\hat\mu} \simeq \sigma_A\)</span> is the standard in LHC analyses, and that is the method we’ll employ going forward.</p>
@@ -1087,7 +1087,7 @@ We can see how it breaks down for <span class="math notranslate nohighlight">\(s
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="ptmu-asym3">
-<img alt="_images/2cf4fc4b6c42904518f91c3454192c16a7414e40af777313e01db18f6f4fb57a.png" src="_images/2cf4fc4b6c42904518f91c3454192c16a7414e40af777313e01db18f6f4fb57a.png" />
+<img alt="_images/c19223c16ecca6a4d61e50be89c1e4c0d57ab8c99728c9248abfc55d390ec196.png" src="_images/c19223c16ecca6a4d61e50be89c1e4c0d57ab8c99728c9248abfc55d390ec196.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Comparing the sampling distribution <span class="math notranslate nohighlight">\(p(t_\mu|\mu')\)</span> with non-central <span class="math notranslate nohighlight">\({\chi'}_1^2(\Lambda)\)</span> distributions for different <span class="math notranslate nohighlight">\(s, b \leq 10\)</span>, showing the break-down of the <span class="math notranslate nohighlight">\(\sigma_A\)</span> approximation for <span class="math notranslate nohighlight">\(\sigma^2_\hat\mu\)</span> at low statistics.</span><a class="headerlink" href="#ptmu-asym3" title="Link to this image">#</a></p>
 </figcaption>
@@ -1190,10 +1190,8 @@ Asymptotic formulae for the <span class="math notranslate nohighlight">\(\tilde{
                 <span class="c1"># getting significance using new asymptotic form for p-value</span>
                 <span class="n">signs_asym</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_Z</span><span class="p">(</span><span class="n">p_mu_asym</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)))</span>
 
-            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">signs_toys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Testing (toys)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-                <span class="n">x</span><span class="p">,</span> <span class="n">signs_asym</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Testing (asymptotic)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span>
-            <span class="p">)</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">signs_toys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Toy-based&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">signs_asym</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;Asymptotic&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
 
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Significance&quot;</span><span class="p">)</span>
@@ -1210,9 +1208,9 @@ Asymptotic formulae for the <span class="math notranslate nohighlight">\(\tilde{
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="asym-significances">
-<img alt="_images/2f149a63060ef683bfd61195aa1dcba62ebb5125618d606d206e5130144d889d.png" src="_images/2f149a63060ef683bfd61195aa1dcba62ebb5125618d606d206e5130144d889d.png" />
+<img alt="_images/81b272800b22cdebb184c0fd1ffbc96d24f2c1f03e89d7a5479e23ac83e5e77a.png" src="_images/81b272800b22cdebb184c0fd1ffbc96d24f2c1f03e89d7a5479e23ac83e5e77a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">Comparing the significances, as a function of the signal strength <span class="math notranslate nohighlight">\(\mu\)</span> hypothesis being test, for simple counting experiments with different <span class="math notranslate nohighlight">\(s, n_\mathrm{obs}, m_\mathrm{obs}\)</span>’s, derived using toys (solid) to estimate the <span class="math notranslate nohighlight">\(p(t_\mu|\mu)\)</span> distribution vs. the asymptotic approximation (dashed).</span><a class="headerlink" href="#asym-significances" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">Comparing the significances, as a function of the signal strength <span class="math notranslate nohighlight">\(\mu\)</span> of the hypothesis being tested, for simple counting experiments with different <span class="math notranslate nohighlight">\(s, n_\mathrm{obs}, m_\mathrm{obs}\)</span>’s, derived using 30,000 toys each (solid) to estimate the <span class="math notranslate nohighlight">\(p(t_\mu|\mu)\)</span> distribution vs. the asymptotic approximation (dashed).</span><a class="headerlink" href="#asym-significances" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>

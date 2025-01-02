@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '05-asymptotic-form-mle';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. Asymptotic formulae of profile-likelihood-ratio-based test statistics" href="06-asymptotic-formulae.html" />
+    <link rel="next" title="6. Asymptotic Form of the Profile Likelihood Ratio" href="06-asymptotic-formulae.html" />
     <link rel="prev" title="4. Expected Significances and Limits" href="04-expected-significance-and-limits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,7 +188,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Asymptotical Formulae</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Asymptotic Form of the MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic formulae of profile-likelihood-ratio-based test statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic Form of the Profile Likelihood Ratio</a></li>
 </ul>
 
     </div>
@@ -616,7 +616,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
 <p>So far, we have discussed how to extract meaningful statistical results from HEP experiments by making extensive use of pseudodata / toy experiments to estimate the sampling distributions of profile-likelihood-ratio-based test statistics.
 While this worked nicely for our simple counting experiment, generating a sufficiently large number of toys can quickly become computationally intractable for the more complex searches (and statistical combinations of searches) that are increasingly prevalent at the LHC, containing at times up to thousands of bins and nuisance parameters.
 This and the following section discuss a way to approximate these sampling distributions without the need for pseudodata.
-This was introduced in the famous “CCGV” paper <span id="id1">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> in 2011, and has since become the de-facto procedure at the LHC.</p>
+This was introduced in the famous “CCGV” paper <span id="id1">[<a class="reference internal" href="main.html#id5" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> in 2011, and has since become the de-facto procedure at the LHC.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>See e.g. <a class="reference internal" href="02-hypothesis-testing.html#p-tilde-t-asym"><span class="std std-numref">Fig. 2.2</span></a> and <a class="reference internal" href="03-intervals-and-limits.html#p-tilde-q"><span class="std std-numref">Fig. 3.3</span></a>.</p>
@@ -664,7 +664,7 @@ This is not a coincidence: we will now derive their “asymptotic”, i.e. in th
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle">
-<img alt="_images/de72a74a29d0d2dfd44e56873a9758b9ac1b63dabb5230c3ca29ce0a2a5c05a3.png" src="_images/de72a74a29d0d2dfd44e56873a9758b9ac1b63dabb5230c3ca29ce0a2a5c05a3.png" />
+<img alt="_images/971e958ccf40c8c9cdfb0e13416165e2d197fcf8d7c50e3d189ab0c620c4e6cb.png" src="_images/971e958ccf40c8c9cdfb0e13416165e2d197fcf8d7c50e3d189ab0c620c4e6cb.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Distribution of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> produced using 30,000 toy experiments each. (Note the x-axis range is becoming narrower from the left-most to the right-most plot.)</span><a class="headerlink" href="#p-mle" title="Link to this image">#</a></p>
 </figcaption>
@@ -724,7 +724,7 @@ This is not a coincidence: we will now derive their “asymptotic”, i.e. in th
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle-fit">
-<img alt="_images/381927c035e720b77058498acb5bc3d0db84e91c0b6fd434239e4532820a18ca.png" src="_images/381927c035e720b77058498acb5bc3d0db84e91c0b6fd434239e4532820a18ca.png" />
+<img alt="_images/1c3132281483f13c49022e515b3e3b5b84c6284faa31a9a055a08b2acbed9769.png" src="_images/1c3132281483f13c49022e515b3e3b5b84c6284faa31a9a055a08b2acbed9769.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Gaussian fits to distributions from Fig. 5.1 of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#p-mle-fit" title="Link to this image">#</a></p>
 </figcaption>
@@ -926,7 +926,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle-asym">
-<img alt="_images/3649d60a586d509bf17bda43cf2ecdf3d01891d22fa85603ba269615b7d0f715.png" src="_images/3649d60a586d509bf17bda43cf2ecdf3d01891d22fa85603ba269615b7d0f715.png" />
+<img alt="_images/a3ae9731d93562b1ce3e6d5c4b1ff19ee9b4b8dce0d71ad825ed2d877cd78ecb.png" src="_images/a3ae9731d93562b1ce3e6d5c4b1ff19ee9b4b8dce0d71ad825ed2d877cd78ecb.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Asymptotic (dotted lines) and toy-based (solid lines) distributions, using 30,000 toys each, of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and true signal strength <span class="math notranslate nohighlight">\(\mu'\)</span>.</span><a class="headerlink" href="#p-mle-asym" title="Link to this image">#</a></p>
 </figcaption>
@@ -1032,7 +1032,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="mle-errors">
-<img alt="_images/928f223f561fccf11097f74214d8da6d75948434dd588f0d6ab472771f2691a4.png" src="_images/928f223f561fccf11097f74214d8da6d75948434dd588f0d6ab472771f2691a4.png" />
+<img alt="_images/eb1f3e0f96eab0edced6ee24cbb391705befe7553c2297dd623dd1dcd64f2efe.png" src="_images/eb1f3e0f96eab0edced6ee24cbb391705befe7553c2297dd623dd1dcd64f2efe.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Error between the sampled toy distributions, using 50,000 toys each, and the asymptotic distributions of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> (blue), for the nominal signal strength <span class="math notranslate nohighlight">\(\mu' = 1\)</span>. and <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span> fits (red).</span><a class="headerlink" href="#mle-errors" title="Link to this image">#</a></p>
 </figcaption>
@@ -1116,7 +1116,7 @@ Next, we use the above to derive the asymptotic form of the</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Asymptotic formulae of profile-likelihood-ratio-based test statistics</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Asymptotic Form of the Profile Likelihood Ratio</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

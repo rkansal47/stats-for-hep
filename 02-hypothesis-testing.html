@@ -551,7 +551,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-t">
-<img alt="_images/db2352724ad25aa83dcce7052ab5af6118628d997151f764092f71d86f1daf04.png" src="_images/db2352724ad25aa83dcce7052ab5af6118628d997151f764092f71d86f1daf04.png" />
+<img alt="_images/83c30b9aef80dd7cd1a8b1dcd04a61e65ce795372da99b7a2789376188693c12.png" src="_images/83c30b9aef80dd7cd1a8b1dcd04a61e65ce795372da99b7a2789376188693c12.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Estimating <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> through toys.</span><a class="headerlink" href="#p-tilde-t" title="Link to this image">#</a></p>
 </figcaption>
@@ -565,7 +565,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <li><p>In fact, <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> doesn’t even depend on <span class="math notranslate nohighlight">\(s\)</span>! (Again, as long as <span class="math notranslate nohighlight">\(s\)</span> is large.)</p></li>
 </ul>
 </div>
-<p>Ref. <span id="id1">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> shows that, asymptotically, this distribution follows a <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution with degrees of freedom = # of parameters of interest. You can see the derivation in the reference therein but, essentially, like with most things in physics, this follows from Taylor expanding around the minimum…</p>
+<p>Ref. <span id="id1">[<a class="reference internal" href="main.html#id5" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> shows that, asymptotically, this distribution follows a <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution with degrees of freedom = # of parameters of interest. You can see the derivation in the reference therein but, essentially, like with most things in physics, this follows from Taylor expanding around the minimum…</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -606,7 +606,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-t-asym">
-<img alt="_images/d229742fa0cbb312e1c9addc5c94b27974daab9e990113fbe25cc46570e2dcf2.png" src="_images/d229742fa0cbb312e1c9addc5c94b27974daab9e990113fbe25cc46570e2dcf2.png" />
+<img alt="_images/97eb7276acb9e965f0fad840e3a1bb87021dcb63f4f73f1b1c41a2ce531ae2e2.png" src="_images/97eb7276acb9e965f0fad840e3a1bb87021dcb63f4f73f1b1c41a2ce531ae2e2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Asymptotic form of <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-t-asym" title="Link to this image">#</a></p>
 </figcaption>
@@ -616,7 +616,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <p>This asymptotic form looks accurate even for <span class="math notranslate nohighlight">\(s, b\)</span> as low as ~5.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>For cases where you can’t use the asymptotic form, Ref. <span id="id2">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> recommends using <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span> when generating toys, so that you (approximately) maximise the agreement with the hypothesis.</p>
+<p>For cases where you can’t use the asymptotic form, Ref. <span id="id2">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> recommends using <span class="math notranslate nohighlight">\(b = \hat{\hat{b}}(s)\)</span> when generating toys, so that you (approximately) maximise the agreement with the hypothesis.</p>
 </div>
 </section>
 <section id="p-values-and-significance">
@@ -772,7 +772,7 @@ We can map this observation to our test statistic <span class="math notranslate 
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="hs">
-<img alt="_images/0b5614cfe069bb4fe52c75c25a83150f8ed4bcffa3d066bf8bc85f2a4e8316b2.png" src="_images/0b5614cfe069bb4fe52c75c25a83150f8ed4bcffa3d066bf8bc85f2a4e8316b2.png" />
+<img alt="_images/4a91e9f6eb9675bade93eb6b1bf81324fb6d71b0e431fb70b44e2bca812815a8.png" src="_images/4a91e9f6eb9675bade93eb6b1bf81324fb6d71b0e431fb70b44e2bca812815a8.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Testing <span class="math notranslate nohighlight">\(H_s\)</span>.</span><a class="headerlink" href="#hs" title="Link to this image">#</a></p>
 </figcaption>
@@ -797,11 +797,11 @@ F(\tilde{t}_s|s) = \int_{-\infty}^{\tilde{t}_s}p(\tilde{t}'_s|s)\mathrm d \tilde
 Z = \Phi^{-1}(1-p),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the CDF of the standard Gaussian.
-This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>), where <span class="math notranslate nohighlight">\(\varphi\)</span> is the standard Gaussian distribution:</p>
+This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>), where <span class="math notranslate nohighlight">\(\varphi\)</span> is the standard Gaussian distribution:</p>
 <figure class="align-center" id="sign">
 <img alt="_images/significance.png" src="_images/significance.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Significance from <span class="math notranslate nohighlight">\(p\)</span>-value, from Ref. <span id="id4">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>.</span><a class="headerlink" href="#sign" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Significance from <span class="math notranslate nohighlight">\(p\)</span>-value, from Ref. <span id="id4">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>.</span><a class="headerlink" href="#sign" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The significance for this example is, therefore:</p>
@@ -824,7 +824,7 @@ This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a 
 <h2><span class="section-number">2.5. </span>Signal discovery<a class="headerlink" href="#signal-discovery" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Note: Ref. <span id="id5">[<a class="reference internal" href="main.html#id4" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> refers to the special case of the test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> for <span class="math notranslate nohighlight">\(s = 0\)</span> as <span class="math notranslate nohighlight">\(q_0\)</span>.
+<p>Note: Ref. <span id="id5">[<a class="reference internal" href="main.html#id5" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> refers to the special case of the test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> for <span class="math notranslate nohighlight">\(s = 0\)</span> as <span class="math notranslate nohighlight">\(q_0\)</span>.
 I found this notation confusing because <span class="math notranslate nohighlight">\(q_s\)</span> is also used to represent a different test statistic (see Part 3), so I will stick to <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span>.</p>
 </aside>
 <p>Here, we were testing the signal hypothesis, but usually when we’re searching for a particle, we instead test the “background-only” hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> and decide whether or not to reject it. This means we want <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_0\)</span> and <span class="math notranslate nohighlight">\(p(\tilde{t}_0|0)\)</span> (below).</p>
@@ -842,7 +842,7 @@ I found this notation confusing because <span class="math notranslate nohighligh
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="h0">
-<img alt="_images/8bcaaa32e5738fd21f8c44594ad40ae327a9b55fc334062ca52e42dafbf20274.png" src="_images/8bcaaa32e5738fd21f8c44594ad40ae327a9b55fc334062ca52e42dafbf20274.png" />
+<img alt="_images/ecb6f144e3067db4b9018dc2fd7f7584aa50411e0020f695cdf3783ad7392056.png" src="_images/ecb6f144e3067db4b9018dc2fd7f7584aa50411e0020f695cdf3783ad7392056.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Testing the background-only hypothesis.</span><a class="headerlink" href="#h0" title="Link to this image">#</a></p>
 </figcaption>

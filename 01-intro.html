@@ -187,8 +187,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Asymptotical Formulae</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">5. Asymptotic Formulae of the MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic formulae of the profile likelihood ratio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">5. Asymptotic Form of the MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic Form of the Profile Likelihood Ratio</a></li>
 </ul>
 
     </div>
@@ -428,7 +428,7 @@ Instead we work with the <em>likelihood function</em> of our parameters of inter
 <div class="math notranslate nohighlight" id="equation-likelihood">
 <span class="eqno">(1.4)<a class="headerlink" href="#equation-likelihood" title="Link to this equation">#</a></span>\[L(s, b) = P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!}.\]</div>
 <p>Importantly, this is not a probability distribution on <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>! To derive that, we would have to use Bayes’ rule to go from <span class="math notranslate nohighlight">\(P(n, m; s, b) \to P(s, b; n, m)\)</span>; however, such probability distributions don’t make sense in our frequentist world view, so we’re stuck with this likelihood ~~nonsense~~ formulation.
-For a better explanation of this, I recommend Section 2 in Ref. <span id="id1">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> regarding frequentist vs Bayesian reasoning.
+For a better explanation of this, I recommend Section 2 in Ref. <span id="id1">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span> regarding frequentist vs Bayesian reasoning.
 I also like Nick Smith’s quote, “Everyone’s a Bayesian in their head, but we use frequentist probability in HEP because we can’t agree on a prior.”</p>
 <p>Often, it’s more convenient to consider the negative log-likelihood:</p>
 <div class="math notranslate nohighlight" id="equation-nll">

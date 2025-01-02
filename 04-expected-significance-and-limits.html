@@ -188,7 +188,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Asymptotical Formulae</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">5. Asymptotic Form of the MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic formulae of profile-likelihood-ratio-based test statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic Form of the Profile Likelihood Ratio</a></li>
 </ul>
 
     </div>
@@ -740,7 +740,7 @@ Then, by calculating the significance for each sampled <span class="math notrans
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="expz">
-<img alt="_images/ed25a2734e8f474f1631d65a1ed7f142ee0d109c7d7565742054ace48b506159.png" src="_images/ed25a2734e8f474f1631d65a1ed7f142ee0d109c7d7565742054ace48b506159.png" />
+<img alt="_images/ae7df3f045ad28439d748a3f6fa3dcf8a472087bcedddfd6ff29eb5c7e908042.png" src="_images/ae7df3f045ad28439d748a3f6fa3dcf8a472087bcedddfd6ff29eb5c7e908042.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Left: Distributions of <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span> under the background-only and signal hypotheses using 30,000 toys each. The median of the latter is marked in red. Right: Distribution of the significances (with respect to the background-only hypothesis) of each sampled <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span> under the signal hypothesis.</span><a class="headerlink" href="#expz" title="Link to this image">#</a></p>
 </figcaption>
@@ -753,7 +753,7 @@ Then, by calculating the significance for each sampled <span class="math notrans
 <figure class="align-center" id="gaussian-quantiles">
 <img alt="_images/gaussian_quantiles.png" src="_images/gaussian_quantiles.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">From Ref. <span id="id1">[<a class="reference internal" href="main.html#id6" title="Caroline Stiller. Baseline assessment and effect of a supplementary community-based nutrition intervention study on the prevention/treatment of anemia among young Adivasi children in West Bengal, India. PhD thesis, University of Hohenheim, 01 2021.">3</a>]</span>.</span><a class="headerlink" href="#gaussian-quantiles" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">From Ref. <span id="id1">[<a class="reference internal" href="main.html#id7" title="Caroline Stiller. Baseline assessment and effect of a supplementary community-based nutrition intervention study on the prevention/treatment of anemia among young Adivasi children in West Bengal, India. PhD thesis, University of Hohenheim, 01 2021.">4</a>]</span>.</span><a class="headerlink" href="#gaussian-quantiles" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </aside>
@@ -762,7 +762,7 @@ Then, by calculating the significance for each sampled <span class="math notrans
 <p>We usually quote the <strong>median</strong> of this distribution as the expected significance, since the median is “invariant” to monotonic transformations (i.e., the median <span class="math notranslate nohighlight">\(p\)</span>-value will always correspond to the median <span class="math notranslate nohighlight">\(Z\)</span> as well, whereas the mean <span class="math notranslate nohighlight">\(p\)</span>-value will not correspond to the mean <span class="math notranslate nohighlight">\(Z\)</span>).
 Similarly, we quote the 16%/84% and 2%/98% quantiles as the <span class="math notranslate nohighlight">\(\pm 1\sigma\)</span> and <span class="math notranslate nohighlight">\(\pm 2\sigma\)</span>, respectively, expected significances.</p>
 </div>
-<p>In this case, we find the median expected significance to be <span class="output text_plain">1.84</span>.</p>
+<p>In this case, we find the median expected significance to be <span class="output text_plain">1.86</span>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>This is another benefit of considering the median.</p>
@@ -779,7 +779,7 @@ Similarly, we quote the 16%/84% and 2%/98% quantiles as the <span class="math no
 <p>95% is the standard confidence level used for upper limits in HEP.</p>
 </aside>
 <p>The other figure of merit we care about in searches is the upper limit set on the signal strength.
-To derive the <em>expected</em> limit, we do the oppositive of the above and ask, if the signal were not to exist, what value of <span class="math notranslate nohighlight">\(\mu\)</span> would we expect to exclude at the 95% confidence level.</p>
+To derive the <em>expected</em> limit, we do the opposite of the above and ask, if the signal were not to exist, what value of <span class="math notranslate nohighlight">\(\mu\)</span> would we expect to exclude at the 95% confidence level.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Note that <span class="math notranslate nohighlight">\(p_b = \int^{\mathrm{median}[p(\tilde{q}_\mu|0)]}_{-\infty}p(\tilde{q}_\mu|0)\mathrm d \tilde{q}_\mu = 0.5\)</span> by definition, so we can plug that in directly into Eq. <a class="reference internal" href="#equation-4pmu-prime">(4.6)</a>. (Same goes for any other quantile.)</p>
@@ -864,7 +864,7 @@ This is similar to, and essentially an inversion of, the procedure for the expec
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="explim">
-<img alt="_images/1dd0ec2c1dc472fd7c34389a500b184188e98b0f0dca19f3657c33dc1dfa5e40.png" src="_images/1dd0ec2c1dc472fd7c34389a500b184188e98b0f0dca19f3657c33dc1dfa5e40.png" />
+<img alt="_images/42465fbaee6417bd9c3f1b0c63f348199572ba6a123fcde83db862c3f4f04e18.png" src="_images/42465fbaee6417bd9c3f1b0c63f348199572ba6a123fcde83db862c3f4f04e18.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Calculating the median expected <span class="math notranslate nohighlight">\(p_{\mu=1}'\)</span>-value with respect to the signal + background hypothesis, for test statistics <span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span> sampled under the background-only hypothesis. p(<span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span>|1) and p(<span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span>|0) are estimated using 30,000 toys each. Then, the median p(<span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span>|0) (red) is used to calculate the <span class="math notranslate nohighlight">\(p_{\mu}'\)</span>-value following the CL<span class="math notranslate nohighlight">\(_s\)</span> criterion (from Part 3).</span><a class="headerlink" href="#explim" title="Link to this image">#</a></p>
 </figcaption>
@@ -962,7 +962,7 @@ This is shown below:</p>
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="explim2">
-<img alt="_images/cbd821153ee89d7a297bb3da9b6d0189093cd4875146c1fef58d1986bb23f14e.png" src="_images/cbd821153ee89d7a297bb3da9b6d0189093cd4875146c1fef58d1986bb23f14e.png" />
+<img alt="_images/775bd37c468b16e58ec6dd8cf6ee17a8e6c0d0f91ef90d4d0e820b238fa242ef.png" src="_images/775bd37c468b16e58ec6dd8cf6ee17a8e6c0d0f91ef90d4d0e820b238fa242ef.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Left: The expected median and <span class="math notranslate nohighlight">\(\pm1\sigma,\pm2\sigma\)</span> quantiles of <span class="math notranslate nohighlight">\(p_\mu'\)</span> for different <span class="math notranslate nohighlight">\(\mu\)</span>’s. The intersection of these with <span class="math notranslate nohighlight">\(p_\mu' = 0.05\)</span> (grey) corresponds to the expected exclusion limits. Right: The median and <span class="math notranslate nohighlight">\(\pm 1\sigma, \pm 2\sigma\)</span> expected limits at 95% CL<span class="math notranslate nohighlight">\(_s\)</span> on <span class="math notranslate nohighlight">\(\mu\)</span>.</span><a class="headerlink" href="#explim2" title="Link to this image">#</a></p>
 </figcaption>
@@ -975,12 +975,12 @@ For example, below is the corresponding plot by ATLAS for the Higgs discovery (s
 <figure class="align-center" id="atlas-higgs">
 <img alt="_images/atlas_limits.png" src="_images/atlas_limits.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Expected and observed 95% CL<span class="math notranslate nohighlight">\(_s\)</span> upper limits for the SM Higgs by ATLAS in 2012, for different hypothetical Higgs masses <span id="id2">[<a class="reference internal" href="main.html#id7" title="ATLAS Collaboration. Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC. Phys. Lett. B, 716:1–29, 2012. arXiv:1207.7214, doi:10.1016/j.physletb.2012.08.020.">4</a>]</span>.</span><a class="headerlink" href="#atlas-higgs" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Expected and observed 95% CL<span class="math notranslate nohighlight">\(_s\)</span> upper limits for the SM Higgs by ATLAS in 2012, for different hypothetical Higgs masses <span id="id2">[<a class="reference internal" href="main.html#id8" title="ATLAS Collaboration. Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC. Phys. Lett. B, 716:1–29, 2012. arXiv:1207.7214, doi:10.1016/j.physletb.2012.08.020.">5</a>]</span>.</span><a class="headerlink" href="#atlas-higgs" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Reference <span id="id3">[<a class="reference internal" href="main.html#id5" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>’s suggestion is to use the profiled values of the nuisance parameters given the full observations, i.e., <span class="math notranslate nohighlight">\(\hat{\hat{b}}(\mu, n_\mathrm{obs}, m_\mathrm{obs})\)</span>, where <span class="math notranslate nohighlight">\(\mu\)</span> depends on the assumed hypothesis; however, personally, I don’t find this very general since often in CMS we don’t have access to these observations when we’re trying to derive the expected significance.</p>
+<p>Reference <span id="id3">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>’s suggestion is to use the profiled values of the nuisance parameters given the full observations, i.e., <span class="math notranslate nohighlight">\(\hat{\hat{b}}(\mu, n_\mathrm{obs}, m_\mathrm{obs})\)</span>, where <span class="math notranslate nohighlight">\(\mu\)</span> depends on the assumed hypothesis; however, personally, I don’t find this very general since often in CMS we don’t have access to these observations when we’re trying to derive the expected significance.</p>
 </aside>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
