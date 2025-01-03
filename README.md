@@ -7,9 +7,14 @@ Walkthrough of statistics concepts for HEP in Python.
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rkansal47/stats-for-hep/main.svg)](https://results.pre-commit.ci/latest/github/rkansal47/stats-for-hep/main)
 
 
-## Usage
+- [Stats for HEP](#stats-for-hep)
+  - [Building the book](#building-the-book)
+  - [Deploying online](#deploying-online)
+  - [Credits](#credits)
 
-### Building the book
+
+
+## Building the book
 
 If you'd like to develop and/or build the Stats for HEP book, you should:
 
@@ -20,6 +25,12 @@ If you'd like to develop and/or build the Stats for HEP book, you should:
 5. Run `jupyter-book build stats-for-hep/`
 
 A fully-rendered HTML version of the book will be built in `stats-for-hep/_build/html/`.
+
+## Deploying online
+
+Deploys automatically on `push`es to the `main` branch via the [Github Action](https://github.com/rkansal47/stats-for-hep/blob/main/.github/workflows/deploy.yml).
+
+**Important**: Notebook kernels must be set to `Python 3` before pushing! Otherwise the action throws a `kernel not found` error.
 
 ## Credits
 
