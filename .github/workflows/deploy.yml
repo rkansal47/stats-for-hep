@@ -38,7 +38,7 @@ jobs:
     - name: Build the book
       run: |
         jupyter-book build stats-for-hep
-        cp latex/main.pdf stats-for-hep/_build/html/stats-for-hep.pdf
+        # cp latex/main.pdf stats-for-hep/_build/html/stats-for-hep.pdf
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
