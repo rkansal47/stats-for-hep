@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Confidence Intervals and Limits &#8212; Stats for HEP</title>
+    <title>4. Confidence Intervals and Limits &#8212; Stats for HEP</title>
   
   
   
@@ -63,10 +63,11 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '03-intervals-and-limits';</script>
+    <link rel="icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Expected Significances and Limits" href="04-expected-significance-and-limits.html" />
-    <link rel="prev" title="2. Hypothesis Testing and Discovery Significance" href="02-hypothesis-testing.html" />
+    <link rel="next" title="5. Expected Significances and Limits" href="04-expected-significance-and-limits.html" />
+    <link rel="prev" title="3. Hypothesis Testing and Discovery Significance" href="02-hypothesis-testing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -94,8 +95,8 @@
   <input type="search"
          class="form-control"
          name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -153,6 +154,21 @@
   
   
 </a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rkansal47/stats-for-hep/blob/gh-pages/stats-for-hep.pdf?raw=true" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-download fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+</ul></div>
         <div class="sidebar-primary-item">
 
 <button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -170,17 +186,20 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics for HEP</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-intro.html">1. Introduction to Likelihoods and Test Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-hypothesis-testing.html">2. Hypothesis Testing and Discovery Significance</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Confidence Intervals and Limits</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-expected-significance-and-limits.html">4. Expected Significances and Limits</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-introduction.html">1. Introduction</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Asymptotical Formulae</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">I.  Frequentist Statistics at the LHC</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-likelihood.html">2. Introduction to Likelihoods and Test Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-hypothesis-testing.html">3. Hypothesis Testing and Discovery Significance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Confidence Intervals and Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-expected-significance-and-limits.html">5. Expected Significances and Limits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II.  Asymptotic Formulae</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">5. Asymptotic Form of the MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic Form of the Profile Likelihood Ratio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">6. Asymptotic Form of the MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">7. Asymptotic Form of the Profile Likelihood Ratio</a></li>
 </ul>
 
     </div>
@@ -240,7 +259,7 @@
       
       
       
-      <li><a href="https://github.com/rkansal47/stats-for-HEP" target="_blank"
+      <li><a href="https://github.com/rkansal47/stats-for-hep" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -257,7 +276,24 @@
       
       
       
-      <li><a href="https://github.com/rkansal47/stats-for-HEP/issues/new?title=Issue%20on%20page%20%2F03-intervals-and-limits.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/rkansal47/stats-for-hep/edit/main/03-intervals-and-limits.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rkansal47/stats-for-hep/issues/new?title=Issue%20on%20page%20%2F03-intervals-and-limits.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,54 +305,6 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/03-intervals-and-limits.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
 </li>
       
   </ul>
@@ -373,11 +361,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">3.1. Recap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-using-the-neyman-construction">3.2. Confidence intervals using the Neyman construction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-limits">3.3. Upper Limits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cl-s-criterion">3.4. The CL<span class="math notranslate nohighlight">\(_s\)</span> criterion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.5. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">4.1. Recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-using-the-neyman-construction">4.2. Confidence intervals using the Neyman construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-limits">4.3. Upper Limits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cl-s-criterion">4.4. The CL<span class="math notranslate nohighlight">\(_s\)</span> criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -390,17 +378,17 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="confidence-intervals-and-limits">
-<h1><span class="section-number">3. </span>Confidence Intervals and Limits<a class="headerlink" href="#confidence-intervals-and-limits" title="Link to this heading">#</a></h1>
+<span id="sec-intervals"></span><h1><span class="section-number">4. </span>Confidence Intervals and Limits<a class="headerlink" href="#confidence-intervals-and-limits" title="Link to this heading">#</a></h1>
 <section id="recap">
-<h2><span class="section-number">3.1. </span>Recap<a class="headerlink" href="#recap" title="Link to this heading">#</a></h2>
-<p>We defined in Part 1 our probability model and likelihood function for a simple one bin counting experiment with <span class="math notranslate nohighlight">\(n\)</span> events, <span class="math notranslate nohighlight">\(s\)</span> signal and <span class="math notranslate nohighlight">\(b\)</span> background, in our signal region and <span class="math notranslate nohighlight">\(m\)</span> events, <span class="math notranslate nohighlight">\(b\)</span> background, in our control region:</p>
+<h2><span class="section-number">4.1. </span>Recap<a class="headerlink" href="#recap" title="Link to this heading">#</a></h2>
+<p>We defined in <a class="reference internal" href="01-likelihood.html#sec-likelihood"><span class="std std-numref">Chapter 2</span></a> our probability model and likelihood function for a simple one bin counting experiment with <span class="math notranslate nohighlight">\(n\)</span> events, <span class="math notranslate nohighlight">\(s\)</span> signal and <span class="math notranslate nohighlight">\(b\)</span> background, in our signal region and <span class="math notranslate nohighlight">\(m\)</span> events, <span class="math notranslate nohighlight">\(b\)</span> background, in our control region:</p>
 <div class="math notranslate nohighlight" id="equation-3model">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-3model" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-3model" title="Link to this equation">#</a></span>\[
 P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s, b),
 \]</div>
 <p>and our test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-3ts-tilde">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-3ts-tilde" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-3ts-tilde" title="Link to this equation">#</a></span>\[\begin{split}
 \tilde{\lambda}(s) = \left\{
     \begin{array}{ll}
       \frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{$\hat{s}\geq0$}.\\
@@ -409,9 +397,9 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
   \right., \quad \tilde{t}_s=-2\ln \tilde{\lambda}(s),
 \end{split}\]</div>
 <p>and solved for <span class="math notranslate nohighlight">\(\hat{s}, \hat{b}, \hat{\hat{b}}(s)\)</span> for given <span class="math notranslate nohighlight">\(n, m\)</span> to find an analytic form for <span class="math notranslate nohighlight">\(t_s\)</span>.</p>
-<p>In part 2, we translated this to a probability distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> under a particular signal hypothesis <span class="math notranslate nohighlight">\(H_s\)</span>, and quantified the compatibility of our observation based on the <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(p_s\)</span> of the observed test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s^\mathrm{obs}\)</span>:</p>
+<p>In <a class="reference internal" href="02-hypothesis-testing.html#sec-hypothesis-testing"><span class="std std-numref">Chapter 3</span></a>, we translated this to a probability distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> under a particular signal hypothesis <span class="math notranslate nohighlight">\(H_s\)</span>, and quantified the compatibility of our observation based on the <span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(p_s\)</span> of the observed test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s^\mathrm{obs}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-3pvalue">
-<span class="eqno">(3.3)<a class="headerlink" href="#equation-3pvalue" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-3pvalue" title="Link to this equation">#</a></span>\[
 p_s = \int_{\tilde{t}_\mathrm{obs}}^{\infty}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s,
 \]</div>
 <p>and it’s associated significance.</p>
@@ -537,12 +525,12 @@ p_s = \int_{\tilde{t}_\mathrm{obs}}^{\infty}p(\tilde{t}_s|s)\mathrm d \tilde{t}_
 </div>
 </section>
 <section id="confidence-intervals-using-the-neyman-construction">
-<h2><span class="section-number">3.2. </span>Confidence intervals using the Neyman construction<a class="headerlink" href="#confidence-intervals-using-the-neyman-construction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Confidence intervals using the Neyman construction<a class="headerlink" href="#confidence-intervals-using-the-neyman-construction" title="Link to this heading">#</a></h2>
 <p>The machinery from Part 2 can be extended straightforwardly to extracting “confidence intervals” for our parameters of interest (POIs): a range of values of the POIs that are allowed, based on the experiment, at a certain “confidence level” (CL), e.g. 68% or 95%.
 Very similar to the idea of the significance level, the CL is defined such that if we were to repeat the experiment many times, a 95%-confidence-interval must contain, or <em>cover</em>, the true value of the parameter 95% of the time.</p>
-<p>We can ensure this for any given CL by solving Eq. <a class="reference internal" href="#equation-3pvalue">(3.3)</a> for a <span class="math notranslate nohighlight">\(p\)</span>-value of <span class="math notranslate nohighlight">\(1 - \mathrm{CL}\)</span>:</p>
+<p>We can ensure this for any given CL by solving Eq. <a class="reference internal" href="#equation-3pvalue">(4.3)</a> for a <span class="math notranslate nohighlight">\(p\)</span>-value of <span class="math notranslate nohighlight">\(1 - \mathrm{CL}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-cl">
-<span class="eqno">(3.4)<a class="headerlink" href="#equation-cl" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-cl" title="Link to this equation">#</a></span>\[
 p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}_s|s_\pm)\mathrm d \tilde{t}_s,
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(s_-\)</span> and <span class="math notranslate nohighlight">\(s_+\)</span> are the lower and upper limits on <span class="math notranslate nohighlight">\(s\)</span>, respectively.</p>
@@ -666,9 +654,9 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}_s|s_\p
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="neymanconstruction">
-<img alt="_images/9bccaae7d95eaee5de804f9e4a60120225d60201e0cc8eb8c0dd48a5d299145e.png" src="_images/9bccaae7d95eaee5de804f9e4a60120225d60201e0cc8eb8c0dd48a5d299145e.png" />
+<img alt="_images/e2d951ca4608de1d4bcea4eb0ee2f453bfeb4b9ed46303e9108485432f5a4163.png" src="_images/e2d951ca4608de1d4bcea4eb0ee2f453bfeb4b9ed46303e9108485432f5a4163.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Demonstration of the Neyman construction for a 95% confidence interval. Left: Scanning <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> using 10,000 toys each for different values of <span class="math notranslate nohighlight">\(s\)</span>. Right: Contour plot of the <span class="math notranslate nohighlight">\(p\)</span>-values for different <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>’s as a function of <span class="math notranslate nohighlight">\(s\)</span>, with the observed <span class="math notranslate nohighlight">\(t^\mathrm{obs}_s\)</span> in red. The points at which <span class="math notranslate nohighlight">\(t^\mathrm{obs}_s\)</span> intersects with the <span class="math notranslate nohighlight">\(p\)</span>-value = 0.05 contour are marked in black and signify the limits of the 95% confidence interval for <span class="math notranslate nohighlight">\(s\)</span> - in this case, <span class="math notranslate nohighlight">\([\)</span><span class="output text_plain">5.9</span>, <span class="output text_plain">25.6</span><span class="math notranslate nohighlight">\(]\)</span>.</span><a class="headerlink" href="#neymanconstruction" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Demonstration of the Neyman construction for a 95% confidence interval. Left: Scanning <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> using 10,000 toys each for different values of <span class="math notranslate nohighlight">\(s\)</span>. Right: Contour plot of the <span class="math notranslate nohighlight">\(p\)</span>-values for different <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>’s as a function of <span class="math notranslate nohighlight">\(s\)</span>, with the observed <span class="math notranslate nohighlight">\(t^\mathrm{obs}_s\)</span> in red. The points at which <span class="math notranslate nohighlight">\(t^\mathrm{obs}_s\)</span> intersects with the <span class="math notranslate nohighlight">\(p\)</span>-value = 0.05 contour are marked in black and signify the limits of the 95% confidence interval for <span class="math notranslate nohighlight">\(s\)</span> - in this case, <span class="math notranslate nohighlight">\([\)</span>, <span class="math notranslate nohighlight">\(]\)</span>.</span><a class="headerlink" href="#neymanconstruction" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -680,11 +668,11 @@ p = 1 - \mathrm{CL} = \int_{\tilde{t}^\mathrm{obs}_s}^{\infty}p(\tilde{t}_s|s_\p
 </div>
 </section>
 <section id="upper-limits">
-<h2><span class="section-number">3.3. </span>Upper Limits<a class="headerlink" href="#upper-limits" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Upper Limits<a class="headerlink" href="#upper-limits" title="Link to this heading">#</a></h2>
 <p>Typically if a search does not have enough sensitivity to directly observe a new signal, we instead quote an upper limit on the signal strength.
-This is similar in practice to the Neyman construction for confidence intervals, solving Eq. <a class="reference internal" href="#equation-cl">(3.4)</a> only for the upper boundary. However, an important difference is that when setting upper limits, we have to modify the test statistic so that a best-fit signal strength <em>greater</em> than the expected signal (<span class="math notranslate nohighlight">\(\hat{s} &gt; s\)</span>) does not lower the compatibility with <span class="math notranslate nohighlight">\(H_s\)</span>:</p>
+This is similar in practice to the Neyman construction for confidence intervals, solving Eq. <a class="reference internal" href="#equation-cl">(4.4)</a> only for the upper boundary. However, an important difference is that when setting upper limits, we have to modify the test statistic so that a best-fit signal strength <em>greater</em> than the expected signal (<span class="math notranslate nohighlight">\(\hat{s} &gt; s\)</span>) does not lower the compatibility with <span class="math notranslate nohighlight">\(H_s\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-qs-tilde">
-<span class="eqno">(3.5)<a class="headerlink" href="#equation-qs-tilde" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-qs-tilde" title="Link to this equation">#</a></span>\[\begin{split}
     \tilde{q}(s) = \left\{
         \begin{array}{ll}
           \tilde{t}(s), &amp; \mbox{$\hat{s} &lt; s$}.\\
@@ -705,7 +693,7 @@ This is similar in practice to the Neyman construction for confidence intervals,
         \end{array}
       \right.
 \end{split}\]</div>
-<p>The upper limit test statistic <span class="math notranslate nohighlight">\(\tilde{q}(s)\)</span> is set to 0 for <span class="math notranslate nohighlight">\(\hat{s} &gt; s\)</span> so that this situation does not contribute to the <span class="math notranslate nohighlight">\(p\)</span>-value integral in Eq. <a class="reference internal" href="#equation-3pvalue">(3.3)</a>. This is what this looks like:</p>
+<p>The upper limit test statistic <span class="math notranslate nohighlight">\(\tilde{q}(s)\)</span> is set to 0 for <span class="math notranslate nohighlight">\(\hat{s} &gt; s\)</span> so that this situation does not contribute to the <span class="math notranslate nohighlight">\(p\)</span>-value integral in Eq. <a class="reference internal" href="#equation-3pvalue">(4.3)</a>. This is what this looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">q_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
@@ -773,7 +761,7 @@ This is similar in practice to the Neyman construction for confidence intervals,
 <figure class="align-default" id="q-tilde-s">
 <img alt="_images/0ca98a9cc221ea852739e8b931e87ac8d4b2cf73292387f0f5121bf9e2b740fc.png" src="_images/0ca98a9cc221ea852739e8b931e87ac8d4b2cf73292387f0f5121bf9e2b740fc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Comparing <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> and <span class="math notranslate nohighlight">\(\tilde{q}_s\)</span>.</span><a class="headerlink" href="#q-tilde-s" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Comparing <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> and <span class="math notranslate nohighlight">\(\tilde{q}_s\)</span>.</span><a class="headerlink" href="#q-tilde-s" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -838,9 +826,9 @@ This is essentially a <span class="math notranslate nohighlight">\(\chi^2\)</spa
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-q">
-<img alt="_images/94c0e607776c894721400718555858921ce20a8a0d663a0cff3ead4e52f02393.png" src="_images/94c0e607776c894721400718555858921ce20a8a0d663a0cff3ead4e52f02393.png" />
+<img alt="_images/25ea8db60a02bb489b3b548a3f78e1deb575f5f696a82585c1ca98fb568af238.png" src="_images/25ea8db60a02bb489b3b548a3f78e1deb575f5f696a82585c1ca98fb568af238.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Comparing <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> and <span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-q" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Comparing <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> and <span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-q" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -900,7 +888,7 @@ This is essentially a <span class="math notranslate nohighlight">\(\chi^2\)</spa
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[s \leq 24.0\]</div>
+\[s \leq 23.8\]</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -916,24 +904,24 @@ This is essentially a <span class="math notranslate nohighlight">\(\chi^2\)</spa
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="upperlimits">
-<img alt="_images/8bdbfda5921f009ed284d37ccb6a95f6c2deb57f273cfc9bf18b6fe87a6eba3b.png" src="_images/8bdbfda5921f009ed284d37ccb6a95f6c2deb57f273cfc9bf18b6fe87a6eba3b.png" />
+<img alt="_images/9f06a27703901086106898a57e3969993093ca779adb592ffba2529eedefc4e8.png" src="_images/9f06a27703901086106898a57e3969993093ca779adb592ffba2529eedefc4e8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Extending the Neyman construction to an upper limit on <span class="math notranslate nohighlight">\(s\)</span>. Left: Scanning <span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> using 10,000 toys each for different values of <span class="math notranslate nohighlight">\(s\)</span>. Right: Contour plot of the <span class="math notranslate nohighlight">\(p\)</span>-values for different <span class="math notranslate nohighlight">\(\tilde{q}_s\)</span>’s as a function of <span class="math notranslate nohighlight">\(s\)</span>, with the observed <span class="math notranslate nohighlight">\(q^\mathrm{obs}_s\)</span> in red. The point at which <span class="math notranslate nohighlight">\(q^\mathrm{obs}_s\)</span> intersects with the <span class="math notranslate nohighlight">\(p\)</span>-value = 0.05 contour is marked in black and signifies the upper limit at 95% CL.</span><a class="headerlink" href="#upperlimits" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Extending the Neyman construction to an upper limit on <span class="math notranslate nohighlight">\(s\)</span>. Left: Scanning <span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> using 10,000 toys each for different values of <span class="math notranslate nohighlight">\(s\)</span>. Right: Contour plot of the <span class="math notranslate nohighlight">\(p\)</span>-values for different <span class="math notranslate nohighlight">\(\tilde{q}_s\)</span>’s as a function of <span class="math notranslate nohighlight">\(s\)</span>, with the observed <span class="math notranslate nohighlight">\(q^\mathrm{obs}_s\)</span> in red. The point at which <span class="math notranslate nohighlight">\(q^\mathrm{obs}_s\)</span> intersects with the <span class="math notranslate nohighlight">\(p\)</span>-value = 0.05 contour is marked in black and signifies the upper limit at 95% CL.</span><a class="headerlink" href="#upperlimits" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
 </div>
-<p><span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> is shifted to the left with respect to <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>; hence, the upper limit of <span class="output text_plain">24.0</span> is slightly lower than the upper bound of the 95% confidence interval we derived using <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(p(\tilde{q}_s|s)\)</span> is shifted to the left with respect to <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>; hence, the upper limit of  is slightly lower than the upper bound of the 95% confidence interval we derived using <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>.</p>
 </section>
 <section id="the-cl-s-criterion">
-<h2><span class="section-number">3.4. </span>The CL<span class="math notranslate nohighlight">\(_s\)</span> criterion<a class="headerlink" href="#the-cl-s-criterion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>The CL<span class="math notranslate nohighlight">\(_s\)</span> criterion<a class="headerlink" href="#the-cl-s-criterion" title="Link to this heading">#</a></h2>
 <p>I now introduce two conventions related to hypothesis testing and searches in particle physics.
 Firstly (the simple one), the POI <span class="math notranslate nohighlight">\(s\)</span> is usually re-parametrized as:</p>
 <div class="math notranslate nohighlight" id="equation-mus">
-<span class="eqno">(3.6)<a class="headerlink" href="#equation-mus" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-mus" title="Link to this equation">#</a></span>\[
 s \rightarrow \mu \cdot s,
 \]</div>
-<p>where now <span class="math notranslate nohighlight">\(\mu\)</span> is the POI, referred to as the “signal strength”, and <span class="math notranslate nohighlight">\(s\)</span> is a fixed value representing the number of signal events we expect to see for the nominal signal strength <span class="math notranslate nohighlight">\(\mu\)</span> of 1. For the example above, if we expect <span class="math notranslate nohighlight">\(s = 10\)</span> signal events, then we would quote the upper limit as <span class="output text_plain">24.0</span><span class="math notranslate nohighlight">\( / s =\)</span> 2.4 on <span class="math notranslate nohighlight">\(\mu\)</span> at 95% CL.</p>
+<p>where now <span class="math notranslate nohighlight">\(\mu\)</span> is the POI, referred to as the “signal strength”, and <span class="math notranslate nohighlight">\(s\)</span> is a fixed value representing the number of signal events we expect to see for the nominal signal strength <span class="math notranslate nohighlight">\(\mu\)</span> of 1. For the example above, if we expect <span class="math notranslate nohighlight">\(s = 10\)</span> signal events, then we would quote the upper limit as <span class="math notranslate nohighlight">\( / s =\)</span> 2.4 on <span class="math notranslate nohighlight">\(\mu\)</span> at 95% CL.</p>
 <p>The second, important, convention is that we use a slightly different criterion for our confidence intervals, called “CL<span class="math notranslate nohighlight">\(_s\)</span>”.
 This is motivated by situations where we have little sensitivity to the signal we’re searching for.
 For example, let’s say we expect <span class="math notranslate nohighlight">\(s = 10\)</span> and observe <span class="math notranslate nohighlight">\(n = 70, m = 100\)</span>.
@@ -950,21 +938,21 @@ However, let’s see what limit the above procedure sets fo this experiment:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\mu \leq 0.041\]</div>
+\[\mu \leq 0.024\]</div>
 </div>
 </div>
 <p>We end up setting an aggressive limit on <span class="math notranslate nohighlight">\(\mu\)</span> and excluding <span class="math notranslate nohighlight">\(\mu = 1\)</span> (at 95% CL).
 This is undesirable given the complete lack of sensitivity to the signal.</p>
 <p>The CL<span class="math notranslate nohighlight">\(_s\)</span> method solves this problem by considering both the <span class="math notranslate nohighlight">\(p\)</span>-value of the signal + background hypothesis <span class="math notranslate nohighlight">\(H_s\)</span> (referred to as <span class="math notranslate nohighlight">\(p_{s+b}\)</span> or just <span class="math notranslate nohighlight">\(p_\mu\)</span> for short), <em>and</em> the <span class="math notranslate nohighlight">\(p\)</span>-value of the background-only hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> (<span class="math notranslate nohighlight">\(p_b\)</span>), to define a new criterion:</p>
 <div class="math notranslate nohighlight" id="equation-pmu-prime">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-pmu-prime" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-pmu-prime" title="Link to this equation">#</a></span>\[
 p_\mu' = \cfrac{p_\mu}{1 - p_b}
 \]</div>
 <p>In cases where the signal region is completely background dominated, the compatibility with the background-only hypothesis should be high, so <span class="math notranslate nohighlight">\(p_b \sim 1\)</span> and, hence, <span class="math notranslate nohighlight">\(p_\mu'\)</span> will be increased (as we want).
 On the other hand, for more sensitive regions, compatibility should be lower <span class="math notranslate nohighlight">\(\Rightarrow p_b \sim 0\)</span> and <span class="math notranslate nohighlight">\(p_\mu' \sim p_\mu\)</span>.</p>
 <p>To be explicit, here</p>
 <div class="math notranslate nohighlight" id="equation-pb">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-pb" title="Link to this equation">#</a></span>\[
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-pb" title="Link to this equation">#</a></span>\[
 p_b = \int^{\tilde{t}_\mathrm{obs}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}_s,
 \]</div>
 <p>where we should note that:</p>
@@ -1096,9 +1084,9 @@ p_b = \int^{\tilde{t}_\mathrm{obs}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="cls">
-<img alt="_images/6bc63e3690f8ea22ff9b6bc19a17846608ae79b6e3dd2859c0a3d11bbc6f15bc.png" src="_images/6bc63e3690f8ea22ff9b6bc19a17846608ae79b6e3dd2859c0a3d11bbc6f15bc.png" />
+<img alt="_images/d3db7078b7f4d0444ec5fe59aea6619f5ca33d4471caa8f6e8de0117493e6cc8.png" src="_images/d3db7078b7f4d0444ec5fe59aea6619f5ca33d4471caa8f6e8de0117493e6cc8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Demonstration of CL<span class="math notranslate nohighlight">\(_s\)</span> criterion.</span><a class="headerlink" href="#cls" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Demonstration of CL<span class="math notranslate nohighlight">\(_s\)</span> criterion.</span><a class="headerlink" href="#cls" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1181,8 +1169,8 @@ We can also confirm that the limit for our first example, which had better sensi
 </div>
 </section>
 <section id="summary">
-<h2><span class="section-number">3.5. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>We extended the framework for hypothesis testing to derive frequentist confidence intervals for parameters of interest by solving for particular <span class="math notranslate nohighlight">\(p\)</span>-values, called the “Neyman construction”. For upper limits, we find that we need to use a further modified test statistic <span class="math notranslate nohighlight">\(\tilde{q}_\mu\)</span> and the “CL<span class="math notranslate nohighlight">\(_s\)</span>” criterion to avoid excluding signals for which we don’t have sensitivity. In Part 4, I’ll discuss the concepts of <em>expected</em> significances and limits, which are important to estimate our experiment’s sensitivity before collecting or looking at the data.</p>
+<h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>We extended the framework for hypothesis testing to derive frequentist confidence intervals for parameters of interest by solving for particular <span class="math notranslate nohighlight">\(p\)</span>-values, called the “Neyman construction”. For upper limits, we find that we need to use a further modified test statistic <span class="math notranslate nohighlight">\(\tilde{q}_\mu\)</span> and the “CL<span class="math notranslate nohighlight">\(_s\)</span>” criterion to avoid excluding signals for which we don’t have sensitivity. In <a class="reference internal" href="04-expected-significance-and-limits.html#sec-expected"><span class="std std-numref">Chapter 5</span></a>, I’ll discuss the concepts of <em>expected</em> significances and limits, which are important to estimate our experiment’s sensitivity before collecting or looking at the data.</p>
 </section>
 </section>
 
@@ -1222,7 +1210,7 @@ We can also confirm that the limit for our first example, which had better sensi
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Hypothesis Testing and Discovery Significance</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Hypothesis Testing and Discovery Significance</p>
       </div>
     </a>
     <a class="right-next"
@@ -1230,7 +1218,7 @@ We can also confirm that the limit for our first example, which had better sensi
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Expected Significances and Limits</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Expected Significances and Limits</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1251,11 +1239,11 @@ We can also confirm that the limit for our first example, which had better sensi
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">3.1. Recap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-using-the-neyman-construction">3.2. Confidence intervals using the Neyman construction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-limits">3.3. Upper Limits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cl-s-criterion">3.4. The CL<span class="math notranslate nohighlight">\(_s\)</span> criterion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.5. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">4.1. Recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-using-the-neyman-construction">4.2. Confidence intervals using the Neyman construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-limits">4.3. Upper Limits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cl-s-criterion">4.4. The CL<span class="math notranslate nohighlight">\(_s\)</span> criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1280,7 +1268,7 @@ By Raghav Kansal
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>

@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Stats for HEP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Introduction &#8212; Stats for HEP</title>
   
   
   
@@ -59,10 +60,14 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '00-introduction';</script>
     <link rel="icon" href="_static/favicon.png"/>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Introduction to Likelihoods and Test Statistics" href="01-likelihood.html" />
+    <link rel="prev" title="Stats for HEP" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -113,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -183,8 +186,8 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00-introduction.html">1. Introduction</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">I.  Frequentist Statistics at the LHC</span></p>
 <ul class="nav bd-sidenav">
@@ -273,7 +276,24 @@
       
       
       
-      <li><a href="https://github.com/rkansal47/stats-for-hep/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/rkansal47/stats-for-hep/edit/main/00-introduction.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rkansal47/stats-for-hep/issues/new?title=Issue%20on%20page%20%2F00-introduction.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,7 +349,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -343,13 +363,41 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>Once data is collected by high energy physics (HEP) experiments and reconstructed offline, it is analyzed to search and measure processes of interest.
+Typically, the raw data is entirely dominated by irrelevant background processes which we want to filter out in favor of the signal.
+The first step towards this is through appropriate online triggers, followed by offline selections to isolate the signal.</p>
+<p>Optimizing the event selection for all but a handful of data-driven searches requires simulations of the signal and background processes.
+Additionally, once the selections and phase space in which to perform the measurement have been finalized, the expected signal and background yields have to be carefully estimated, which often again necessitates simulations, as well as data-driven methods via unbiased control regions.</p>
+<p>Once we have our observations, and signal and background estimates, the final critical step is to interpret the results in a robust statistical framework.
+At the LHC, this is typically done using a frequentist, likelihood-based approach.
+In these notes, this approach is introduced by way of simple experimental examples.</p>
+<p>These notes are organized as follows.
+<a class="reference internal" href="01-likelihood.html#sec-likelihood"><span class="std std-numref">Chapter 2</span></a> introduces the concepts of the likelihood functions and test statistics, with <a class="reference internal" href="02-hypothesis-testing.html#sec-hypothesis-testing"><span class="std std-numref">Chapter 3</span></a> discussing the framework for hypothesis testing, including <span class="math notranslate nohighlight">\(p\)</span>-values, significances, and the statistical definition of a “discovery”.
+<a class="reference internal" href="03-intervals-and-limits.html#sec-intervals"><span class="std std-numref">Chapters 4</span></a> and <a class="reference internal" href="04-expected-significance-and-limits.html#sec-expected"><span class="std std-numref">5</span></a> then describe frequentist confidence intervals and upper limits, and the important concepts of expected significances and limits, respectively.
+Finally, asymptotic approximations to simplify these computations are discussed in <a class="reference internal" href="05-asymptotic-form-mle.html"><span class="std std-doc">Part II</span></a>.</p>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -361,6 +409,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="main.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stats for HEP</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01-likelihood.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Introduction to Likelihoods and Test Statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

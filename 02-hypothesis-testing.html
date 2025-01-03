@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Hypothesis Testing and Discovery Significance &#8212; Stats for HEP</title>
+    <title>3. Hypothesis Testing and Discovery Significance &#8212; Stats for HEP</title>
   
   
   
@@ -63,10 +63,11 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '02-hypothesis-testing';</script>
+    <link rel="icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Confidence Intervals and Limits" href="03-intervals-and-limits.html" />
-    <link rel="prev" title="1. Introduction to Likelihoods and Test Statistics" href="01-intro.html" />
+    <link rel="next" title="4. Confidence Intervals and Limits" href="03-intervals-and-limits.html" />
+    <link rel="prev" title="2. Introduction to Likelihoods and Test Statistics" href="01-likelihood.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -94,8 +95,8 @@
   <input type="search"
          class="form-control"
          name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -153,6 +154,21 @@
   
   
 </a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rkansal47/stats-for-hep/blob/gh-pages/stats-for-hep.pdf?raw=true" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-download fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+</ul></div>
         <div class="sidebar-primary-item">
 
 <button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -170,17 +186,20 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics for HEP</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-intro.html">1. Introduction to Likelihoods and Test Statistics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Hypothesis Testing and Discovery Significance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-intervals-and-limits.html">3. Confidence Intervals and Limits</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-expected-significance-and-limits.html">4. Expected Significances and Limits</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-introduction.html">1. Introduction</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Asymptotical Formulae</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">I.  Frequentist Statistics at the LHC</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-likelihood.html">2. Introduction to Likelihoods and Test Statistics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Hypothesis Testing and Discovery Significance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-intervals-and-limits.html">4. Confidence Intervals and Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-expected-significance-and-limits.html">5. Expected Significances and Limits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II.  Asymptotic Formulae</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">5. Asymptotic Form of the MLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">6. Asymptotic Form of the Profile Likelihood Ratio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-asymptotic-form-mle.html">6. Asymptotic Form of the MLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-asymptotic-formulae.html">7. Asymptotic Form of the Profile Likelihood Ratio</a></li>
 </ul>
 
     </div>
@@ -240,7 +259,7 @@
       
       
       
-      <li><a href="https://github.com/rkansal47/stats-for-HEP" target="_blank"
+      <li><a href="https://github.com/rkansal47/stats-for-hep" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -257,7 +276,24 @@
       
       
       
-      <li><a href="https://github.com/rkansal47/stats-for-HEP/issues/new?title=Issue%20on%20page%20%2F02-hypothesis-testing.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/rkansal47/stats-for-hep/edit/main/02-hypothesis-testing.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rkansal47/stats-for-hep/issues/new?title=Issue%20on%20page%20%2F02-hypothesis-testing.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,54 +305,6 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/02-hypothesis-testing.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
 </li>
       
   </ul>
@@ -373,12 +361,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">2.1. Recap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">2.2. Hypothesis testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-tilde-t-s-s">2.3. Deriving <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-values-and-significance">2.4. <span class="math notranslate nohighlight">\(p\)</span>-values and Significance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-discovery">2.5. Signal discovery</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.6. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">3.1. Recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">3.2. Hypothesis testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-tilde-t-s-s">3.3. Deriving <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-values-and-significance">3.4. <span class="math notranslate nohighlight">\(p\)</span>-values and Significance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-discovery">3.5. Signal discovery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.6. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -391,17 +379,17 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing-and-discovery-significance">
-<h1><span class="section-number">2. </span>Hypothesis Testing and Discovery Significance<a class="headerlink" href="#hypothesis-testing-and-discovery-significance" title="Link to this heading">#</a></h1>
+<span id="sec-hypothesis-testing"></span><h1><span class="section-number">3. </span>Hypothesis Testing and Discovery Significance<a class="headerlink" href="#hypothesis-testing-and-discovery-significance" title="Link to this heading">#</a></h1>
 <section id="recap">
-<h2><span class="section-number">2.1. </span>Recap<a class="headerlink" href="#recap" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Recap<a class="headerlink" href="#recap" title="Link to this heading">#</a></h2>
 <p>We defined our probability model and likelihood function for a simple one bin counting experiment with <span class="math notranslate nohighlight">\(n\)</span> events, <span class="math notranslate nohighlight">\(s\)</span> signal and <span class="math notranslate nohighlight">\(b\)</span> background, in our signal region and <span class="math notranslate nohighlight">\(m\)</span> events, <span class="math notranslate nohighlight">\(b\)</span> background, in our control region:</p>
 <div class="math notranslate nohighlight" id="equation-model">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-model" title="Link to this equation">#</a></span>\[
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-model" title="Link to this equation">#</a></span>\[
 P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s, b),
 \]</div>
 <p>and our test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-ts-tilde">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-ts-tilde" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-ts-tilde" title="Link to this equation">#</a></span>\[\begin{split}
 \tilde{\lambda}(s) = \left\{
     \begin{array}{ll}
       \frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})}, &amp; \mbox{$\hat{s}\geq0$}.\\
@@ -413,7 +401,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <p>Next, we want to translate this to a probability distribution of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> under a particular signal hypothesis (<span class="math notranslate nohighlight">\(H_s\)</span>) (i.e., an assumed value of <span class="math notranslate nohighlight">\(s\)</span>): <span class="math notranslate nohighlight">\(p(\tilde{t}_s|H_s)\)</span>, or just <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> for simplicity.</p>
 </section>
 <section id="hypothesis-testing">
-<h2><span class="section-number">2.2. </span>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
 <p>The goal of any experiment is to test whether our data support or exclude a particular hypothesis <span class="math notranslate nohighlight">\(H\)</span>, and quantify the (dis)agreement. For example, to what degree did our search for the Higgs boson agree or disagree with the standard model hypothesis?</p>
 <p>We have already discussed the process of mapping our data to a scalar test statistic <span class="math notranslate nohighlight">\(t\)</span> that we can use to test <span class="math notranslate nohighlight">\(H\)</span>. However, we need to know the probability distribution of <span class="math notranslate nohighlight">\(t\)</span> under <span class="math notranslate nohighlight">\(H\)</span> to quantify the (in)consistency of the observed data with <span class="math notranslate nohighlight">\(H\)</span> and decide whether or not to exclude <span class="math notranslate nohighlight">\(H\)</span>.</p>
 <p>We also recognize that there’s always a chance that we will exclude <span class="math notranslate nohighlight">\(H\)</span> even if it’s true (called a Type I error, or a false positive), or not exclude <span class="math notranslate nohighlight">\(H\)</span> when it’s false (Type II error, or false negative). The probability of each is referred to as <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>, respectively. See this handy table from <a class="reference external" href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors">Wikipedia</a>:</p>
@@ -423,11 +411,11 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <p>Before the test, we should decide on a probability of making a Type I error, <span class="math notranslate nohighlight">\(\alpha\)</span>, that we are comfortable with, called a “significance level”. Typical values are 5% and 1%, although if we’re claiming something crazy like a new particle, we better be very sure this isn’t a false positive; hence, we set a much lower significance level for these tests of <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span>. (The <em>significance</em> of this value will be explained below.)</p>
 </section>
 <section id="deriving-p-tilde-t-s-s">
-<h2><span class="section-number">2.3. </span>Deriving <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span><a class="headerlink" href="#deriving-p-tilde-t-s-s" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Deriving <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span><a class="headerlink" href="#deriving-p-tilde-t-s-s" title="Link to this heading">#</a></h2>
 <p>We can approximate <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> by generating several pseudo- or “toy” datasets assuming <span class="math notranslate nohighlight">\(s\)</span> expected signal events. In this case, this means sampling possible values for <span class="math notranslate nohighlight">\(n, m\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. <a class="reference internal" href="#equation-model">(2.1)</a>) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much as we might expect.</p>
+<p>One complication is that the <span class="math notranslate nohighlight">\(n, m\)</span> distributions from which we want to sample (Eq. <a class="reference internal" href="#equation-model">(3.1)</a>) also depend on the nuisance parameter <span class="math notranslate nohighlight">\(b\)</span>. However, we’ll see that this won’t matter as much as we might expect.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -540,9 +528,9 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-t">
-<img alt="_images/7648554fcfe50e7fa61fd5a968683aa5ea0a0538749c36fa89b983bc418fa384.png" src="_images/7648554fcfe50e7fa61fd5a968683aa5ea0a0538749c36fa89b983bc418fa384.png" />
+<img alt="_images/3dbe2d5322e4cf8a229382503ddfcd7024e80204797e57ec1627d416699e75c7.png" src="_images/3dbe2d5322e4cf8a229382503ddfcd7024e80204797e57ec1627d416699e75c7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Estimating <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> through toys.</span><a class="headerlink" href="#p-tilde-t" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Estimating <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> through toys.</span><a class="headerlink" href="#p-tilde-t" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -595,9 +583,9 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-t-asym">
-<img alt="_images/cba3064f8f4f5817746bcca9cea9c865acdffc289d3624467f9e0c0579a242ae.png" src="_images/cba3064f8f4f5817746bcca9cea9c865acdffc289d3624467f9e0c0579a242ae.png" />
+<img alt="_images/5e2d2b006baf37ac074b5a58d3ef634bd289033eb1120c2ac2e1b5618c0caaad.png" src="_images/5e2d2b006baf37ac074b5a58d3ef634bd289033eb1120c2ac2e1b5618c0caaad.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Asymptotic form of <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-t-asym" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Asymptotic form of <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-t-asym" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -609,7 +597,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 </section>
 <section id="p-values-and-significance">
-<span id="pvalues"></span><h2><span class="section-number">2.4. </span><span class="math notranslate nohighlight">\(p\)</span>-values and Significance<a class="headerlink" href="#p-values-and-significance" title="Link to this heading">#</a></h2>
+<span id="pvalues"></span><h2><span class="section-number">3.4. </span><span class="math notranslate nohighlight">\(p\)</span>-values and Significance<a class="headerlink" href="#p-values-and-significance" title="Link to this heading">#</a></h2>
 <p>Now that we know the distribution of the test statistic <span class="math notranslate nohighlight">\(p(\tilde{t}_s|H_s) \equiv p(\tilde{t}_s|s)\)</span>, we can finally test <span class="math notranslate nohighlight">\(H_s\)</span> with our experiment.</p>
 <p>Let’s say we’re testing the hypothesis of <span class="math notranslate nohighlight">\(s = 10\)</span> signal events in our model and we observe <span class="math notranslate nohighlight">\(n = 20, m = 5\)</span> events.
 We can map this observation to our test statistic <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_s\)</span>:</p>
@@ -761,9 +749,9 @@ We can map this observation to our test statistic <span class="math notranslate 
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="hs">
-<img alt="_images/86c05f60c2144988a82eec92cfa798eaa8d629a4a3bf00a1d947c154e2cd3f40.png" src="_images/86c05f60c2144988a82eec92cfa798eaa8d629a4a3bf00a1d947c154e2cd3f40.png" />
+<img alt="_images/e1222dc99683013b610ee00323c1d355cc539801ab8915eda1f195ab23515e09.png" src="_images/e1222dc99683013b610ee00323c1d355cc539801ab8915eda1f195ab23515e09.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Testing <span class="math notranslate nohighlight">\(H_s\)</span>.</span><a class="headerlink" href="#hs" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Testing <span class="math notranslate nohighlight">\(H_s\)</span>.</span><a class="headerlink" href="#hs" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -771,18 +759,18 @@ We can map this observation to our test statistic <span class="math notranslate 
 <p>We care about, given <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>, the probability of obtaining <span class="math notranslate nohighlight">\(\tilde{t}^\mathrm{obs}_s\)</span> <em>or a value more inconsistent</em> with <span class="math notranslate nohighlight">\(H_s\)</span>; i.e., the green shaded region above.
 This is referred to as the <em><span class="math notranslate nohighlight">\(p\)</span>-value</em> of the observation:</p>
 <div class="math notranslate nohighlight" id="equation-pvalue">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-pvalue" title="Link to this equation">#</a></span>\[
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-pvalue" title="Link to this equation">#</a></span>\[
 p_s = \int_{\tilde{t}_\mathrm{obs}}^{\infty}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s = 1 - F(\tilde{t}_\mathrm{obs}|s),
 \]</div>
-<p>which is <span class="output text_plain">0.3</span> for this example, where</p>
+<p>which is  for this example, where</p>
 <div class="math notranslate nohighlight" id="equation-1cdf">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-1cdf" title="Link to this equation">#</a></span>\[
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-1cdf" title="Link to this equation">#</a></span>\[
 F(\tilde{t}_s|s) = \int_{-\infty}^{\tilde{t}_s}p(\tilde{t}'_s|s)\mathrm d \tilde{t}'_s
 \]</div>
 <p>is the cumulative distribution function (CDF) of <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span>. We reject the hypothesis if this <span class="math notranslate nohighlight">\(p\)</span>-value is less than our chosen significance level <span class="math notranslate nohighlight">\(\alpha\)</span>; the idea being that if <span class="math notranslate nohighlight">\(H_s\)</span> were true and we repeated this measurement many times, then the probability of a false-positive (<span class="math notranslate nohighlight">\(p\)</span>-value <span class="math notranslate nohighlight">\(\leq \alpha\)</span>) is exactly <span class="math notranslate nohighlight">\(\alpha\)</span>, as we intended.</p>
 <p>Often the <span class="math notranslate nohighlight">\(p\)</span>-value is also “converted” into a <em>significance</em> (<span class="math notranslate nohighlight">\(Z\)</span>), which is the corresponding number of standard deviations away from the mean in a Gaussian distribution</p>
 <div class="math notranslate nohighlight" id="equation-z">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-z" title="Link to this equation">#</a></span>\[
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-z" title="Link to this equation">#</a></span>\[
 Z = \Phi^{-1}(1-p),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is the CDF of the standard Gaussian.
@@ -790,7 +778,7 @@ This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a 
 <figure class="align-center" id="sign">
 <img alt="_images/significance.png" src="_images/significance.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Significance from <span class="math notranslate nohighlight">\(p\)</span>-value, from Ref. <span id="id4">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>.</span><a class="headerlink" href="#sign" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Significance from <span class="math notranslate nohighlight">\(p\)</span>-value, from Ref. <span id="id4">[<a class="reference internal" href="main.html#id6" title="Kyle Cranmer. Practical Statistics for the LHC. In 2011 European School of High-Energy Physics, 267–308. 2014. arXiv:1503.07622, doi:10.5170/CERN-2014-003.267.">2</a>]</span>.</span><a class="headerlink" href="#sign" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The significance for this example is, therefore:</p>
@@ -807,10 +795,10 @@ This is more easily illustrated in a figure (taken from Ref. <span id="id3">[<a 
 \[Z = 0.52\]</div>
 </div>
 </div>
-<p>We sometimes say that our measurement is (in)consistent or (in)compatible with <span class="math notranslate nohighlight">\(H\)</span> at the <span class="output text_plain">0.52</span><span class="math notranslate nohighlight">\(\sigma\)</span> level, or within <span class="math notranslate nohighlight">\(1\sigma\)</span>, or … the list goes on.</p>
+<p>We sometimes say that our measurement is (in)consistent or (in)compatible with <span class="math notranslate nohighlight">\(H\)</span> at the <span class="math notranslate nohighlight">\(\sigma\)</span> level, or within <span class="math notranslate nohighlight">\(1\sigma\)</span>, or … the list goes on.</p>
 </section>
 <section id="signal-discovery">
-<h2><span class="section-number">2.5. </span>Signal discovery<a class="headerlink" href="#signal-discovery" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>Signal discovery<a class="headerlink" href="#signal-discovery" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Note: Ref. <span id="id5">[<a class="reference internal" href="main.html#id5" title="Glen Cowan, Kyle Cranmer, Eilam Gross, and Ofer Vitells. Asymptotic formulae for likelihood-based tests of new physics. Eur. Phys. J. C, 71:1554, 2011. [Erratum: Eur.Phys.J.C 73, 2501 (2013)]. arXiv:1007.1727, doi:10.1140/epjc/s10052-011-1554-0.">1</a>]</span> refers to the special case of the test statistic <span class="math notranslate nohighlight">\(\tilde{t}_s\)</span> for <span class="math notranslate nohighlight">\(s = 0\)</span> as <span class="math notranslate nohighlight">\(q_0\)</span>.
@@ -831,9 +819,9 @@ I found this notation confusing because <span class="math notranslate nohighligh
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="h0">
-<img alt="_images/5be9c4c30ff9f1b7747c2c16b8810ed9ab3b7d1a963304685b1491b1ff9013eb.png" src="_images/5be9c4c30ff9f1b7747c2c16b8810ed9ab3b7d1a963304685b1491b1ff9013eb.png" />
+<img alt="_images/c4c139ae3f63d744d7875e1096ff03629bc0ae7d2a2448fed83a97a125efcdcb.png" src="_images/c4c139ae3f63d744d7875e1096ff03629bc0ae7d2a2448fed83a97a125efcdcb.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Testing the background-only hypothesis.</span><a class="headerlink" href="#h0" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Testing the background-only hypothesis.</span><a class="headerlink" href="#h0" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -843,7 +831,7 @@ However, for an actual search for a new particle at the LHC, this is insufficien
 The standard is instead set at <span class="math notranslate nohighlight">\(5\sigma\)</span> for discovering new signals, corresponding to the <span class="math notranslate nohighlight">\(3\times10^{-7}\)</span> significance level quoted earlier (we really don’t want to be making a mistake if we’re claiming to have discovered a new particle)! <span class="math notranslate nohighlight">\(3\sigma\)</span>, <span class="math notranslate nohighlight">\(4\sigma\)</span>, and <span class="math notranslate nohighlight">\(5\sigma\)</span> are often referred to as evidence, observation, and discovery, respectively, of the signals we’re searching for.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">2.6. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>We went over the framework for hypothesis testing, which consists of:</p>
 <ol class="arabic simple">
 <li><p>Defining a test statistic <span class="math notranslate nohighlight">\(t\)</span> to map data <span class="math notranslate nohighlight">\(\vec{x}\)</span> (in our example, <span class="math notranslate nohighlight">\(\vec{x} = (n, m)\)</span>) to a single number.</p></li>
@@ -851,7 +839,7 @@ The standard is instead set at <span class="math notranslate nohighlight">\(5\si
 <li><p>Quantifying the compatibility of the observed data <span class="math notranslate nohighlight">\(\vec{x}_\mathrm{obs}\)</span> with <span class="math notranslate nohighlight">\(H\)</span> with the <span class="math notranslate nohighlight">\(p\)</span>-value or significance <span class="math notranslate nohighlight">\(Z\)</span> of <span class="math notranslate nohighlight">\(t_\mathrm{obs}\)</span> relative to <span class="math notranslate nohighlight">\(p(t|H)\)</span>.</p></li>
 </ol>
 <p>This <span class="math notranslate nohighlight">\(p\)</span>-value / significance is what we then use to decide whether or not to exclude <span class="math notranslate nohighlight">\(H\)</span>. A particularly important special case of this is testing the background-only hypothesis when trying to discover a signal.</p>
-<p>In Part 3, I’ll discuss going beyond testing to setting intervals and limits for parameters of interest.</p>
+<p>In <a class="reference internal" href="03-intervals-and-limits.html#sec-intervals"><span class="std std-numref">Chapter 4</span></a>, I’ll discuss going beyond testing to setting intervals and limits for parameters of interest.</p>
 </section>
 </section>
 
@@ -886,12 +874,12 @@ The standard is instead set at <span class="math notranslate nohighlight">\(5\si
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01-intro.html"
+       href="01-likelihood.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Introduction to Likelihoods and Test Statistics</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Introduction to Likelihoods and Test Statistics</p>
       </div>
     </a>
     <a class="right-next"
@@ -899,7 +887,7 @@ The standard is instead set at <span class="math notranslate nohighlight">\(5\si
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Confidence Intervals and Limits</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Confidence Intervals and Limits</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -920,12 +908,12 @@ The standard is instead set at <span class="math notranslate nohighlight">\(5\si
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">2.1. Recap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">2.2. Hypothesis testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-tilde-t-s-s">2.3. Deriving <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-values-and-significance">2.4. <span class="math notranslate nohighlight">\(p\)</span>-values and Significance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-discovery">2.5. Signal discovery</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.6. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">3.1. Recap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">3.2. Hypothesis testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-tilde-t-s-s">3.3. Deriving <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-values-and-significance">3.4. <span class="math notranslate nohighlight">\(p\)</span>-values and Significance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-discovery">3.5. Signal discovery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.6. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -950,7 +938,7 @@ By Raghav Kansal
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>
