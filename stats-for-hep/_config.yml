@@ -7,13 +7,17 @@
 # Book settings
 title                       : Stats for HEP  # The title of the book. Will be placed in the left navbar.
 author                      : Raghav Kansal  # The author of the book
-copyright                   : "2023"  # Copyright year to be placed in the footer
+copyright                   : "2025"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: inline
+  execute_notebooks: cache
+
+# Use JupyterLab UI when launching notebooks
+launch_buttons:
+  notebook_interface: "jupyterlab"
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -26,12 +30,35 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/rkansal47/stats-for-HEP  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
+  url: https://github.com/rkansal47/stats-for-hep  # Online location of your book
+  path_to_book: stats-for-hep  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: favicon.png
   use_issues_button: true
   use_repository_button: true
+
+sphinx:
+  config:
+    html_theme_options:
+      repository_url:  https://github.com/rkansal47/stats-for-hep
+      use_issues_button: true
+      use_download_button: false
+      use_repository_button: true
+      use_edit_page_button: true
+      home_page_in_toc: true
+      icon_links: [
+            {
+                # Label for this link
+                "name": "PDF",
+                # URL where the link will redirect
+                "url": "https://github.com/rkansal47/stats-for-hep/blob/gh-pages/stats-for-hep.pdf?raw=true",  # required
+                # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
+                "icon": "fa-solid fa-download",
+                # The type of image to be used (see below for details)
+                "type": "fontawesome",
+            }
+      ]

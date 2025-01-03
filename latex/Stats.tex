@@ -12,23 +12,23 @@ At the LHC, this is typically done using a frequentist, likelihood-based approac
 In these notes, this approach is introduced by way of simple experimental examples.
 
 These notes are organized as follows.
-Chapter~\ref{sec:03_likelihood} introduces the concepts of the likelihood functions and test statistics, with Chapter~\ref{sec:03_hypothesis_testing} discussing the framework for hypothesis testing, including $p$-values, significances, and the statistical definition of a ``discovery''.
-Chapters~\ref{sec:03_intervals} and~\ref{sec:03_expected} then describe frequentist confidence intervals and upper limits, and the important concepts of expected significances and limits, respectively.
-Finally, asymptotic approximations to simplify these computations are discussed in Part~\ref{sec:03_asymptotic}.
+Chapter~\ref{sec:likelihood} introduces the concepts of the likelihood functions and test statistics, with Chapter~\ref{sec:hypothesis_testing} discussing the framework for hypothesis testing, including $p$-values, significances, and the statistical definition of a ``discovery''.
+Chapters~\ref{sec:intervals} and~\ref{sec:expected} then describe frequentist confidence intervals and upper limits, and the important concepts of expected significances and limits, respectively.
+Finally, asymptotic approximations to simplify these computations are discussed in Part~\ref{sec:asymptotic}.
 
 
 \part{Frequentist statistics at the LHC}
 
 \chapter{The likelihood function and test statistics}
-\label{sec:03_likelihood}
+\label{sec:likelihood}
 
 \section{The data model}
-\label{sec:03_data_model}
+\label{sec:data_model}
 
 Let us take the simplest possible case of a (one bin) counting experiment, where in our ``signal region'' we expect $s$ signal events and $b$ background events.
 The probability to observe $n$ events in our signal region is distributed as a Poisson with mean $s+b$:
 \begin{equation}
-\label{eq:03_poisson}
+\label{eq:poisson}
 P(n; s, b) = \pois(n; s+b) = \frac{(s+b)^n e^{-(s+b)}}{n!}
 \end{equation}
 
@@ -36,22 +36,22 @@ Since we have only one observation but two free parameters, this experiment is u
 So, let's also add a ``control region'' where we expect no signal and $b$ background events.
 The probability of observing $m$ events in our control region is therefore:
 \begin{equation}
-\label{eq:03_pois2}
+\label{eq:pois2}
 \pois(m; b) = \frac{b^m e^{-b}}{m!}
 \end{equation}
 Combining the two, the joint probability distribution for $n$ and $m$ is:
 \begin{equation}
-\label{eq:03_pois3}
+\label{eq:pois3}
 P(n, m; s, b) = \pois(n; s+b) \cdot \pois(m; b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!}
 \end{equation}
-This is also called the model for the data and is plotted for sample $s, b$ values in Figure~\ref{fig:03_pois}.
+This is also called the model for the data and is plotted for sample $s, b$ values in Figure~\ref{fig:pois}.
 
 \begin{figure}[htb]
     \centering
     \captionsetup{justification=centering}
     \includegraphics[width=\textwidth]{figures/01-intro/1.png}
     \caption{Sample 2D Poisson distributions.}
-    \label{fig:03_pois}
+    \label{fig:pois}
 \end{figure}
 
 \section{The likelihood function}
@@ -59,13 +59,13 @@ This is also called the model for the data and is plotted for sample $s, b$ valu
 In the \textit{frequentist} philosophy, however, all our parameters $n$, $m$ etc. are simply fixed values of nature and, hence, don't have a probability distribution.
 Instead, we work with the \textit{likelihood function}, which is a function only of our parameters of interest (POIs), $s$ in our example, and ``nuisance parameters'' ($b$), given fixed values for $n$ and $m$:
 \begin{equation}
-\label{eq:03_likelihood}
+\label{eq:likelihood}
 L(s, b) = P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!}.
 \end{equation}
 Importantly, this is not a probability distribution on $s$ and $b$! To derive that, we would have to use Bayes' rule to go from $P(n, m; s, b) \to P(s, b; n, m)$; however, such probability distributions don't make sense in our frequentist world view, so we're stuck with this likelihood formulation.
 Often, it's more convenient to consider the negative log-likelihood:
 \begin{equation}
-\label{eq:03_nll}
+\label{eq:nll}
 -\ln L = \ln n! + \ln m! + s + 2b - n\ln(s+b) - m \ln b
 \end{equation}
 
@@ -77,7 +77,7 @@ Our problem, thus, boils down to 1) choosing the most effective $t$ for testing 
 
 In the case of testing a particular signal strength, we use the ``profile likelihood ratio'':
 \begin{equation}
-\label{eq:03_plr}
+\label{eq:plr}
 \lambda(s) = \frac{L(s, \hat{\hat{b}}(s))}{L(\hat{s}, \hat{b})},
 \end{equation}
 where $\hat{s}, \hat{b}$ are the maximum-likelihood estimates (MLEs) for $s$ and $b$, given the observations $n, m$, and $\hat{\hat{b}}(s)$ is the MLE for $b$ given $n, m$, \textit{and} $s$.
@@ -86,23 +86,23 @@ The numerator of $\lambda(s)$ can be thought of as a way to ``marginalize'' over
 
 Again, it's often more convenient to use the (negative) logarithm:
 \begin{equation}
-\label{eq:03_ts}
+\label{eq:ts}
 t_s = -2 \ln \lambda(s)
 \end{equation}
 % This statistic also has nice asymptotic forms, which we'll see later.
 Note that $\mathrm{Max}[\lambda(s)] = 1 \Rightarrow \mathrm{Min}[t_s] = 0$.
-$\lambda(s)$ and $t_s$ are plotted for sample $n, m$ values with $n - m = 10$ in Figure~\ref{fig:03_plr}.
+$\lambda(s)$ and $t_s$ are plotted for sample $n, m$ values with $n - m = 10$ in Figure~\ref{fig:plr}.
 The maximum (minimum) of the profile likelihood ratio ($t_s$) is at $s = n - m = 10$, as we expect; however, as the ratio between $n$ and $m$ decreases --- i.e., the experiment becomes more noisy --- the distributions broaden, representing the reduction in sensitivity, or the higher uncertainty on the true value of $s$.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{figures/01-intro/2.png}
     \caption{The profile likelihood ratio $\lambda(s)$ (left) and the $t_s$ test statistic (right) for our one-bin Poisson model.}
-    \label{fig:03_plr}
+    \label{fig:plr}
 \end{figure}
 
 Note that the likelihood ratio and $t_s$ are also broadened due to the nuisance parameter; i.e., because we are missing information about $b$.
-This can be demonstrated by plotting them with $b = m$, emulating perfect information of $b$ (Figure~\ref{fig:03_plr_nob}), and indeed, we see the functions are narrower than in Figure~\ref{fig:03_plr}.
+This can be demonstrated by plotting them with $b = m$, emulating perfect information of $b$ (Figure~\ref{fig:plr_nob}), and indeed, we see the functions are narrower than in Figure~\ref{fig:plr}.
 More generally, increasing (decreasing) the uncertainties on the nuisance parameters will broaden (narrow) the test statistic distribution.
 This is which is why experimentally we want to constrain them through auxiliary measurements as much as possible.
 
@@ -110,25 +110,25 @@ This is which is why experimentally we want to constrain them through auxiliary 
     \centering
     \includegraphics[width=\textwidth]{figures/01-intro/3.png}
     \caption{The profile likelihood ratio $\lambda(s)$ (left) and the $t_s$ test statistic (right) with $b = m$, demonstrating the effect of decreasing uncertainties on our nuisance parameters.}
-    \label{fig:03_plr_nob}
+    \label{fig:plr_nob}
 \end{figure}
 
 \section{Maximum-likelihood estimates}
 
 MLEs for $s$ and $b$ can be found for this example by setting the derivative of the negative log-likelihood to 0 (more generally, this would require numerical minimization):
 \begin{align}
-\label{eq:03_cmle_b}
+\label{eq:cmle_b}
 \frac{\partial (-\ln L)}{\partial s} &= 1 - \frac{n}{s+b} = 0 \\
 \frac{\partial (-\ln L)}{\partial b} &= 2 - \frac{n}{s+b} - \frac{m}{b} = 0
 \end{align}
 Solving simultaneously yields, as you might expect:
 \begin{equation}
-\label{eq:03_mles}
+\label{eq:mles}
 \hat{b} = m, \hat{s} = n - m,
 \end{equation}
-Or just for $\hat{\hat{b}}(s)$ from Eq.~\ref{eq:03_cmle_b}:
+Or just for $\hat{\hat{b}}(s)$ from Eq.~\ref{eq:cmle_b}:
 \begin{equation}
-\label{eq:03_cmle_b_f}
+\label{eq:cmle_b_f}
 2b^2 + (2s - n - m)b - ms = 0
 \end{equation}
 Plugging this back in, we can get $\lambda(s)$ and $t_s$ for any given $s$.
@@ -147,15 +147,15 @@ Rather than incorporating this constraint in the model, it's more convenient to 
       \frac{L(s, \hat{\hat{b}}(s))}{L(\hat{0}, \hat{\hat{b}}(0))}, & \mbox{$\hat{s}<0$}.
     \end{array}
   \right.,
-\label{eq:03_lambda_tilde}
+\label{eq:lambda_tilde}
 \end{equation}
 and
 \begin{equation}
     \tilde{t}_s = -2\ln \tilde{\lambda}(s)
-\label{eq:03_t_tilde}
+\label{eq:t_tilde}
 \end{equation}
 
-The difference between the nominal and alternative test statistics is highlighted in Figure~\ref{fig:03_alt_ts}.
+The difference between the nominal and alternative test statistics is highlighted in Figure~\ref{fig:alt_ts}.
 For $n < m$, the $\tilde{\lambda}(s) = 1$ and $\tilde{t}_s = 0$ values are at $s = 0$, since physically that is what fits best with our data (even though the math says otherwise).
 
 \begin{figure}[htb]
@@ -163,14 +163,14 @@ For $n < m$, the $\tilde{\lambda}(s) = 1$ and $\tilde{t}_s = 0$ values are at $s
 \includegraphics[width=\textwidth]{figures/01-intro/4.png}
 \captionsetup{justification=centering}
 \caption{Comparing the nominal vs alternative test statistic.}
-\label{fig:03_alt_ts}
+\label{fig:alt_ts}
 \end{figure}
 
 Next, we want to translate this to a probability distribution of $\tilde{t}_s$ under a particular signal hypothesis ($H_s$) (i.e., an assumed value of $s$): $p(\tilde{t}_s|H_s)$, or just $p(\tilde{t}_s|s)$ for simplicity.
 
 
 \chapter{Hypothesis testing}
-\label{sec:03_hypothesis_testing}
+\label{sec:hypothesis_testing}
 
 The goal of any experiment is to test whether our data support or exclude a particular hypothesis $H$, and quantify the (dis)agreement. For example, to what degree did our search for the Higgs boson agree or disagree with the standard model hypothesis?
 
@@ -179,13 +179,13 @@ However, we need to know the probability distribution of $t$ under $H$ to quanti
 
 We must also recognize that there's always a chance that we will exclude $H$ even if it's true (called a Type I error, or a false positive), or not exclude $H$ when it's false (Type II error, or false negative).
 The probability of each is referred to as $\alpha$ and $\beta$, respectively.
-This is summarized handily in Table~\ref{tab:03_error_types}.
+This is summarized handily in Table~\ref{tab:error_types}.
 
 \begin{table}[htb]
 \centering
 \captionsetup{justification=centering}
 \caption{Table of error types, reproduced from Ref.~\cite{enwiki:1259353735}.}
-\label{tab:03_error_types}
+\label{tab:error_types}
 \renewcommand{\arraystretch}{1.5} % Increase vertical spacing
 \begin{tabular}{c|c|c|c}
 \toprule
@@ -200,14 +200,14 @@ This is summarized handily in Table~\ref{tab:03_error_types}.
 
 
 Before the test, we should decide on a probability of making a Type I error, $\alpha$, that we are comfortable with, called a ``significance level''. Typical values are 5\% and 1\%, although if we're claiming something crazy like a new particle, we better be very sure this isn't a false positive; hence, we set a much lower significance level for these tests of $3\times10^{-7}$.
-(The \textit{significance} of this value will be explained in Section~\ref{sec:03_significance} below.)
+(The \textit{significance} of this value will be explained in Section~\ref{sec:significance} below.)
 
 \section{Deriving \texorpdfstring{$p(\tilde{t}_s|s)$}{p(ts|s)}}
 
 We can approximate $p(\tilde{t}_s|s)$ by generating several pseudo- or ``toy'' datasets assuming $s$ expected signal events.
 In this case, this means sampling possible values for $n, m$ from our probability model.
-We will continue with our simple counting experiment (Section~\ref{sec:03_data_model}), for which such toy datasets are generated and then used to create histograms for $p(\tilde{t}_s|s)$ in Figure~\ref{fig:03_p_tilde_t}.
-Note that one complication in generating these toys is that the $n, m$ distributions from which we want to sample (Eq.~\ref{eq:03_pois3}) also depend on the nuisance parameter $b$.
+We will continue with our simple counting experiment (Section~\ref{sec:data_model}), for which such toy datasets are generated and then used to create histograms for $p(\tilde{t}_s|s)$ in Figure~\ref{fig:p_tilde_t}.
+Note that one complication in generating these toys is that the $n, m$ distributions from which we want to sample (Eq.~\ref{eq:pois3}) also depend on the nuisance parameter $b$.
 However, we see from the figure that this does not matter as much as we might expect.
 
 \begin{figure}[htb]
@@ -215,7 +215,7 @@ However, we see from the figure that this does not matter as much as we might ex
 \includegraphics[width=\textwidth]{figures/02-hypothesis-testing/1.png}
 \captionsetup{justification=centering}
 \caption{Estimating $p(\tilde{t}_s|s)$ through toys.}
-\label{fig:03_p_tilde_t}
+\label{fig:p_tilde_t}
 \end{figure}
 
 We make two important observations:
@@ -225,7 +225,7 @@ We make two important observations:
     \item In fact, $p(\tilde{t}_s|s)$ doesn't even depend on the POI $s$! (Again, as long as $s$ is large.)
 \end{enumerate}
 
-Reference~\cite{Cowan:2010js} shows that, asymptotically, this distribution follows a $\chi^2$ distribution with degrees of freedom equal to the number of POIs, as illustrated in Figure~\ref{fig:03_p_tilde_t_asym}.\footnote{One can find the derivation in the reference therein; essentially, like with most things in physics, this follows from Taylor expanding around the minimum...}
+Reference~\cite{Cowan:2010js} shows that, asymptotically, this distribution follows a $\chi^2$ distribution with degrees of freedom equal to the number of POIs, as illustrated in Figure~\ref{fig:p_tilde_t_asym}.\footnote{One can find the derivation in the reference therein; essentially, like with most things in physics, this follows from Taylor expanding around the minimum...}
 We can see that the asymptotic form looks accurate even for $s, b$ as low as $\sim5$.
 Note that for cases where we can't use the asymptotic form, Ref.~\cite{Cranmer:2014lly} recommends using $b = \hat{\hat{b}}(s)$ when generating toys, so that we (approximately) maximize the agreement with the hypothesis.
 % Update this if I include the derivation
@@ -235,40 +235,40 @@ Note that for cases where we can't use the asymptotic form, Ref.~\cite{Cranmer:2
 \includegraphics[width=\textwidth]{figures/02-hypothesis-testing/2.png}
 \captionsetup{justification=centering}
 \caption{Asymptotic form of $p(\tilde{t}_s|s)$.}
-\label{fig:03_p_tilde_t_asym}
+\label{fig:p_tilde_t_asym}
 \end{figure}
 
 \section{\texorpdfstring{$p$-values}{p-values} and significance}
-\label{sec:03_significance}
+\label{sec:significance}
 
 Now that we know the distribution of the test statistic $p(\tilde{t}_s|H_s) \equiv p(\tilde{t}_s|s)$, we can finally test $H_s$ with our experiment.
 We just need to calculate the ``observed'' test statistic $\tilde{t}^{\mathrm{obs}}_s$ from our observations, and compare it to the $p(\tilde{t}_s|s)$.
 
 \begin{example}
-\label{ex:03_pvalue}
+\label{ex:pvalue}
 Let's say we're testing the hypothesis of $s = 10$ signal events in our model and we observe $n = 20, m = 5$ events.
 We can map this observation to our test statistic $\tilde{{t}}^{\mathrm{{obs}}}_s(s = 10, n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5) = 1.07$,
-and see where this falls in our $p(\tilde{t}_s|s)$ distribution (Figure~\ref{fig:03_Hs}).
+and see where this falls in our $p(\tilde{t}_s|s)$ distribution (Figure~\ref{fig:Hs}).
 \end{example}
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/02-hypothesis-testing/3.png}
 \captionsetup{justification=centering}
-\caption{Testing $H_s$ in Example~\ref{ex:03_pvalue}.}
-\label{fig:03_Hs}
+\caption{Testing $H_s$ in Example~\ref{ex:pvalue}.}
+\label{fig:Hs}
 \end{figure}
 
 Ultimately, we care about, given $p(\tilde{t}_s|s)$, the probability of obtaining $\tilde{t}^{\mathrm{obs}}_s$ \textit{or a value more inconsistent} with $H_s$; i.e., the green shaded region above.
 This is referred to as the $p$\textit{-value} of the observation:
 \begin{equation}
 p_s = \int_{\tilde{t}_{\mathrm{obs}}}^{\infty}p(\tilde{t}_s|s)\mathrm d \tilde{t}_s = 1 - F(\tilde{t}_{\mathrm{obs}}|s),
-\label{eq:03_pvalue}
+\label{eq:pvalue}
 \end{equation}
 which is $0.30$ for this example, where
 \begin{equation}
 F(\tilde{t}_s|s) = \int_{-\infty}^{\tilde{t}_s}p(\tilde{t}'_s|s)\mathrm d \tilde{t}'_s
-\label{eq:03_cdf}
+\label{eq:cdf}
 \end{equation}
 is the cumulative distribution function (CDF) of $\tilde{t}_s$.
 We reject the hypothesis if this $p$-value is less than our chosen significance level $\alpha$; the idea being that if $H_s$ were true and we repeated this measurement many times, then the probability of a false-positive ($p$-value $\leq \alpha$) is exactly $\alpha$, as we intended.
@@ -276,32 +276,32 @@ We reject the hypothesis if this $p$-value is less than our chosen significance 
 The $p$-value is typically converted into a \textit{significance} ($Z$), which is the corresponding number of standard deviations away from the mean in a Gaussian distribution:
 \begin{equation}
 Z = \Phi^{-1}(1-p),
-\label{eq:03_Z}
+\label{eq:Z}
 \end{equation}
 where $\Phi$ is the CDF of the standard Gaussian.
-This is more easily illustrated in Figure~\ref{fig:03_significance}, where $\varphi$ is the standard Gaussian distribution:
+This is more easily illustrated in Figure~\ref{fig:significance}, where $\varphi$ is the standard Gaussian distribution:
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/02-hypothesis-testing/significance.png}
 \caption{Relationship between significance $Z$ and the $p$-value, reproduced from Ref.~\cite{Cranmer:2014lly}.}
-\label{fig:03_significance}
+\label{fig:significance}
 \end{figure}
 
-The significance in Example~\ref{ex:03_pvalue} is, therefore, $\Phi^{-1}(1-0.30) = 0.53$.
+The significance in Example~\ref{ex:pvalue} is, therefore, $\Phi^{-1}(1-0.30) = 0.53$.
 We sometimes say that our measurement is (in)consistent or (in)compatible with $H$ at the $0.53\sigma$ level, or within $1\sigma$, etc.
 
 \section{Signal discovery}
 
 So far, we have been testing the signal hypothesis, but usually when searching for a particle, we instead test the ``background-only'' hypothesis $H_0$ and decide whether or not to reject it.
-This means we want $\tilde{t}^{\mathrm{obs}}_0$ and $p(\tilde{t}_0|0)$ (Figure~\ref{fig:03_H0}).\footnote{Ref.~\cite{Cowan:2010js} refers to the special case of the test statistic $\tilde{t}_s$ for $s = 0$ as $q_0$.}
+This means we want $\tilde{t}^{\mathrm{obs}}_0$ and $p(\tilde{t}_0|0)$ (Figure~\ref{fig:H0}).\footnote{Ref.~\cite{Cowan:2010js} refers to the special case of the test statistic $\tilde{t}_s$ for $s = 0$ as $q_0$.}
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/02-hypothesis-testing/4.png}
 \captionsetup{justification=centering}
-\caption{Testing the background-only hypothesis in Example~\ref{ex:03_pvalue}.}
-\label{fig:03_H0}
+\caption{Testing the background-only hypothesis in Example~\ref{ex:pvalue}.}
+\label{fig:H0}
 \end{figure}
 
 We could say for this experiment, therefore, that we exclude the background-only hypothesis at the ``3 sigma'' level.
@@ -323,41 +323,41 @@ This $p$-value / significance is what we then use to decide whether or not to ex
 A particularly important special case of this, as discussed above, is testing the background-only hypothesis when trying to discover a signal.
 
 \chapter{Confidence intervals and limits}
-\label{sec:03_intervals}
+\label{sec:intervals}
 
 \section{Confidence intervals using the Neyman construction}
 
 Next, we discuss going beyond hypothesis testing to setting intervals and limits for parameters of interest.
-The machinery from Section~\ref{sec:03_hypothesis_testing} can be extended straightforwardly to extracting ``confidence intervals'' for our parameters of interest (POIs): a range of values of the POIs that are allowed, based on the experiment, at a certain ``confidence level'' (CL), e.g. 68\% or 95\%.
+The machinery from Section~\ref{sec:hypothesis_testing} can be extended straightforwardly to extracting ``confidence intervals'' for our parameters of interest (POIs): a range of values of the POIs that are allowed, based on the experiment, at a certain ``confidence level'' (CL), e.g. 68\% or 95\%.
 Very similar to the idea of the significance level, the CL is defined such that if we were to repeat the experiment many times, a 95\%-confidence-interval must contain, or \textit{cover}, the true value of the parameter 95\% of the time.
 
-This can be ensured for any given CL by solving Eq.~\ref{eq:03_pvalue} for a $p$-value of $1 - \mathrm{CL}$:
+This can be ensured for any given CL by solving Eq.~\ref{eq:pvalue} for a $p$-value of $1 - \mathrm{CL}$:
 \begin{equation}
 p = 1 - \mathrm{CL} = \int_{\tilde{t}^{\mathrm{obs}}_s}^{\infty}p(\tilde{t}_s|s_\pm)\mathrm d \tilde{t}_s,
-\label{eq:03_cl}
+\label{eq:cl}
 \end{equation}
 where $s_-$ and $s_+$ are the lower and upper limits on $s$, respectively.
 
-This can be solved by scanning $s$ and finding the values of $s$ for which the RHS $= 1 - \mathrm{CL}$, as demonstrated in Figure~\ref{fig:03_neymanconstruction} for the experiment in Example~\ref{ex:03_pvalue} ($n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5$).
+This can be solved by scanning $s$ and finding the values of $s$ for which the RHS $= 1 - \mathrm{CL}$, as demonstrated in Figure~\ref{fig:neymanconstruction} for the experiment in Example~\ref{ex:pvalue} ($n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5$).
 This procedure of inverting the hypothesis test by scanning along the values of the POIs is called the ``Neyman construction''.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/03-intervals-and-limits/1.png}
-\caption[Demonstration of the Neyman construction for a 95\% confidence interval for the experiment in Example~\ref{ex:03_pvalue} ($n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5$).]{Demonstration of the Neyman construction for a 95\% confidence interval for the experiment in Example~\ref{ex:03_pvalue} ($n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5$).
+\caption[Demonstration of the Neyman construction for a 95\% confidence interval for the experiment in Example~\ref{ex:pvalue} ($n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5$).]{Demonstration of the Neyman construction for a 95\% confidence interval for the experiment in Example~\ref{ex:pvalue} ($n_{\mathrm{obs}} = 20, m_{\mathrm{obs}} = 5$).
 Left: Scanning $p(\tilde{t}_s|s)$ using 10,000 toys each for different values of $s$.
 Right: Converting this to a contour plot of the $p$-values for different $\tilde{t}_s$'s as a function of $s$, with the observed $t^{\mathrm{obs}}_s$ in red.
 The points at which $t^{\mathrm{obs}}_s$ intersects with the $p$-value = 0.05 contour are marked in black and signify the limits of the 95\% confidence interval for $s$ - in this case, $[6.0, 25.8]$.}
-\label{fig:03_neymanconstruction}
+\label{fig:neymanconstruction}
 \end{figure}
 
 One subtlety to remember is that, in principle, we should also be scanning over the nuisance parameters ($b$) when estimating the $p$-values. However, this would be very computationally expensive so in practice, we continue to use $b = \hat{\hat{b}}(s)$, to always (approximately) maximize the agreement with the hypothesis. Ref.~\cite{Cranmer:2014lly} calls this trick ``profile construction''.
 
 \section{Upper limits}
-\label{sec:03_upper_limits}
+\label{sec:upper_limits}
 
 Typically if a search does not have enough sensitivity to directly observe a new signal, we instead quote an upper limit on the signal strength.
-This is similar in practice to the Neyman construction for confidence intervals, solving Eq.~\ref{eq:03_cl} only for the upper boundary. However, an important difference is that when setting upper limits, we have to modify the test statistic so that a best-fit signal strength \textit{greater} than the expected signal ($\hat{s} > s$) does not lower the compatibility with $H_s$:
+This is similar in practice to the Neyman construction for confidence intervals, solving Eq.~\ref{eq:cl} only for the upper boundary. However, an important difference is that when setting upper limits, we have to modify the test statistic so that a best-fit signal strength \textit{greater} than the expected signal ($\hat{s} > s$) does not lower the compatibility with $H_s$:
 \begin{gather}
     \tilde{q}(s) = \left\{
         \begin{array}{ll}
@@ -378,31 +378,31 @@ This is similar in practice to the Neyman construction for confidence intervals,
           0, & \mbox{$\hat{s} \geq s$}.
         \end{array}
       \right.
-  \label{eq:03_qs_tilde}
+  \label{eq:qs_tilde}
 \end{gather}
 
-The upper limit test statistic $\tilde{q}(s)$ is set to $0$ for $\hat{s} > s$ so that this situation does not contribute to the $p$-value integral in Eq.~\ref{eq:03_pvalue}.
-Figure~\ref{fig:03_q_tilde_s} demonstrates this, and the difference between $\tilde{t}_s$ and $\tilde{q}_s$, for different sample observations.
+The upper limit test statistic $\tilde{q}(s)$ is set to $0$ for $\hat{s} > s$ so that this situation does not contribute to the $p$-value integral in Eq.~\ref{eq:pvalue}.
+Figure~\ref{fig:q_tilde_s} demonstrates this, and the difference between $\tilde{t}_s$ and $\tilde{q}_s$, for different sample observations.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/03-intervals-and-limits/2.png}
 \captionsetup{justification=centering}
 \caption{Comparing $\tilde{t}_s$ and $\tilde{q}_s$.}
-\label{fig:03_q_tilde_s}
+\label{fig:q_tilde_s}
 \end{figure}
 
-Note that (as one may expect from Figure~\ref{fig:03_q_tilde_s}) the distribution $p(\tilde{q}_s|s)$ no longer behaves like a standard $\chi^2$ but, instead, as a ``half-$\chi^2$''.
-This is essentially a $\chi^2$ plus a delta function at 0 (since, under the signal hypothesis, on average there will be an over-fluctuation half the time, for which $\tilde{q}_s = 0$), as shown in Figure~\ref{fig:03_p_tilde_q}.
+Note that (as one may expect from Figure~\ref{fig:q_tilde_s}) the distribution $p(\tilde{q}_s|s)$ no longer behaves like a standard $\chi^2$ but, instead, as a ``half-$\chi^2$''.
+This is essentially a $\chi^2$ plus a delta function at 0 (since, under the signal hypothesis, on average there will be an over-fluctuation half the time, for which $\tilde{q}_s = 0$), as shown in Figure~\ref{fig:p_tilde_q}.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/03-intervals-and-limits/3.png}
 \caption{Comparing $p(\tilde{t}_s|s)$ and $p(\tilde{q}_s|s)$. $p(\tilde{q}_s|s)$ asymptotically follows a half-$\chi^2$ distribution (green).}
-\label{fig:03_p_tilde_q}
+\label{fig:p_tilde_q}
 \end{figure}
 
-We can now revisit Example~\ref{ex:03_pvalue} to set an upper limit on $s$ rather than a confidence interval (Figure~\ref{fig:03_upperlimits}).
+We can now revisit Example~\ref{ex:pvalue} to set an upper limit on $s$ rather than a confidence interval (Figure~\ref{fig:upperlimits}).
 $p(\tilde{q}_s|s)$ is shifted to the left with respect to $p(\tilde{t}_s|s)$; hence, the upper limit of $24$ is slightly lower than the upper bound of the 95\% confidence interval we derived using $\tilde{t}_s$.
 
 \begin{figure}[htb]
@@ -412,22 +412,22 @@ $p(\tilde{q}_s|s)$ is shifted to the left with respect to $p(\tilde{t}_s|s)$; he
 Left: Scanning the upper limit test statistic distribution $p(\tilde{q}_s|s)$ using 10,000 toys each for different values of $s$.
 Right: Converting this to a contour plot of the $p$-values for different $\tilde{q}_s$'s as a function of $s$, with the observed $q^{\mathrm{obs}}_s$ in red.
 The point at which $q^{\mathrm{obs}}_s$ intersects with the $p$-value = 0.05 contour is marked in black and signifies the upper limit at 95\% CL.}
-\label{fig:03_upperlimits}
+\label{fig:upperlimits}
 \end{figure}
 
 \section{The \texorpdfstring{CL$_s$}{CLs} criterion}
-\label{sec:03_cls}
+\label{sec:cls}
 
 We now introduce two conventions related to hypothesis testing and searches in particle physics.
 Firstly (the simple one), the POI $s$ is usually re-parametrized as $s \rightarrow \mu \cdot s$,
 where $\mu$ is now considered the POI, referred to as the ``signal strength'', and $s$ is a fixed value representing the number of signal events we expect to see for the nominal signal strength $\mu$ of $1$.
-For the example in Figure~\ref{fig:03_upperlimits}, if we expect $s = 10$ signal events, then we would quote the upper limit as $24 / s = 2.4$ on $\mu$ at 95\% CL.
+For the example in Figure~\ref{fig:upperlimits}, if we expect $s = 10$ signal events, then we would quote the upper limit as $24 / s = 2.4$ on $\mu$ at 95\% CL.
 
 The second, important, convention is that we use a slightly different criterion for confidence intervals, called ``CL$_s$''.
 This is motivated by situations where we have little sensitivity to the signal we're searching for, as in the below example.
 
 \begin{example}
-\label{ex:03_cls}
+\label{ex:cls}
 Let's say we expect $s = 10$ and observe $n = 70$, $m = 100$.
 Really, what this should indicate is that our search is not at all sensitive, since our search region is completely dominated by background and, hence, we should not draw strong conclusions about the signal strength.
 However, if we follow the above procedure for calculating the upper limit, we get $\mu \leq 0.001$ at 95\% CL.
@@ -438,7 +438,7 @@ Given the complete lack of sensitivity to the signal, this is not a sensible res
 The CL$_s$ method solves this problem by considering both the $p$-value of the signal + background hypothesis $H_s$ (referred to as $p_{s+b}$ or just $p_\mu$ for short), \textit{and} the $p$-value of the background-only hypothesis $H_0$ ($p_b$), to define a new criterion:
 \begin{equation}
 p_\mu' = \frac{p_\mu}{1 - p_b}
-\label{eq:03_pmu_prime}
+\label{eq:pmu_prime}
 \end{equation}
 
 In cases where the signal region is completely background-dominated, the compatibility with the background-only hypothesis should be high, so $p_b \sim 1$ and, hence, $p_\mu'$ will be increased.
@@ -447,7 +447,7 @@ On the other hand, for more sensitive regions, compatibility should be lower $\R
 To be explicit, here
 \begin{equation}
 p_b = \int^{\tilde{t}_{\mathrm{obs}}}_{-\infty}p(\tilde{t}_s|0)\mathrm d \tilde{t}_s,
-\label{eq:03_pb}
+\label{eq:pb}
 \end{equation}
 
 where we should note that:
@@ -456,26 +456,26 @@ where we should note that:
     \item We're integrating \textit{up to} $\tilde{t}_{\mathrm{obs}}$, unlike for $p_s$, because lower $\tilde{t}$ means greater compatibility with the background-only hypothesis.
 \end{enumerate}
 
-The effect of the CL$_s$ criterion is demonstrated in Figure~\ref{fig:03_cls} for Examples~\ref{ex:03_pvalue} and~\ref{ex:03_cls}.
+The effect of the CL$_s$ criterion is demonstrated in Figure~\ref{fig:cls} for Examples~\ref{ex:pvalue} and~\ref{ex:cls}.
 In the former, the background-only distribution is shifted to the right of the $s+b$ distribution.
 This indicates that the experiment is sensitive to $\mu$ and, indeed, we find $p_\mu' \sim p_\mu$.
-In Example~\ref{ex:03_cls}, however, the search is not sensitive and, hence, the background-only and $s+b$ distributions almost completely overlap, meaning $p_b \sim 1$ and $p_\mu' >> p_\mu$.\footnote{Note that, unlike $p(\tilde{t}_s|s)$, $p(\tilde{t}_s|0)$ \textit{doesn't} follow a simple $\chi^2$; asymptotically, it is closer to a \textit{noncentral} $\chi^2$, as will be discussed in Section~\ref{sec:03_asymptotic_plr}.
+In Example~\ref{ex:cls}, however, the search is not sensitive and, hence, the background-only and $s+b$ distributions almost completely overlap, meaning $p_b \sim 1$ and $p_\mu' >> p_\mu$.\footnote{Note that, unlike $p(\tilde{t}_s|s)$, $p(\tilde{t}_s|0)$ \textit{doesn't} follow a simple $\chi^2$; asymptotically, it is closer to a \textit{noncentral} $\chi^2$, as will be discussed in Section~\ref{sec:asymptotic_plr}.
 }
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/03-intervals-and-limits/5.png}
 \captionsetup{justification=centering}
-\caption{Demonstration of CL$_s$ criterion for Examples~\ref{ex:03_pvalue} (left) and~\ref{ex:03_cls} (right).}
-\label{fig:03_cls}
+\caption{Demonstration of CL$_s$ criterion for Examples~\ref{ex:pvalue} (left) and~\ref{ex:cls} (right).}
+\label{fig:cls}
 \end{figure}
 
-Finally, if we repeat the Neyman construction using the CL$_s$ criterion $p_\mu'$ instead of $p_\mu$ for Example~\ref{ex:03_cls}, we can find an upper limit of $\mu \leq 1.2$ at 95\% CL, which is indeed a looser, more conservative, upper limit.
-The upper limit for Example~\ref{ex:03_pvalue} remains unchanged at $\mu \leq 2.4$, as we would expect.
+Finally, if we repeat the Neyman construction using the CL$_s$ criterion $p_\mu'$ instead of $p_\mu$ for Example~\ref{ex:cls}, we can find an upper limit of $\mu \leq 1.2$ at 95\% CL, which is indeed a looser, more conservative, upper limit.
+The upper limit for Example~\ref{ex:pvalue} remains unchanged at $\mu \leq 2.4$, as we would expect.
 
 
 \chapter{Expected significances and limits}
-\label{sec:03_expected}
+\label{sec:expected}
 
 \section{Expected significance}
 
@@ -483,8 +483,8 @@ The focus so far has been only on evaluating the \textit{results} of experiments
 However, it is equally important to characterize the expected sensitivity of the experiment \textit{before} running it (or before looking at the data).
 
 \begin{example}
-\label{ex:03_expsig}
-Concretely, we continue with the simple one-bin counting experiment (Section~\ref{sec:03_data_model}).
+\label{ex:expsig}
+Concretely, we continue with the simple one-bin counting experiment (Section~\ref{sec:data_model}).
 Let's say we expect $b = 10$ background events and --- at the nominal signal strength $\mu = 1$ --- $s = 10$ signal events.
 How do we tell if this experiment is at all useful for discovering this signal, i.e., does it have any sensitivity to the signal?
 \end{example}
@@ -492,7 +492,7 @@ How do we tell if this experiment is at all useful for discovering this signal, 
 One way is to calculate the significance with which we expect to exclude the background-only hypothesis if the signal were, in fact, to exist.
 Practically, this means we are testing $H_0$ and, hence, need $p(\tilde{t}_0|\mu = 0)$ as before. However, now we also need the distribution of the test statistic $\tilde{t}_0$ under the \textit{background + signal} hypothesis $p(\tilde{t}_0|\mu = 1)$.
 Then, by calculating the significance for each sampled $\tilde{t}_0$ under $H_{\mu = 1}$, we can estimate the distribution of expected significances.
-This is illustrated for Example~\ref{ex:03_expsig} in Figure~\ref{fig:03_expZ}.
+This is illustrated for Example~\ref{ex:expsig} in Figure~\ref{fig:expZ}.
 
 \begin{figure}[htb]
 \centering
@@ -501,23 +501,23 @@ This is illustrated for Example~\ref{ex:03_expsig} in Figure~\ref{fig:03_expZ}.
 The median of the latter is marked in red.
 Right: Distribution of the significances (with respect to the background-only hypothesis) of each sampled $\tilde{t}_0$ under the signal hypothesis.
 }
-\label{fig:03_expZ}
+\label{fig:expZ}
 \end{figure}
 
 Importantly, we usually quote the \textbf{median} of this distribution as the expected significance, since the median is ``invariant'' to monotonic transformations (i.e., the median $p$-value will always correspond to the median $Z$ as well, whereas the mean $p$-value will not correspond to the mean $Z$).
 Similarly, we quote the $16\%/84\%$ and $2\%/98\%$ quantiles as the $\pm 1\sigma$ and $\pm 2\sigma$, respectively, expected significances.
-These quantiles correspond to the cumulative probabilities for a standard Gaussian (Figure~\ref{fig:03_gaussian_quantiles}).
-For Example~\ref{ex:03_expsig}, we thus find the median expected significance to be 1.83.
+These quantiles correspond to the cumulative probabilities for a standard Gaussian (Figure~\ref{fig:gaussian_quantiles}).
+For Example~\ref{ex:expsig}, we thus find the median expected significance to be 1.83.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/04-expected/gaussian_quantiles.png}
 \captionsetup{justification=centering}
 \caption{Gaussian quantiles, reproduced from Ref.~\cite{Stiller:thesis}.}
-\label{fig:03_gaussian_quantiles}
+\label{fig:gaussian_quantiles}
 \end{figure}
 
-Note that instead of converting each sampled $\tilde{t}$ under $H_{\mu=1}$ into a significance and finding the median of that distribution, as in Figure~\ref{fig:03_expZ} (right), we can take advantage of the invariance of the median and directly use the significance of the median $\tilde{t}$ under $H_{\mu=1}$ (Figure~\ref{fig:03_expZ}, left).
+Note that instead of converting each sampled $\tilde{t}$ under $H_{\mu=1}$ into a significance and finding the median of that distribution, as in Figure~\ref{fig:expZ} (right), we can take advantage of the invariance of the median and directly use the significance of the median $\tilde{t}$ under $H_{\mu=1}$ (Figure~\ref{fig:expZ}, left).
 We will do this below for the expected limit.
 
 \section{Expected limits}
@@ -527,14 +527,14 @@ To derive the \textit{expected} limit, we do the opposite of the above and ask, 
 
 This means we need:
 \begin{enumerate}
-  \item The distribution $p(\tilde{q}_\mu|\mu)$ to solve for $\mu^+$ in Eq.~\ref{eq:03_cl} and be able to do the upper limit calculation (as in Section~\ref{sec:03_upper_limits});
+  \item The distribution $p(\tilde{q}_\mu|\mu)$ to solve for $\mu^+$ in Eq.~\ref{eq:cl} and be able to do the upper limit calculation (as in Section~\ref{sec:upper_limits});
   \item $p(\tilde{q}_\mu|0)$ to get the median (and other quantiles') expected $\tilde{q}_\mu^{\mathrm{obs}}$ for different signal strengths under the background-only hypothesis; and, furthermore,
-  \item To scan over the different signal strengths to find the $\mu$ that results in a median $p$-value of $0.05$ --- or, rather, $p_\mu'$-value (Eq.~\ref{eq:03_pmu_prime}), since we're using the CL$_s$ method for upper limits (Section~\ref{sec:03_cls}).
+  \item To scan over the different signal strengths to find the $\mu$ that results in a median $p$-value of $0.05$ --- or, rather, $p_\mu'$-value (Eq.~\ref{eq:pmu_prime}), since we're using the CL$_s$ method for upper limits (Section~\ref{sec:cls}).
 \end{enumerate}
 
-First, let's look at the first two steps for just the $\mu = 1$ signal strength in Example~\ref{ex:03_expsig}.
+First, let's look at the first two steps for just the $\mu = 1$ signal strength in Example~\ref{ex:expsig}.
 These steps are similar to, and essentially an inversion of, the procedure for the expected significance: we're now finding the $p_{\mu=1}'$-value with respect to the signal + background hypothesis, for the median $\tilde{q}_\mu$ sampled under the background-only hypothesis.
-This is demonstrated in Figure~\ref{fig:03_explim}.
+This is demonstrated in Figure~\ref{fig:explim}.
 
 \begin{figure}[htb]
 \centering
@@ -542,73 +542,73 @@ This is demonstrated in Figure~\ref{fig:03_explim}.
 \caption[Calculating the median expected $p_{\mu=1}'$-value with respect to the signal + background hypothesis, for test statistics $\tilde{q}_\mu$ sampled under the background-only hypothesis.]{Calculating the median expected $p_{\mu=1}'$-value with respect to the signal + background hypothesis, for test statistics $\tilde{q}_\mu$ sampled under the background-only hypothesis.
 $p(\tilde{q}_\mu|1)$ and $p(\tilde{q}_\mu|0)$ are estimated using 30,000 toys each.
 Then, the median $p(\tilde{q}_\mu|0)$ (red) is used to calculate the $p_{\mu}'$-value following the CL$_s$ criterion.}
-\label{fig:03_explim}
+\label{fig:explim}
 \end{figure}
 
 The key difference with respect to calculating the expected significance is step 3, in which this procedure has to be repeated for a range of signal strengths to find the value that gives a median (and $\pm1\sigma,\pm2\sigma$ quantile-) $p_\mu'$ of $0.05$.
-This is thus the minimum value of $\mu$ that we expect to be able to exclude at 95\% CL, as shown in Figure~\ref{fig:03_explim2}.
+This is thus the minimum value of $\mu$ that we expect to be able to exclude at 95\% CL, as shown in Figure~\ref{fig:explim2}.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/04-expected/3.png}
 \caption{Left: The expected median and $\pm1\sigma,\pm2\sigma$ quantiles of $p_\mu'$ for different $\mu$'s. The intersection of these with $p_\mu' = 0.05$ (gray) corresponds to the expected exclusion limits. Right: The median and $\pm 1\sigma, \pm 2\sigma$ expected limits at 95\% CL$_s$ on $\mu$.}
-\label{fig:03_explim2}
+\label{fig:explim2}
 \end{figure}
 
 
 Thus, we have our expected limits.
-The right plot of Figure~\ref{fig:03_explim2} is colloquially known as a ``Brazil-band plot'', and is the standard way of representing limits.
-For example, Figure~\ref{fig:03_atlas_higgs} is the corresponding plot by ATLAS for the Higgs discovery (scanning over the Higgs mass).
+The right plot of Figure~\ref{fig:explim2} is colloquially known as a ``Brazil-band plot'', and is the standard way of representing limits.
+For example, Figure~\ref{fig:atlas_higgs} is the corresponding plot by ATLAS for the Higgs discovery (scanning over the Higgs mass).
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/04-expected/atlas_limits.png}
 \caption{Expected and observed 95\% CL$_s$ upper limits for the SM Higgs by ATLAS in 2012, for different hypothetical Higgs masses~\cite{ATLAS:2012yve}.}
-\label{fig:03_atlas_higgs}
+\label{fig:atlas_higgs}
 \end{figure}
 
 
 \part{Asymptotic formulae}
-\label{sec:03_asymptotic}
+\label{sec:asymptotic}
 
 \chapter{Asymptotic form of the MLE}
-\label{sec:03_asymptotic_mle}
+\label{sec:asymptotic_mle}
 
 So far, we have discussed how to extract meaningful statistical results from HEP experiments by making extensive use of pseudodata / toy experiments to estimate the sampling distributions of profile-likelihood-ratio-based test statistics.
 While this worked nicely for our simple counting experiment, generating a sufficiently large number of toys can quickly become computationally intractable for the more complex searches (and statistical combinations of searches) that are increasingly prevalent at the LHC, containing at times up to thousands of bins and nuisance parameters.
 This and the following section discuss a way to approximate these sampling distributions without the need for pseudodata.
 This was introduced in the famous ``CCGV'' paper~\cite{Cowan:2010js} in 2011 and has since become the de-facto procedure at the LHC.
 
-As hinted at previously, such as in Figures~\ref{fig:03_p_tilde_t_asym} and~\ref{fig:03_p_tilde_q}, the distributions $p(\tilde{t}_\mu|\mu')$ and $p(\tilde{q}_\mu|\mu')$ (where, in general, $\mu' \neq \mu$) have similar forms regardless of the nuisance parameters (or sometimes even the POIs).
+As hinted at previously, such as in Figures~\ref{fig:p_tilde_t_asym} and~\ref{fig:p_tilde_q}, the distributions $p(\tilde{t}_\mu|\mu')$ and $p(\tilde{q}_\mu|\mu')$ (where, in general, $\mu' \neq \mu$) have similar forms regardless of the nuisance parameters (or sometimes even the POIs).
 This is not a coincidence: we will now derive their ``asymptotic'' --- i.e., in the large sample limit --- forms, starting first with the asymptotic form of the maximum likelihood estimator (MLE).
 
 It is important to remember that the MLE $\hat \mu$ of $\mu$ is a random variable with its own probability distribution.
-We can estimate it as always by sampling toys, shown in Figure~\ref{fig:03_p_mle} for our counting experiment (Eq.~\ref{eq:03_pois3}).
-One can observe that $p(\hat \mu)$ follows a Gaussian distribution as the number of events $N$ increases, and indeed this becomes clear if we try to fit one to the histograms (Figure~\ref{fig:03_p_mle_fit}).
-We will now show this to be true generally, deriving the analytic distribution in Sections~\ref{sec:03_pmle_bg}---\ref{sec:03_pmle_derivation}, and discussing the results and the important concept of the \textit{Asimov} dataset for numerical estimation in Sections~\ref{sec:03_pmle_result} and~\ref{sec:03_pmle_asimov}, respectively.
+We can estimate it as always by sampling toys, shown in Figure~\ref{fig:p_mle} for our counting experiment (Eq.~\ref{eq:pois3}).
+One can observe that $p(\hat \mu)$ follows a Gaussian distribution as the number of events $N$ increases, and indeed this becomes clear if we try to fit one to the histograms (Figure~\ref{fig:p_mle_fit}).
+We will now show this to be true generally, deriving the analytic distribution in Sections~\ref{sec:pmle_bg}---\ref{sec:pmle_derivation}, and discussing the results and the important concept of the \textit{Asimov} dataset for numerical estimation in Sections~\ref{sec:pmle_result} and~\ref{sec:pmle_asimov}, respectively.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/05-asymptotic-mle/1.png}
 \caption{Distribution of the MLE of $\mu$ for different $s$ and $b$ produced using 30,000 toy experiments each. (Note the x-axis range is becoming narrower from the left-most to the right-most plot.)}
-\label{fig:03_p_mle}
+\label{fig:p_mle}
 \end{figure}
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/05-asymptotic-mle/2.png}
-\caption{Gaussian fits to distributions of $\hat\mu$ for different $s$ and $b$ from Figure~\ref{fig:03_p_mle}.}
-\label{fig:03_p_mle_fit}
+\caption{Gaussian fits to distributions of $\hat\mu$ for different $s$ and $b$ from Figure~\ref{fig:p_mle}.}
+\label{fig:p_mle_fit}
 \end{figure}
 
 
 \section{Statistics background}
-\label{sec:03_pmle_bg}
+\label{sec:pmle_bg}
 
 We first provide a lightning review of some necessary statistics concepts and results.
 
 \begin{definition}
-\label{def:03_score}
+\label{def:score}
 Let the negative log-likelihood (NLL) $-\ln L(\mu) \equiv -l(\mu)$.
 The derivative of the NLL $-l'(\mu)$ is called the \textbf{score} $s(\mu)$.
 It has a number of useful properties:
@@ -621,12 +621,12 @@ Note that the expectation value here means an average over observations which ar
 \end{definition}
 
 \begin{definition}
-\label{def:03_fisher_information}
+\label{def:fisher_information}
 $- \mathbb E [l''(\mu)] \equiv \mathcal I(\mu)$ is called the \textbf{Fisher information}.
 It quantifies the information our data contains about $\mu$ and importantly, as we'll see, it (approximately) represents the inverse of the variance of $\hat \mu$.
 More generally, for multiple parameters,
 \begin{equation}
-\label{eq:03_fisher_matrix}
+\label{eq:fisher_matrix}
 \mathcal I_{ij}(\mu) = - \mathbb E [\frac{\partial^2 l}{\partial \mu_i \partial \mu_j}]
 \end{equation}
 is the Fisher information matrix.
@@ -637,7 +637,7 @@ It is also commonly called the \textbf{covariance matrix}.
 Putting this together, by the central limit theorem~\cite{enwiki:1257009135}, this means $p(s(\mu'))$ follows a normal distribution with mean $0$ and variance $\mathcal I(\mu')$, up to terms of order $\mathcal O(\frac{1}{\sqrt{N}})$:
 \begin{equation}
 s(\mu') \xrightarrow{\sqrt{N} >> 1} \mathcal N(0, \sqrt{\mathcal I(\mu')}),
-\label{eq:03_score}
+\label{eq:score}
 \end{equation}
 where $N$ represents the data sample size.
 \end{theorem}
@@ -645,99 +645,99 @@ where $N$ represents the data sample size.
 
 \section{The Fisher information}
 
-For our simple counting experiment, the Fisher information matrix $\mathcal I(\mu, b)$ can be found by taking second derivatives of the NLL (Eq.~\ref{eq:03_nll}).
+For our simple counting experiment, the Fisher information matrix $\mathcal I(\mu, b)$ can be found by taking second derivatives of the NLL (Eq.~\ref{eq:nll}).
 The $\mathcal I_{\mu\mu}$ term, for example, is:
 \begin{equation}
     \mathcal I_{\mu\mu}(\mu, b) = - \mathbb E[\partial^\mu\partial^\mu l(\mu, b)] = \mathbb E \bigg[n \cdot \frac{s^2}{(\mu s + b)^2}\bigg] = \mathbb E[n] \cdot \frac{s^2}{(\mu s + b)^2} = \frac{(\mu' s + b') s^2}{(\mu s + b)^2}.
-\label{eq:03_fisher}
+\label{eq:fisher}
 \end{equation}
 
 In the last step we use the fact that $\mathbb E[n]$ under true $\mu = \mu'$, $b = b'$, is $\mu' s + b'$.
-For the remainder of this section, $\mathcal I(\mu, b)$ will always be evaluated at the true values of the parameters,\footnote{The reason for this is discussed shortly in Section~\ref{sec:03_pmle_derivation}.} so this can be simplified to $\mathcal I_{\mu\mu}(\mu', b') = \frac{s^2}{\mu' s + b'}$.
-This is plotted in Figure~\ref{fig:03_fisher}, where we can the Fisher information captures the fact that as $b$ increases, we lose sensitivity to --- or \textit{information} about --- $\mu$.
+For the remainder of this section, $\mathcal I(\mu, b)$ will always be evaluated at the true values of the parameters,\footnote{The reason for this is discussed shortly in Section~\ref{sec:pmle_derivation}.} so this can be simplified to $\mathcal I_{\mu\mu}(\mu', b') = \frac{s^2}{\mu' s + b'}$.
+This is plotted in Figure~\ref{fig:fisher}, where we can the Fisher information captures the fact that as $b$ increases, we lose sensitivity to --- or \textit{information} about --- $\mu$.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/05-asymptotic-mle/3.png}
 \caption{The Fisher information $\mathcal I_{\mu\mu}(\mu, b)$ for different $\mu$ and $s$, as a function of the expected background $b$.}
-\label{fig:03_fisher}
+\label{fig:fisher}
 \end{figure}
 
-For completeness (and since we'll need it below), the full Fisher information matrix for our problem, repeating the steps in Eq.~\ref{eq:03_fisher}, is:
+For completeness (and since we'll need it below), the full Fisher information matrix for our problem, repeating the steps in Eq.~\ref{eq:fisher}, is:
 \begin{equation}
     \mathcal I(\mu', b')
     = \begin{pmatrix}\mathcal I_{\mu\mu} & \mathcal I_{\mu b} \\ \mathcal I_{b\mu} & \mathcal I_{bb}\end{pmatrix}(\mu', b')
     = \begin{pmatrix}
     \frac{s^2}{\mu' s + b'} & \frac{s}{\mu' s + b'} \\ \frac{s}{\mu' s + b'} & \frac{1}{\mu' s + b'} + \frac{1}{b'}
     \end{pmatrix}
-\label{eq:03_fishermatrix}
+\label{eq:fishermatrix}
 \end{equation}
 
 
 \section{Derivation}
-\label{sec:03_pmle_derivation}
+\label{sec:pmle_derivation}
 
 We now have enough background to derive the asymptotic form of the MLE.
 We do this for the 1D case by Taylor-expanding the score of $\hat \mu$, $l'(\hat\mu)$ - which we know to be $ = 0$ - around $\mu'$:
 \begin{align}
 l'(\hat\mu) &= l'(\mu') + l''(\mu')(\hat\mu - \mu') + \mathcal O((\hat\mu - \mu')^2) = 0 \\
 \Rightarrow \hat\mu - \mu' &\simeq - \frac{l'(\mu')}{l''(\mu')} \xrightarrow{\sqrt{N} >> 1} \frac{1}{\mathcal I(\mu')}N(0, \sqrt{\mathcal I(\mu')}) = N\bigg(0, \frac{1}{\sqrt{\mathcal I(\mu')}}\bigg),
-\label{eq:03_taylorl}
+\label{eq:taylorl}
 \end{align}
 
-where we plugged in the distribution of $l'(\mu')$ from Eq.~\ref{eq:03_score}, claimed $l''(\mu')$ asymptotically equals its expectation value $\mathbb E[l''(\mu')] = \mathcal I(\mu')$ by the law of large numbers~\cite{enwiki:1256071749}, and are ignoring the $\mathcal O((\hat\mu - \mu')^2)$ term.\footnote{For a more rigorous derivation, see e.g. Ref.~\cite{gundersen_asymptotic_2019}.}
+where we plugged in the distribution of $l'(\mu')$ from Eq.~\ref{eq:score}, claimed $l''(\mu')$ asymptotically equals its expectation value $\mathbb E[l''(\mu')] = \mathcal I(\mu')$ by the law of large numbers~\cite{enwiki:1256071749}, and are ignoring the $\mathcal O((\hat\mu - \mu')^2)$ term.\footnote{For a more rigorous derivation, see e.g. Ref.~\cite{gundersen_asymptotic_2019}.}
 
 For multiple parameters, $\mathcal I$ is a matrix so the variance generalized to the matrix inverse:
 \begin{equation}
     \hat\mu - \mu' \simeq N(0, \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')}),
-\label{eq:03_asym_std_fisher}
+\label{eq:asym_std_fisher}
 \end{equation}
 
 \section{Result}
-\label{sec:03_pmle_result}
+\label{sec:pmle_result}
 
 Thus, we see that $\hat \mu$ asymptotically follows a normal distribution around the true $\mu$ value, $\mu'$, with a variance $\sigma_{\hat\mu}^2 = \mathcal I^{-1}_{\mu\mu}(\mu', b')$, up to $\mathcal O (1/\sqrt{N})$ terms.
 Intuitively, from the definition of the Fisher information $\mathcal I$, we can interpret this as saying that the more information we have about $\mu$ from the data, the lower the variance should be on $\hat \mu$.
 
-Continuing with our counting experiment from Section~\ref{sec:03_data_model}, inverting $\mathcal I$ from Eq.~\ref{eq:03_fishermatrix} gives us
+Continuing with our counting experiment from Section~\ref{sec:data_model}, inverting $\mathcal I$ from Eq.~\ref{eq:fishermatrix} gives us
 \begin{equation}
     \sigma_{\hat\mu} = \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')} = \frac{\sqrt{\mu' s + 2b'}}{s}.
-\label{eq:03_asymstd}
+\label{eq:asymstd}
 \end{equation}
 
 Note that, as we might expect, this scales as $\sim \sqrt{b}$, which is the uncertainty of our Poisson nuisance parameter $b$ --- showing mathematically why we want to keep uncertainties on nuisance parameters as low as possible.
-This is compared to the toy-based distributions from Section~\ref{sec:03_asymptotic_mle} in Figure~\ref{fig:03_p_mle_asym} this time varying the true signal strength $\mu'$ as well, where we can observe that this matches very well for large $s, b$, while for small values there are some discrete differences.
+This is compared to the toy-based distributions from Section~\ref{sec:asymptotic_mle} in Figure~\ref{fig:p_mle_asym} this time varying the true signal strength $\mu'$ as well, where we can observe that this matches very well for large $s, b$, while for small values there are some discrete differences.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/05-asymptotic-mle/4.png}
 \caption{Asymptotic (dotted lines) and toy-based (solid lines) distributions, using 30,000 toys each, of the MLE of $\mu$ for different $s$, $b$, and true signal strengths $\mu'$.}
-\label{fig:03_p_mle_asym}
+\label{fig:p_mle_asym}
 \end{figure}
 
-We can also check the total per-bin errors between the asymptotic form and the toy-based distributions directly, as shown in Figure~\ref{fig:03_mle_errors} (for $\mu' = 1$ only).
+We can also check the total per-bin errors between the asymptotic form and the toy-based distributions directly, as shown in Figure~\ref{fig:mle_errors} (for $\mu' = 1$ only).
 Indeed, this confirms that the error scales as $\sim \frac{1}{\sqrt{s}}$ and $\sim \frac{1}{\sqrt{b}}$, as claimed above.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/05-asymptotic-mle/5.png}
 \caption{Error between the sampled toy distributions, using 50,000 toys each, and the asymptotic distributions of the MLE of $\mu$ for different $s$ and $b$ (blue), with $1/\sqrt{N}$ fits in red.}
-\label{fig:03_mle_errors}
+\label{fig:mle_errors}
 \end{figure}
 
 
 \section{Numerical estimation and the Asimov dataset}
-\label{sec:03_pmle_asimov}
+\label{sec:pmle_asimov}
 
 In this section, because of the simplicity of our data model, we were able to derive the Fisher information $\mathcal I$ and, hence, the asymptotic form of $\hat \mu$ analytically.
-In general, this is not possible and we typically have to minimize $l$, find its second derivatives, and solve Eq.~\ref{eq:03_fisher} etc. \textit{numerically} instead.
+In general, this is not possible and we typically have to minimize $l$, find its second derivatives, and solve Eq.~\ref{eq:fisher} etc. \textit{numerically} instead.
 
 However, when calculating the Fisher information, how do we deal with the expectation value over the observed data ($n, m$ in our case)? Naively, this would require averaging over a bunch of generated toy $n, m$ values again, which defeats the purpose of using the asymptotic form of $\hat \mu$!
 
-Instead, we can switch the order of operations in Eq.~\ref{eq:03_fisher},\footnote{We are able to do this because, as we saw above, the score is linear in $n$ for Poisson likelihoods.} rewriting it as:
+Instead, we can switch the order of operations in Eq.~\ref{eq:fisher},\footnote{We are able to do this because, as we saw above, the score is linear in $n$ for Poisson likelihoods.} rewriting it as:
 \begin{equation}
   \mathcal I_{ij}(\mu, b) = - \mathbb E[\partial^i\partial^j l(\mu, b; n, m)] = - \partial^i\partial^j \mathbb E[l(\mu, b; n, m)] = -\partial^i\partial^j l(\mu, b; \mathbb E[n], \mathbb E[m]).
-\label{eq:03_fisher_asimov}
+\label{eq:fisher_asimov}
 \end{equation}
 
 Importantly, this says we can find $\mathcal I$ by simply evaluating the likelihood for a dataset of observations equal to their expectation values under $\mu'$ instead of averaging over the distribution of observations and \textit{then} getting its second derivatives.
@@ -749,7 +749,7 @@ Such a dataset is called the \textbf{Asimov} dataset, and $L(\mu; \mathbb E[n], 
 
 
 \chapter{Asymptotic form of the profile likelihood ratio}
-\label{sec:03_asymptotic_plr}
+\label{sec:asymptotic_plr}
 
 We can now proceed to derive the asymptotic form of the sampling distribution $p(t_\mu|\mu')$ of the profile likelihood ratio test statistic $t_\mu$, under a ``true'' signal strength of $\mu'$.
 This asymptotic form is extremely useful for simplifying the computation of (expected) significances, limits, and intervals; indeed, standard procedure at the LHC is to use it in lieu of toy-based, empirical distributions for $p(t_\mu|\mu')$.
@@ -757,7 +757,7 @@ This asymptotic form is extremely useful for simplifying the computation of (exp
 
 \section{Asymptotic form of the profile likelihood ratio}
 
-We start with deriving the asymptotic form of the profile likelihood ratio test statistic $t_\mu$ (Eq.~\ref{eq:03_ts}) by following a similar procedure to Section~\ref{sec:03_pmle_derivation} --- and using the results therein --- of Taylor expanding around its minimum at $\hat\mu$:\footnote{Note: this is not a rigorous derivation; it's just a way to motivate the final result, which is taken from Ref.~\cite{Cowan:2010js}.
+We start with deriving the asymptotic form of the profile likelihood ratio test statistic $t_\mu$ (Eq.~\ref{eq:ts}) by following a similar procedure to Section~\ref{sec:pmle_derivation} --- and using the results therein --- of Taylor expanding around its minimum at $\hat\mu$:\footnote{Note: this is not a rigorous derivation; it's just a way to motivate the final result, which is taken from Ref.~\cite{Cowan:2010js}.
 (If you know of a better way, let me know!)}
 \begin{align}
     t_\mu &= -2\ln\lambda(\mu) \\
@@ -766,16 +766,16 @@ We start with deriving the asymptotic form of the profile likelihood ratio test 
         \underbrace{-2l(\hat\mu, \hat{\hat{b}}(\hat\mu)) + 2l(\hat\mu, \hat{b})}_{\textcolor{blue}{\hat{\hat{b}}(\hat\mu)=\hat b \text{ so this is 0}}} -
         \underbrace{2l'(\hat\mu, \hat{\hat{b}}(\hat\mu))(\mu-\hat\mu)}_{\textcolor{blue}{l'(\hat\mu, \hat b) = 0}} - 2l''(\hat\mu, \hat{\hat{b}}(\hat\mu))\cdot\frac{(\mu-\hat\mu)^2}{2} \\
         &= -l''(\hat\mu, \hat b) \cdot (\mu-\hat\mu)^2 \\
-        &= \underbrace{-\mathbb E[l''(\hat\mu, \hat b)]}_{\textcolor{blue}{\text{By law of large numbers}}} \cdot (\mu-\hat\mu)^2 \label{eq:03_asym_plr_l5} \\
-        &= \underbrace{-\mathbb E[l''(\mu', b')]}_{\textcolor{blue}{\text{Since bias of MLEs $\sim$ 0}}} \cdot (\mu-\hat\mu)^2 \label{eq:03_asym_plr_l6} \\
+        &= \underbrace{-\mathbb E[l''(\hat\mu, \hat b)]}_{\textcolor{blue}{\text{By law of large numbers}}} \cdot (\mu-\hat\mu)^2 \label{eq:asym_plr_l5} \\
+        &= \underbrace{-\mathbb E[l''(\mu', b')]}_{\textcolor{blue}{\text{Since bias of MLEs $\sim$ 0}}} \cdot (\mu-\hat\mu)^2 \label{eq:asym_plr_l6} \\
         &= \underbrace{\mathcal I_{\mu\mu}(\mu', b')}_{\textcolor{blue}{\text{From definition of Fisher information}}} \cdot (\mu-\hat\mu)^2 \\
  \Rightarrow  & \underbrace{\boxed{t_\mu \simeq \frac{(\mu-\hat\mu)^2}{\sigma_{\hat\mu}^2}}}_{\textcolor{blue}{\text{Using } \sigma_{\hat\mu} \simeq \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')}}} + \mathcal O((\mu-\hat\mu)^3) + \mathcal O(\frac{1}{\sqrt N}).
-\label{eq:03_plr_taylor}
+\label{eq:plr_taylor}
 \end{align}
 
-Here, just like in Eq.~\ref{eq:03_taylorl}, we use the law of large numbers in Line~\ref{eq:03_asym_plr_l5} and take $l''(\hat\mu, \hat b)$ to asymptotically equal its expectation value under the true parameter values $\mu', b'$: $l''(\hat\mu, \hat b) \xrightarrow{\sqrt{N} >> 1} \mathbb E[l''(\hat\mu, \hat b)]$.
-We then in Line~\ref{eq:03_asym_plr_l6} also use the fact that MLEs are generally unbiased estimators of the true parameter values in the large sample limit to say $\mathbb E[l''(\hat\mu, \hat b)] \xrightarrow{\sqrt{N} >> 1} \mathbb E[l''(\mu', b')]$.
-Finally, in the last step, we use the asymptotic form of the MLE (Eq.~\ref{eq:03_asym_std_fisher}).
+Here, just like in Eq.~\ref{eq:taylorl}, we use the law of large numbers in Line~\ref{eq:asym_plr_l5} and take $l''(\hat\mu, \hat b)$ to asymptotically equal its expectation value under the true parameter values $\mu', b'$: $l''(\hat\mu, \hat b) \xrightarrow{\sqrt{N} >> 1} \mathbb E[l''(\hat\mu, \hat b)]$.
+We then in Line~\ref{eq:asym_plr_l6} also use the fact that MLEs are generally unbiased estimators of the true parameter values in the large sample limit to say $\mathbb E[l''(\hat\mu, \hat b)] \xrightarrow{\sqrt{N} >> 1} \mathbb E[l''(\mu', b')]$.
+Finally, in the last step, we use the asymptotic form of the MLE (Eq.~\ref{eq:asym_std_fisher}).
 
 
 \section{Asymptotic form of \texorpdfstring{$p(t_\mu|\mu')$}{p(t\_µ|µ')}}
@@ -786,25 +786,25 @@ recognizing that $\mu$ and $\sigma_{\hat\mu}^2$ are simply constants, while $\ha
 \begin{align}
     t_\mu &\simeq \frac{(\mu-\hat\mu)^2}{\sigma_{\hat\mu}^2} = \gamma^2, \\
     \gamma &\sim \mathcal N \bigg(\frac{\mu - \mu'}{\sigma_{\hat\mu}}, 1 \bigg).
-\label{eq:03_plr_gamma}
+\label{eq:plr_gamma}
 \end{align}
 
 For the special case of $\mu = \mu'$, we can see that $t_\mu$ is simply the square of a standard normal random variable, which is the definition of the well-known $\chi^2_k$ distribution with $k=1$ degrees of freedom (DoF):
 \begin{equation}
     p(t_\mu|\mu) \sim \chi^2_1.
-\label{eq:03_chi2}
+\label{eq:chi2}
 \end{equation}
 
 In the general case where $\mu$ may not $ = \mu'$, $t_\mu$ is the square of random variable with unit variance but \textit{non-zero mean}.
 This is distributed as the similar, but perhaps less well-known, \textbf{non-central chi-squared $\chipt_k(\Lambda)$}, again with 1 DoF, and with a ``non-centrality parameter''
 \begin{align}
     \Lambda = \bar\gamma^2 &= \bigg(\frac{\mu - \mu'}{\sigma_{\hat\mu}}\bigg)^2,
-  \label{eq:03_Lambda} \\
+  \label{eq:Lambda} \\
     p(t_\mu|\mu') &\sim \chipt_1(\Lambda).
-  \label{eq:03_noncentralchi2}
+  \label{eq:noncentralchi2}
 \end{align}
 
-The ``central'' vs. non-central chi-squared distributions are visualized in Figure~\ref{fig:03_noncentralchi2} for $k = 1$.
+The ``central'' vs. non-central chi-squared distributions are visualized in Figure~\ref{fig:noncentralchi2} for $k = 1$.
 We can see that $\chipt_k(\Lambda)$ simply shifts towards the right as $\Lambda$ increases (at $\Lambda = 0$ it is a regular central $\chi^2$).
 As $\Lambda \rightarrow \infty$, $\chipt_k(\Lambda)$ becomes more and more like a normal distribution with mean $\Lambda$.\footnote{More information can be found in e.g. Ref.~\cite{enwiki:1256854724}.
 }
@@ -813,96 +813,96 @@ As $\Lambda \rightarrow \infty$, $\chipt_k(\Lambda)$ becomes more and more like 
   \centering
   \includegraphics[width=\textwidth]{figures/06-asymptotic-plr/1.png}
   \caption{Central $\chi^2_k$ and non-central $\chipt_k(\Lambda)$ distributions for $\Lambda$ between $1-30$ (left) and $30-300$ (right).}
-  \label{fig:03_noncentralchi2}
+  \label{fig:noncentralchi2}
 \end{figure}
 
-By extending the derivation in Eq.~\ref{eq:03_plr_taylor} to multiple POIs, one can find the simple generalization to multiple POIs $\cvec\mu$:
+By extending the derivation in Eq.~\ref{eq:plr_taylor} to multiple POIs, one can find the simple generalization to multiple POIs $\cvec\mu$:
 \begin{equation}
 p(t_\mu|\mu') \sim \chipt_k(\Lambda),
-\label{eq:03_chi2multipois}
+\label{eq:chi2multipois}
 \end{equation}
 where the DoF $k$ are equal the number of POIs $\dim\cvec\mu$, and
 \begin{equation}
 \Lambda = (\cvec\mu - \cvec\mu')^T \cdot \tilde{\mathcal I}^{-1}(\cvec\mu') \cdot (\cvec\mu - \cvec\mu'),
-\label{eq:03_Lambdamultipois}
+\label{eq:Lambdamultipois}
 \end{equation}
 where $\tilde{\mathcal I}^{-1}$ is $\mathcal I^{-1}$ restricted only to the components corresponding to the POIs.
 
 
 \section{Estimating \texorpdfstring{$\sigma_{\hat\mu}^2$}{σ2}}
 
-The critical remaining step to understanding the asymptotic distribution of $t_\mu$ is estimating $\sigma_{\hat\mu}^2$ to find the non-centrality parameter $\Lambda$ in Eq.~\ref{eq:03_Lambda}.
+The critical remaining step to understanding the asymptotic distribution of $t_\mu$ is estimating $\sigma_{\hat\mu}^2$ to find the non-centrality parameter $\Lambda$ in Eq.~\ref{eq:Lambda}.
 We now discuss two methods to do this.
 
 \subsection{Method 1: Inverting the Fisher information / covariance matrix}
 
-The first method is simply using $\sigma_{\hat\mu} \simeq \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')}$ as in Section~\ref{sec:03_asymptotic_mle}.\footnote{More generally, we'd need $\tilde{\mathcal I}^{-1}$ for Eq.~\ref{eq:03_Lambdamultipois}.}
-This is shown in Figure~\ref{fig:03_ptmu_asym1} for our counting experiment, using the analytic form for $\sigma_{\hat\mu}$ from Eq.~\ref{eq:03_asymstd}.
+The first method is simply using $\sigma_{\hat\mu} \simeq \sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')}$ as in Section~\ref{sec:asymptotic_mle}.\footnote{More generally, we'd need $\tilde{\mathcal I}^{-1}$ for Eq.~\ref{eq:Lambdamultipois}.}
+This is shown in Figure~\ref{fig:ptmu_asym1} for our counting experiment, using the analytic form for $\sigma_{\hat\mu}$ from Eq.~\ref{eq:asymstd}.
 We can see that this asymptotic approximation agrees well with the true distribution for some range of parameters, but can deviate significantly for others, as highlighted especially in the right plot.
 
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{figures/06-asymptotic-plr/2.png}
   \caption{Comparing the distribution $p(t_\mu|\mu')$ (solid) with non-central $\chipt_1(\Lambda)$ distributions (dotted) for a range of $s, b, \mu, \mu'$ values, with $\sigma^2_{\hat\mu}$ estimated using the inverse of the Fisher information matrix.}
-  \label{fig:03_ptmu_asym1}
+  \label{fig:ptmu_asym1}
 \end{figure}
 
 
 \subsection{Interlude on Asimov dataset}
 
 While we are able to find the analytic form for $\sqrt{\mathcal I^{-1}_{\mu\mu}(\mu', b')}$ easily for our simple counting experiment, in general it has to be calculated numerically.
-As introduced in Section~\ref{sec:03_pmle_asimov}, to handle the expectation value under $\mu', b'$ in Eq.~\ref{eq:03_fisher_matrix}, we can make use of the \textbf{Asimov dataset}, where the observations $n_A$, $m_A$ are taken to be their expectation values under $\mu', b'$, simplifying the calculation of $\mathcal I$ to Eq.~\ref{eq:03_fisher_asimov}.
+As introduced in Section~\ref{sec:pmle_asimov}, to handle the expectation value under $\mu', b'$ in Eq.~\ref{eq:fisher_matrix}, we can make use of the \textbf{Asimov dataset}, where the observations $n_A$, $m_A$ are taken to be their expectation values under $\mu', b'$, simplifying the calculation of $\mathcal I$ to Eq.~\ref{eq:fisher_asimov}.
 
-Explicitly, for our counting experiment (Eq.~\ref{eq:03_pois3}), the Asimov observations are simply
+Explicitly, for our counting experiment (Eq.~\ref{eq:pois3}), the Asimov observations are simply
 \begin{align}
 n_A &= \mathbb E[n] = \mu' s + b', \\
 m_A &= \mathbb E[m] = b'.
-\label{eq:03_asimov_data}
+\label{eq:asimov_data}
 \end{align}
 We'll now consider a second powerful use of the Asimov dataset to estimate $\sigma^2_{\hat\mu}$.
 
 \subsection{Method 2: The ``Asimov sigma'' estimate}
 
-Putting together Eqs.~\ref{eq:03_mles} and~\ref{eq:03_asimov_data}, we can derive a nice property of the Asimov dataset: the MLEs $\hat\mu$, $\hat b$ equal the true values $\mu'$, $b'$:
+Putting together Eqs.~\ref{eq:mles} and~\ref{eq:asimov_data}, we can derive a nice property of the Asimov dataset: the MLEs $\hat\mu$, $\hat b$ equal the true values $\mu'$, $b'$:
 \begin{align}
     \hat b &= m_A = b' \\
     \hat \mu &= \frac{n_A - m_A}{s} = \frac{\mu's + b' - b'}{s} = \mu'.
-\label{eq:03_asimov_mles}
+\label{eq:asimov_mles}
 \end{align}
 Thus, $t_\mu$ evaluated for the Asimov dataset is exactly the non-centrality parameter $\Lambda$ that we are after!
 \begin{equation}
     t_{\mu, A} \simeq \bigg (\frac{\mu-\hat\mu}{\sigma_{\hat\mu}}\bigg)^2 = \bigg (\frac{\mu-\mu'}{\sigma_{\hat\mu}}\bigg)^2 = \Lambda.
-\label{eq:03_tmuasimov}
+\label{eq:tmuasimov}
 \end{equation}
 While, not strictly necessary to obtain the asymptotic form for $p(t_\mu|\mu')$, we can also invert this to estimate $\sigma_{\hat\mu}$, as
 \begin{equation}
     \sigma_A \simeq \frac{(\mu-\mu')^2}{t_{\mu, A}},
-\label{eq:03_asimov_sigma}
+\label{eq:asimov_sigma}
 \end{equation}
 where $\sigma_A$ is known as the ``Asimov sigma''.
 
-The asymptotic distributions using $\Lambda = t_{\mu, A}$ are plotted in Figure~\ref{fig:03_ptmu_asym2}.
+The asymptotic distributions using $\Lambda = t_{\mu, A}$ are plotted in Figure~\ref{fig:ptmu_asym2}.
 We see that this estimate matches the sampling distributions very well, even for cases where the covariance-matrix-estimate failed!
 Indeed, this is why estimating $\sigma_{\hat\mu} \simeq \sigma_A$ is the standard in LHC analyses, and that is the method we'll employ going forward.
 
-Reference~\cite{Cowan:2010js} conjectures that this is because the Fisher-information-approach is restricted only to estimating the second-order term of Eq.~\ref{eq:03_plr_taylor}, while with $t_{\mu, A}$ we're matching the shape of the likelihood at the minimum which may be able capture some of the higher order terms as well.
+Reference~\cite{Cowan:2010js} conjectures that this is because the Fisher-information-approach is restricted only to estimating the second-order term of Eq.~\ref{eq:plr_taylor}, while with $t_{\mu, A}$ we're matching the shape of the likelihood at the minimum which may be able capture some of the higher order terms as well.
 
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{figures/06-asymptotic-plr/3.png}
   \caption{Comparing the sampling distribution $p(t_\mu|\mu')$ with non-central $\chipt_1(\Lambda)$ distributions for a range of $s, b, \mu, \mu'$ values, with the Asimov sigma estimation for $\sigma^2_{\hat\mu}$.}
-  \label{fig:03_ptmu_asym2}
+  \label{fig:ptmu_asym2}
 \end{figure}
 
 
 Despite the pervasive use of the asymptotic formula at the LHC, it's important to remember that it's an \textit{approximation}, only valid for large statistics.
-Figure~\ref{fig:03_ptmu_asym3} shows it breaking down for $s, b \lesssim 10$ below.
+Figure~\ref{fig:ptmu_asym3} shows it breaking down for $s, b \lesssim 10$ below.
 
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{figures/06-asymptotic-plr/4.png}
   \caption{Comparing the sampling distribution $p(t_\mu|\mu')$ with non-central $\chipt_1(\Lambda)$ distributions for different $s, b \leq 10$, showing the break-down of the $\sigma_A$ approximation for $\sigma^2_{\hat\mu}$ at low statistics.}
-  \label{fig:03_ptmu_asym3}
+  \label{fig:ptmu_asym3}
 \end{figure}
 
 \section{The PDF and CDF}
@@ -910,59 +910,59 @@ Figure~\ref{fig:03_ptmu_asym3} shows it breaking down for $s, b \lesssim 10$ bel
 The probability distribution function (PDF) for a $\chipt_k(\Lambda)$ distribution can be found in e.g. Ref.~\cite{enwiki:1256854724} for $k=1$:
 \begin{equation}
     p(t_\mu|\mu') \simeq \chipt_1(\Lambda) = \frac{1}{2\sqrt{t_\mu}}\big(\varphi(\sqrt{t_\mu} - \sqrt\Lambda) + \varphi(\sqrt{t_\mu} + \sqrt\Lambda)\big),
-\label{eq:03_ptmu_pdf}
+\label{eq:ptmu_pdf}
 \end{equation}
 where $\varphi$ is the PDF of a standard normal distribution.
 For $\mu = \mu' \Rightarrow \Lambda = 0$, this simplifies to:
 \begin{equation}
     p(t_\mu|\mu) \simeq \chi^2 = \frac{1}{\sqrt{t_\mu}}\varphi(\sqrt{t_\mu}).
-\label{eq:03_ptmu_pdf_special}
+\label{eq:ptmu_pdf_special}
 \end{equation}
 
 The cumulative distribution function (CDF) for $k=1$ is:
 \begin{equation}
     F(t_\mu|\mu') \simeq \Phi(\sqrt{t_\mu} - \sqrt\Lambda) + \Phi(\sqrt{t_\mu} + \sqrt\Lambda) - 1,
-\label{eq:03_ptmu_cdf}
+\label{eq:ptmu_cdf}
 \end{equation}
 where $\Phi$ is the CDF of the standard normal distribution.
 For $\mu = \mu' \Rightarrow \Lambda = 0$, again this simplifies to:
 \begin{equation}
     F(t_\mu|\mu) \simeq 2\Phi(\sqrt{t_\mu}) - 1.
-\label{eq:03_ptmu_cdf_special}
+\label{eq:ptmu_cdf_special}
 \end{equation}
-From Eq.~\ref{eq:03_pvalue}, we know the $p$-value $p_\mu$ of the observed $t_\mu^{\mathrm{obs}}$ under a signal hypothesis of $H_\mu$ is
+From Eq.~\ref{eq:pvalue}, we know the $p$-value $p_\mu$ of the observed $t_\mu^{\mathrm{obs}}$ under a signal hypothesis of $H_\mu$ is
 \begin{equation}
     p_\mu = 1 - F(t_\mu^{\mathrm{obs}}|\mu) = 2(1 - \Phi(\sqrt{t_\mu^{\mathrm{obs}}})),
-\label{eq:03_pmu_asym}
+\label{eq:pmu_asym}
 \end{equation}
 with an associated significance
 \begin{equation}
     Z = \Phi^{-1}(1-p_\mu) = \Phi^{-1}(2\Phi(\sqrt{t_\mu^{\mathrm{obs}}} - 1)
-\label{eq:03_Z_asym}
+\label{eq:Z_asym}
 \end{equation}
 
 
 \section{Application to hypothesis testing}
 
-Let's see how well this approximation agrees with the toy-based $p$-value we found in Example~\ref{ex:03_pvalue}.
+Let's see how well this approximation agrees with the toy-based $p$-value we found in Example~\ref{ex:pvalue}.
 For the same counting experiment example, where we expect $s = 10$ and observe $n_{\mathrm{obs}} = 20$, $m_{\mathrm{obs}} = 5$, we found the $p$-value for testing the $\mu = 1$ hypothesis $p_{\mu = 1} = 0.3$ (and the associated significance $Z = 0.52$).
-Calculating $t_\mu^{\mathrm{obs}}$ for this example and plugging it into the asymptotic approximation from Eq.~\ref{eq:03_pmu_asym} gives:\footnote{Note that we're using $t_\mu$ here, not the alternative test statistic $\tilde{t_\mu}$; however, in this case since $\hat\mu > 0$, they are equivalent.}
+Calculating $t_\mu^{\mathrm{obs}}$ for this example and plugging it into the asymptotic approximation from Eq.~\ref{eq:pmu_asym} gives:\footnote{Note that we're using $t_\mu$ here, not the alternative test statistic $\tilde{t_\mu}$; however, in this case since $\hat\mu > 0$, they are equivalent.}
 \begin{align}
-\label{eq:03_pmu_asym_example}
+\label{eq:pmu_asym_example}
   &t_\mu^{\mathrm{obs}} = 1.08  \\
   &\Rightarrow p_{\mu = 1} = 2(1 - \Phi(\sqrt{1.08})) = 0.3 \\
   &\Rightarrow Z = 0.52.
 \end{align}
 We see that it agrees exactly!
 
-The agreement more generally, with varying $s, \mu, n_{\mathrm{obs}}, m_{\mathrm{obs}}$, is plotted in Figure~\ref{fig:03_asym_significances}.
+The agreement more generally, with varying $s, \mu, n_{\mathrm{obs}}, m_{\mathrm{obs}}$, is plotted in Figure~\ref{fig:asym_significances}.
 We observe generally strong agreement, except for low $n, m$ where, as expected, the asymptotic approximation breaks down.
 
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{figures/06-asymptotic-plr/5.png}
-  \caption[Comparing the significances, as a function of the signal strength $\mu$ of the hypothesis being tested, for simple counting experiments (Eq.~\ref{eq:03_pois3}) with different $s, n_{\mathrm{obs}}, m_{\mathrm{obs}}$'s.]{Comparing the significances, as a function of the signal strength $\mu$ of the hypothesis being tested, for simple counting experiments (Eq.~\ref{eq:03_pois3}) with different $s, n_{\mathrm{obs}}, m_{\mathrm{obs}}$'s, derived using $30,000$ toys each (solid) to estimate the $p(t_\mu|\mu)$ distribution vs. the asymptotic approximation (dashed).}
-  \label{fig:03_asym_significances}
+  \caption[Comparing the significances, as a function of the signal strength $\mu$ of the hypothesis being tested, for simple counting experiments (Eq.~\ref{eq:pois3}) with different $s, n_{\mathrm{obs}}, m_{\mathrm{obs}}$'s.]{Comparing the significances, as a function of the signal strength $\mu$ of the hypothesis being tested, for simple counting experiments (Eq.~\ref{eq:pois3}) with different $s, n_{\mathrm{obs}}, m_{\mathrm{obs}}$'s, derived using $30,000$ toys each (solid) to estimate the $p(t_\mu|\mu)$ distribution vs. the asymptotic approximation (dashed).}
+  \label{fig:asym_significances}
 \end{figure}
 
 
@@ -972,6 +972,3 @@ We have been able to find the asymptotic form for the profile-likelihood-ratio t
 We discussed two methods for finding the non-centrality parameter $\Lambda$, out of which the Asimov sigma $\sigma_A$ estimation generally performed better.
 Finally, the asymptotic formulae were applied to simple examples of hypothesis testing to check the agreement with toy-based significances.
 These asymptotic formulae can be extended to the alternative test statistics for positive signals $\tilde{t}_\mu$ and upper-limit-setting $\tilde{q}_\mu$, as in Ref.~\cite{Cowan:2010js}, to simplify the calculation of both observed and expected significances, limits, and intervals.
-
-With that, we conclude the overview of the statistical interpretation of LHC results.
-We will see practical applications of these concepts to searches in the high energy Higgs sector in Part~\ref{part:hh}.

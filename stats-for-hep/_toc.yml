@@ -5,15 +5,20 @@ format: jb-book
 root: main
 options:
   numbered: true
+  maxdepth: 4
 parts:
-  - caption: Statistics for HEP
+  - caption: ""
     numbered: true
     chapters:
-    - file: 01-intro
+    - file: 00-introduction
+  - caption: "I.  Frequentist Statistics at the LHC"
+    numbered: true
+    chapters:
+    - file: 01-likelihood
     - file: 02-hypothesis-testing
     - file: 03-intervals-and-limits
     - file: 04-expected-significance-and-limits
-  - caption: Asymptotical Formulae
+  - caption: "II.  Asymptotic Formulae"
     numbered: true
     chapters:
     - file: 05-asymptotic-form-mle

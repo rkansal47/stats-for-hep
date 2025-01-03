@@ -1,6 +1,6 @@
 # Stats for HEP
 
-Walkthrough of statistics concepts for HEP in Python.
+Walkthrough of statistics concepts for HEP in Python: [rkansal47.github.io/stats-for-hep](https://rkansal47.github.io/stats-for-hep).
 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://rkansal47.github.io/stats-for-hep/main.html)
 [![Codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -8,13 +8,12 @@ Walkthrough of statistics concepts for HEP in Python.
 
 
 - [Stats for HEP](#stats-for-hep)
-  - [Building the book](#building-the-book)
+  - [Building the book locally](#building-the-book-locally)
   - [Deploying online](#deploying-online)
   - [Credits](#credits)
 
 
-
-## Building the book
+## Building the book locally
 
 If you'd like to develop and/or build the Stats for HEP book, you should:
 
@@ -28,9 +27,9 @@ A fully-rendered HTML version of the book will be built in `stats-for-hep/_build
 
 ## Deploying online
 
-Deploys automatically on `push`es to the `main` branch via the [Github Action](https://github.com/rkansal47/stats-for-hep/blob/main/.github/workflows/deploy.yml).
+Builds and deploys both the website and PDF automatically on `push`es to the `main` branch via the [Github Action](https://github.com/rkansal47/stats-for-hep/blob/main/.github/workflows/deploy.yml).
 
-**Important**: Notebook kernels must be set to `Python 3` before pushing! Otherwise the action throws a `kernel not found` error.
+**Important**: Notebook kernels must be set to `Python 3` before pushing! Otherwise the action throws a `kernel not found` error when building the book.
 
 ## Credits
 
