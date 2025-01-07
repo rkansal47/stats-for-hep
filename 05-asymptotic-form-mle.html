@@ -30,7 +30,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -403,13 +403,13 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -425,28 +425,28 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">mu</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Using the quadratic formula and only the positive solution&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">s</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span>
 
 
-<span class="k">def</span> <span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;-2ln(lambda), b can optionally be fixed (for demo below)&quot;&quot;&quot;</span>
     <span class="n">bhh</span><span class="p">,</span> <span class="n">bh</span> <span class="o">=</span> <span class="p">(</span><span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
@@ -454,7 +454,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Alternative test statistic when shat &lt; 0&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
         <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
@@ -462,7 +462,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="c1">#     s, n, m = [np.array(x) for x in (s, n, m)]  # convert to numpy arrays</span>
     <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
@@ -472,7 +472,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="k">return</span> <span class="n">ts</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">q_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">q_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
 
     <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
@@ -496,21 +496,21 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and b&quot;&quot;&quot;</span>
     <span class="c1"># sample n, m according to our data model (Eq. 1)</span>
     <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">),</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and observed n and m&quot;&quot;&quot;</span>
     <span class="c1">#  use b^^ for p(t_s|s) as recommended by Ref. 2</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the t_tilde_s test statistic distribution via toys.</span>
 <span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
@@ -522,7 +522,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="k">return</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
     <span class="n">t_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
     <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
@@ -530,7 +530,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="k">return</span> <span class="n">p_val</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span>
 
 
-<span class="k">def</span> <span class="nf">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the q_tilde_s test statistic distribution via toys.</span>
 <span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
@@ -542,7 +542,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="k">return</span> <span class="n">q_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_pval_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pval_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
     <span class="n">q_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
     <span class="n">q_obs</span> <span class="o">=</span> <span class="n">q_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
@@ -550,7 +550,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="k">return</span> <span class="n">p_val</span><span class="p">,</span> <span class="n">q_tilde_ss</span><span class="p">,</span> <span class="n">q_obs</span>
 
 
-<span class="k">def</span> <span class="nf">get_limits_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_limits_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
     <span class="n">p_cls_scan</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># saving p-value for each s</span>
 
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_scan</span><span class="p">:</span>
@@ -568,7 +568,7 @@ P(n, m; \mu s, b) = \frac{(\mu s+b)^n e^{-(\mu s+b)}}{n!} \cdot \frac{b^m e^{-b}
     <span class="k">return</span> <span class="n">s_low</span><span class="p">,</span> <span class="n">s_high</span>
 
 
-<span class="k">def</span> <span class="nf">get_upper_limit_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_upper_limit_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
     <span class="n">p_cls_scan</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># saving p-value for each s</span>
 
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_scan</span><span class="p">:</span>
@@ -641,7 +641,7 @@ This is not a coincidence: we will now derive their “asymptotic”, i.e. in th
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle">
-<img alt="_images/b81db6d71f97d086d0fa6be74eacd39ba58de38cdb0cefb40bf1046c26a7ad5e.png" src="_images/b81db6d71f97d086d0fa6be74eacd39ba58de38cdb0cefb40bf1046c26a7ad5e.png" />
+<img alt="_images/cf042bf1b957841a345454794a4cc2653139c6f408607410c619cb3000baefe3.png" src="_images/cf042bf1b957841a345454794a4cc2653139c6f408607410c619cb3000baefe3.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Distribution of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> produced using 30,000 toy experiments each. (Note the x-axis range is becoming narrower from the left-most to the right-most plot.)</span><a class="headerlink" href="#p-mle" title="Link to this image">#</a></p>
 </figcaption>
@@ -701,7 +701,7 @@ This is not a coincidence: we will now derive their “asymptotic”, i.e. in th
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle-fit">
-<img alt="_images/48e6681c88de38ff2a97613fb1955e7f0a834ca9d7305dba8e3612a8e4699b03.png" src="_images/48e6681c88de38ff2a97613fb1955e7f0a834ca9d7305dba8e3612a8e4699b03.png" />
+<img alt="_images/74561178a5b358be5c0c13c7774d1102fd0fb65564b5e5eaeaa4877e319a4ae2.png" src="_images/74561178a5b358be5c0c13c7774d1102fd0fb65564b5e5eaeaa4877e319a4ae2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Gaussian fits to distributions from Fig. 5.1 of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</span><a class="headerlink" href="#p-mle-fit" title="Link to this image">#</a></p>
 </figcaption>
@@ -752,7 +752,7 @@ For the remainder of this section, <span class="math notranslate nohighlight">\(
 <p>This is what it looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_fisher_mu_mu</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_fisher_mu_mu</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="c1"># assuming here that mu and b equal their true values</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
@@ -839,7 +839,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 <p>Let’s see how closely this matches the toy-based distributions from earlier, this time varying the true signal strength <span class="math notranslate nohighlight">\(\mu'\)</span> as well:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_asym_std</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_asym_std</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Inputs should be the &quot;true&quot; mu and b values&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span>
 </pre></div>
@@ -903,7 +903,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-mle-asym">
-<img alt="_images/b4a7c090bb56c0bf234bd6f2d0958be13a63c74b8fc0e86e436116b6d9c0baae.png" src="_images/b4a7c090bb56c0bf234bd6f2d0958be13a63c74b8fc0e86e436116b6d9c0baae.png" />
+<img alt="_images/ca03f3ab34ee05adc8c16ad4ff17a4761849630df53e405bb481a36e41ebf98e.png" src="_images/ca03f3ab34ee05adc8c16ad4ff17a4761849630df53e405bb481a36e41ebf98e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Asymptotic (dotted lines) and toy-based (solid lines) distributions, using 30,000 toys each, of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and true signal strength <span class="math notranslate nohighlight">\(\mu'\)</span>.</span><a class="headerlink" href="#p-mle-asym" title="Link to this image">#</a></p>
 </figcaption>
@@ -1009,7 +1009,7 @@ Intuitively, from the definition of the Fisher information <span class="math not
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="mle-errors">
-<img alt="_images/b0b0e4efcd7432930d5ce083bfe5a4b5a539e82c061a5268a6422760b89aabb6.png" src="_images/b0b0e4efcd7432930d5ce083bfe5a4b5a539e82c061a5268a6422760b89aabb6.png" />
+<img alt="_images/a9c36843388dd1505e0013e81e09ac0990ed2d9bae3eafeff9dc64abe208876e.png" src="_images/a9c36843388dd1505e0013e81e09ac0990ed2d9bae3eafeff9dc64abe208876e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">Error between the sampled toy distributions, using 50,000 toys each, and the asymptotic distributions of the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> for different <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(b\)</span> (blue), for the nominal signal strength <span class="math notranslate nohighlight">\(\mu' = 1\)</span>. and <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span> fits (red).</span><a class="headerlink" href="#mle-errors" title="Link to this image">#</a></p>
 </figcaption>

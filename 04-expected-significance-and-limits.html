@@ -30,7 +30,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -441,13 +441,13 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -463,28 +463,28 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">mu</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Using the quadratic formula and only the positive solution&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">s</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span>
 
 
-<span class="k">def</span> <span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;-2ln(lambda), b can optionally be fixed (for demo below)&quot;&quot;&quot;</span>
     <span class="n">bhh</span><span class="p">,</span> <span class="n">bh</span> <span class="o">=</span> <span class="p">(</span><span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
@@ -492,7 +492,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Alternative test statistic when shat &lt; 0&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
         <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
@@ -500,7 +500,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="c1">#     s, n, m = [np.array(x) for x in (s, n, m)]  # convert to numpy arrays</span>
     <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
@@ -510,7 +510,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="k">return</span> <span class="n">ts</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">q_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">q_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
 
     <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
@@ -534,21 +534,21 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and b&quot;&quot;&quot;</span>
     <span class="c1"># sample n, m according to our data model (Eq. 1)</span>
     <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">),</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_toys</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and observed n and m&quot;&quot;&quot;</span>
     <span class="c1">#  use b^^ for p(t_s|s) as recommended by Ref. 2</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">get_toys_sb</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the t_tilde_s test statistic distribution via toys.</span>
 <span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
@@ -560,7 +560,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="k">return</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
     <span class="n">t_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
     <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
@@ -568,7 +568,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="k">return</span> <span class="n">p_val</span><span class="p">,</span> <span class="n">t_tilde_ss</span><span class="p">,</span> <span class="n">t_obs</span>
 
 
-<span class="k">def</span> <span class="nf">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the q_tilde_s test statistic distribution via toys.</span>
 <span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
@@ -580,7 +580,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="k">return</span> <span class="n">q_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_pval_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pval_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
     <span class="n">q_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_qs</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
     <span class="n">q_obs</span> <span class="o">=</span> <span class="n">q_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
@@ -588,7 +588,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="k">return</span> <span class="n">p_val</span><span class="p">,</span> <span class="n">q_tilde_ss</span><span class="p">,</span> <span class="n">q_obs</span>
 
 
-<span class="k">def</span> <span class="nf">get_limits_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_limits_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
     <span class="n">p_cls_scan</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># saving p-value for each s</span>
 
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_scan</span><span class="p">:</span>
@@ -606,7 +606,7 @@ p_\mu' = \cfrac{p_\mu}{1 - p_b},
     <span class="k">return</span> <span class="n">s_low</span><span class="p">,</span> <span class="n">s_high</span>
 
 
-<span class="k">def</span> <span class="nf">get_upper_limit_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_upper_limit_CLs</span><span class="p">(</span><span class="n">s_scan</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">CL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">):</span>
     <span class="n">p_cls_scan</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># saving p-value for each s</span>
 
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_scan</span><span class="p">:</span>
@@ -666,7 +666,7 @@ Then, by calculating the significance for each sampled <span class="math notrans
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_t0_s0</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">t_tilde_00</span><span class="p">,</span> <span class="n">t_tilde0s</span><span class="p">,</span> <span class="n">median_t0s</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="mf">2.4</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_t0_s0</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">t_tilde_00</span><span class="p">,</span> <span class="n">t_tilde0s</span><span class="p">,</span> <span class="n">median_t0s</span><span class="p">,</span> <span class="n">hlim</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="mf">2.4</span><span class="p">):</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
         <span class="n">t_tilde_00</span><span class="p">,</span>
         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hlim</span><span class="p">,</span> <span class="mi">41</span><span class="p">),</span>
@@ -698,7 +698,7 @@ Then, by calculating the significance for each sampled <span class="math notrans
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">plot_signs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Zs</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_signs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Zs</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Zs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$Z$&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$p(Z)$&quot;</span><span class="p">)</span>
@@ -717,7 +717,7 @@ Then, by calculating the significance for each sampled <span class="math notrans
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="expz">
-<img alt="_images/835aef300b282e65c96655848960be26d87ea80d9d0b6410fe641c2c5650bd88.png" src="_images/835aef300b282e65c96655848960be26d87ea80d9d0b6410fe641c2c5650bd88.png" />
+<img alt="_images/1529bee7249e4a981b6f4aeb399d6017ca778086e18cd1b1c9520e1c7d51c634.png" src="_images/1529bee7249e4a981b6f4aeb399d6017ca778086e18cd1b1c9520e1c7d51c634.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Left: Distributions of <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span> under the background-only and signal hypotheses using 30,000 toys each. The median of the latter is marked in red. Right: Distribution of the significances (with respect to the background-only hypothesis) of each sampled <span class="math notranslate nohighlight">\(\tilde{t}_0\)</span> under the signal hypothesis.</span><a class="headerlink" href="#expz" title="Link to this image">#</a></p>
 </figcaption>
@@ -841,7 +841,7 @@ This is similar to, and essentially an inversion of, the procedure for the expec
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="explim">
-<img alt="_images/c940591ba4a0d3ecc61266799a995a88202f6a8f5f412a3a94150bdb6f57fd6f.png" src="_images/c940591ba4a0d3ecc61266799a995a88202f6a8f5f412a3a94150bdb6f57fd6f.png" />
+<img alt="_images/41ce8662d91746d10cda29e5bc99d71077519255d6d9cb534686fab14bab91d1.png" src="_images/41ce8662d91746d10cda29e5bc99d71077519255d6d9cb534686fab14bab91d1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Calculating the median expected <span class="math notranslate nohighlight">\(p_{\mu=1}'\)</span>-value with respect to the signal + background hypothesis, for test statistics <span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span> sampled under the background-only hypothesis. p(<span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span>|1) and p(<span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span>|0) are estimated using 30,000 toys each. Then, the median p(<span class="math notranslate nohighlight">\(	ilde{q}_\mu\)</span>|0) (red) is used to calculate the <span class="math notranslate nohighlight">\(p_{\mu}'\)</span>-value following the CL<span class="math notranslate nohighlight">\(_s\)</span> criterion (from Part 3).</span><a class="headerlink" href="#explim" title="Link to this image">#</a></p>
 </figcaption>
@@ -939,7 +939,7 @@ This is shown below:</p>
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="explim2">
-<img alt="_images/048f0c2aa21b7c142a789d65aa0f74c24b626c4f8167715a97f2f84e66b09947.png" src="_images/048f0c2aa21b7c142a789d65aa0f74c24b626c4f8167715a97f2f84e66b09947.png" />
+<img alt="_images/5e1e8192ae705d04a7525b691e641b4c0388b4e67b008636783b6ea2c61661e1.png" src="_images/5e1e8192ae705d04a7525b691e641b4c0388b4e67b008636783b6ea2c61661e1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Left: The expected median and <span class="math notranslate nohighlight">\(\pm1\sigma,\pm2\sigma\)</span> quantiles of <span class="math notranslate nohighlight">\(p_\mu'\)</span> for different <span class="math notranslate nohighlight">\(\mu\)</span>’s. The intersection of these with <span class="math notranslate nohighlight">\(p_\mu' = 0.05\)</span> (grey) corresponds to the expected exclusion limits. Right: The median and <span class="math notranslate nohighlight">\(\pm 1\sigma, \pm 2\sigma\)</span> expected limits at 95% CL<span class="math notranslate nohighlight">\(_s\)</span> on <span class="math notranslate nohighlight">\(\mu\)</span>.</span><a class="headerlink" href="#explim2" title="Link to this image">#</a></p>
 </figcaption>

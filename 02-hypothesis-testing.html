@@ -30,7 +30,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -424,13 +424,13 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">cm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -446,28 +446,28 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">mu</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">log_poisson_nofactorial</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Using the quadratic formula and only the positive solution&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">s</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span>
 
 
-<span class="k">def</span> <span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;-2ln(lambda), b can optionally be fixed (for demo below)&quot;&quot;&quot;</span>
     <span class="n">bhh</span><span class="p">,</span> <span class="n">bh</span> <span class="o">=</span> <span class="p">(</span><span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">bhat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span> <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
@@ -475,7 +475,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_zero_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Alternative test statistic when shat &lt; 0&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span>
         <span class="n">log_likelihood_nofactorial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
@@ -483,7 +483,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">t_tilde_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="c1">#     s, n, m = [np.array(x) for x in (s, n, m)]  # convert to numpy arrays</span>
     <span class="n">neg_shat_mask</span> <span class="o">=</span> <span class="n">shat</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># find when s^ is &lt; 0</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_s</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
@@ -528,7 +528,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-t">
-<img alt="_images/2257599fe2ffbf7870c668d1f08306e37f77c03fdd7dceff931673cf14d290fe.png" src="_images/2257599fe2ffbf7870c668d1f08306e37f77c03fdd7dceff931673cf14d290fe.png" />
+<img alt="_images/f48ce870672006b97b8eeef74cf7f4ffaff41022f5b67407bca11beb3af62658.png" src="_images/f48ce870672006b97b8eeef74cf7f4ffaff41022f5b67407bca11beb3af62658.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Estimating <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> through toys.</span><a class="headerlink" href="#p-tilde-t" title="Link to this image">#</a></p>
 </figcaption>
@@ -583,7 +583,7 @@ P(n, m; s, b) = \frac{(s+b)^n e^{-(s+b)}}{n!} \cdot \frac{b^m e^{-b}}{m!} = L(s,
 </details>
 <div class="cell_output docutils container">
 <figure class="align-default" id="p-tilde-t-asym">
-<img alt="_images/d950d96f35532bba652c088dc09802efaa9f4c3a81f59f37f0b17d0aaad02a4c.png" src="_images/d950d96f35532bba652c088dc09802efaa9f4c3a81f59f37f0b17d0aaad02a4c.png" />
+<img alt="_images/5b34a87d4ad8e89414cc9411118da607f6a88a7a04a1bd93a08b9585b33f4fe8.png" src="_images/5b34a87d4ad8e89414cc9411118da607f6a88a7a04a1bd93a08b9585b33f4fe8.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Asymptotic form of <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span>.</span><a class="headerlink" href="#p-tilde-t-asym" title="Link to this image">#</a></p>
 </figcaption>
@@ -617,7 +617,7 @@ We can map this observation to our test statistic <span class="math notranslate 
 <p>And then see where this falls in our <span class="math notranslate nohighlight">\(p(\tilde{t}_s|s)\)</span> distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_toys</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate toy data for a given s and observed n and m&quot;&quot;&quot;</span>
     <span class="c1">#  use b^^ for p(t_s|s) as recommended by Ref. 2</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">bhathat</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
@@ -627,7 +627,7 @@ We can map this observation to our test statistic <span class="math notranslate 
     <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span>
 
 
-<span class="k">def</span> <span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the t_tilde_s test statistic distribution via toys.</span>
 <span class="sd">    By default, the s we&#39;re testing is the same as the s we&#39;re using for toys,</span>
@@ -639,7 +639,7 @@ We can map this observation to our test statistic <span class="math notranslate 
     <span class="k">return</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ps_val</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;p value&quot;&quot;&quot;</span>
     <span class="n">t_tilde_ss</span> <span class="o">=</span> <span class="n">get_p_ts</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">,</span> <span class="n">num_toys</span><span class="p">,</span> <span class="n">toy_s</span><span class="p">)</span>
     <span class="n">t_obs</span> <span class="o">=</span> <span class="n">t_tilde_s</span><span class="p">(</span><span class="n">test_s</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">,</span> <span class="n">m_obs</span><span class="p">)</span>
@@ -656,7 +656,7 @@ We can map this observation to our test statistic <span class="math notranslate 
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_p_ts</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_p_ts</span><span class="p">(</span>
     <span class="n">ax</span><span class="p">,</span>
     <span class="n">test_s</span><span class="p">,</span>
     <span class="n">n_obs</span><span class="p">,</span>
@@ -749,7 +749,7 @@ We can map this observation to our test statistic <span class="math notranslate 
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="hs">
-<img alt="_images/55a7943003d36be127793daefcf027aed871f5af3d190f73e6c386c1d693ae99.png" src="_images/55a7943003d36be127793daefcf027aed871f5af3d190f73e6c386c1d693ae99.png" />
+<img alt="_images/bffade09e35180fb9344302771bedadad1d9afd08f51300fc7fa303bcbe14858.png" src="_images/bffade09e35180fb9344302771bedadad1d9afd08f51300fc7fa303bcbe14858.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Testing <span class="math notranslate nohighlight">\(H_s\)</span>.</span><a class="headerlink" href="#hs" title="Link to this image">#</a></p>
 </figcaption>
@@ -819,7 +819,7 @@ I found this notation confusing because <span class="math notranslate nohighligh
 </div>
 <div class="cell_output docutils container">
 <figure class="align-default" id="h0">
-<img alt="_images/8fd87701f36dda4d955453c3a8bff68133e0d054073f86e6202eff443828a29e.png" src="_images/8fd87701f36dda4d955453c3a8bff68133e0d054073f86e6202eff443828a29e.png" />
+<img alt="_images/5e90a33fa2fcdddda5867bf9e6232af8b3072a2dadf9a1083fdeba71e9962060.png" src="_images/5e90a33fa2fcdddda5867bf9e6232af8b3072a2dadf9a1083fdeba71e9962060.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Testing the background-only hypothesis.</span><a class="headerlink" href="#h0" title="Link to this image">#</a></p>
 </figcaption>
