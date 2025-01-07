@@ -6,7 +6,7 @@ Both references are useful and highly recommended for reading; the emphasis here
 
 These notes are primarily intended to be followed interactively [online](https://rkansal47.github.io/stats-for-hep) as Jupyter notebooks, but are also available as a [PDF](https://github.com/rkansal47/stats-for-hep/blob/gh-pages/stats-for-hep.pdf?raw=true).
 Feedback and corrections are very welcome through e-mail or as [issues](https://github.com/rkansal47/stats-for-hep/issues) on [Github](https://github.com/rkansal47/stats-for-hep/).
-Finally, for those interested, some more notes and tutorials I have written up, such as on the standard model and machine learning in HEP, are available [here](https://www.raghavkansal.com/teaching/).
+Finally, for those interested, some more notes and tutorials I have written up, such as on the standard model and machine learning in HEP, are available [here](https://rkansal47.github.io/).
 
 
 ## Table of Contents
